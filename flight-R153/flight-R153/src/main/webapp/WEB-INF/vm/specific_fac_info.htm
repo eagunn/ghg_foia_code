@@ -1,0 +1,65 @@
+<div id="$idName">
+<br>
+#if($idName == 'bubbleTip')
+	<span style="font-weight:bold">Facility Name:</span>
+#end
+	$!fht.facility.facilityName
+<br/>
+#if($idName == 'bubbleTip')
+  <span style="font-weight:bold">Address:</span>
+#end
+$!fht.facility.address1<br/>
+#if($fht.facility.address2)$!fht.facility.address2<br/>#end
+#if($ds != 'T') $!fht.facility.city, $!fht.facility.state, $!fht.facility.zip #end
+#if($ds == 'T') $!fht.facility.city, $!fht.facility.zip #end
+<br/><br/>
+#if($idName == 'bubbleTip')
+	<span style="font-weight:bold">
+#end
+#if($ds == 'E')
+	#if($fht.emissions.size()>0)
+		$year Emissions:<br/>
+	#else
+		No emissions reported for $year<br/>
+	#end
+#else
+	$year GHG Quantities:<br/>
+#end
+#if($idName == 'bubbleTip')
+	</span>
+#end
+
+
+#foreach ($emission in $fht.emissions)
+	$emission.type : 
+	#if($emission.quantity)
+		$!number.format('##,###,###', $emission.quantity) metric tons CO<sub>2</sub>e
+	#else
+		##PUB-468 CR
+		#if($!fht.reportingStatus && $!fht.reportingStatus.shorthand eq 'VALID' || $!fht.reportingStatus.shorthand eq 'UNKNOWN')
+			N/A
+		#else 
+			---
+		#end 
+	#end
+	<br/>
+#end
+#if($!fht.reportingStatus)
+	#set($rsTxt = $!fht.reportingStatus.textBoxContents)
+	#set($rsTxt = $rsTxt.replace("'","&apos;"))
+	#if($!fht.reportingStatus.shorthand ne 'VALID')<br/><img src="#springUrl('/img/notification.gif')" title="#evaluate($rsTxt)" alt="#evaluate($rsTxt)" width="15" height="15" border="0" align="absmiddle">#end
+	#evaluate($rsTxt)
+	<br/>
+#end
+
+#if($!fht.facility.comments)<img src="#springUrl('/img/co2y.jpg')" title="$!fht.facility.comments" alt="$!fht.facility.comments" width="15" height="15" border="0"> #end
+#if($ds eq 'E' and $fht.facility.co2Captured eq 'Y') $!co2g #end
+#if($ds eq 'E' and $fht.facility.co2EmittedSupplied eq 'Y') $!co2b #end
+#if($ds eq 'I' and $fht.facility.uuRandDExempt eq 'Y') $!co2o #end
+#if($!fht.facility.comments ||
+	($ds eq 'E' and $fht.facility.co2Captured eq 'Y') ||
+	($ds eq 'E' and $fht.facility.co2EmittedSupplied eq 'Y') ||
+	($ds eq 'I' and $fht.facility.uuRandDExempt eq 'Y')) Click on the facility to view a note about the reported data.#end
+#if($ds eq 'F' || $ds eq 'L' || $ds eq 'S') <a href="service/facilityDetail/$year?id=$fht.facility.id.facilityId&ds=$ds&et=$et&popup=true" target="_blank" title="Click here to view facility details">Click here to view facility details</a> #end
+<br/>
+</div> 

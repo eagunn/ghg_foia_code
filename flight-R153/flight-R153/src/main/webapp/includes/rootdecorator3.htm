@@ -1,0 +1,18 @@
+<div id="footer">
+	<ul id="globalfooter" style="float:right;">
+    	#set($page = $session.getAttribute("page"))
+        <li style="padding:0 9px 0 5px;">$application.getInitParameter("buildId")</li>
+        <li class="last" style="padding:0 0 0 5px;">$page.pageName</li>
+    </ul>
+    <!--
+    <ul id="globalfooter" style="float:left;margin-left:-5px;">
+        #if($!roleInfoBean.currentPattern eq '/ghg/login.do')
+        <li><a href="http://www.epa.gov/" target="_blank">EPA Home</a></li>
+        <li><a href=$!session.getAttribute("epaprivacysecurity") target="_blank">Privacy and Security Notice</a></li>
+        #else
+      	<li><a target="_blank" href=$!session.getAttribute("epaPrabs")>Paperwork Reduction Act Burden Statement</a></li>
+        #end
+        <li class="last"><a href="http://www.ccdsupport.com/confluence/display/help/Contact+Us" target="_blank">Contact Us</a></li>
+   	</ul>
+   	-->
+</div>

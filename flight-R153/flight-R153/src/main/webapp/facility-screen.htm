@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>  
+  <meta charset="UTF-8">    
+  <title>Facility List</title>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-41373665-1', 'epa.gov');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+	<noscript>
+		<iframe src="//www.googletagmanager.com/ns.html?id=GTM-L8ZB" height="0" width="0" style="display:none;visibility:hidden">
+		</iframe>
+	</noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-L8ZB');
+	</script>
+  <div data-role="page" id="facilityScreen" data-theme="j">
+  
+    <!-- header -->
+    <div data-role="header" data-id="navHeader" data-position="fixed" data-tap-toggle="false" data-theme="j">
+      <a data-rel="back" href="results-list.htm" data-icon="back" data-theme="d">Back</a>
+      <h1 class="homeLogo" style="min-height: 46px; margin-top: 0px; margin-bottom: 0px;">&nbsp;</h1>
+      <a class="shareBtn j-mobileShare ui-btn-right"><img src="mobile/img/icons/lime_share.png"/></a>
+    </div>
+
+    <div class="mobileShare mobile-share-container" style="display: none;">
+      <div class="share-overlay"></div>
+      <ul class="mobile-share-list">
+        <li>
+          <a class="fb-share ui-link" title="Facebook" href="#" onclick="postToFacebook();" rel="external" data-inline="true">Facebook</a>
+        </li>
+        <li>
+          <a class="tw-share ui-link" title="Twitter" href="#" onclick="postToTwitter();" rel="external" data-inline="true">Twitter</a>
+        </li>
+        <li>
+          <a class="google-plus-share ui-link" title="Google Plus" href="#" onclick="postToGooglePlus()" rel="external" data-inline="true">Google Plus</a>
+        </li>
+        <li class="reddit-share">
+          <a class="reddit-share ui-link" title="Reddit" href="#" onclick="postToReddit();" rel="external" data-inline="true">Reddit</a>  
+        </li>
+          <a class="closeShare close ui-link" title="Close" rel="external" data-inline="true"></a>
+      </ul>
+    </div>
+    
+    <!-- content -->
+    <div data-role="content" data-theme="j">
+      
+      <!-- Search Field -->
+      <form id="searchForm-FD">
+	      <label for="searchFacilities" class="ui-hidden-accessible">Search Facilities:</label>
+	      <input type="search" name="q" id="searchFacilities" placeholder="Enter facility name, city, state, or zipcode" value="" />
+      </form>
+      
+      <div id="facilityInfoContainer"></div>         
+      <script type="text/x-jsrender" id="facilityInformation">
+	      <h2 style="font-weight: bold;"> {{:facility.facilityName}} </h2>
+	      <h3> {{:totalEmissions}} mt CO<sub>2</sub>e </h3>
+	      <br />
+	      <p> {{:facility.address1}} </p>
+	      <p> {{:facility.city}}, {{:facility.state}}, {{:facility.zip}} </p>
+	      <br />
+	      <div class="spatialDetail">
+	        <table>
+	          <tr>
+	            <td>Latitude:</td><td>{{:facility.latitude}}</td>
+	          </tr>
+	          <tr>
+	            <td>Longitude:</td><td>{{:facility.longitude}}</td>
+	          </tr>
+	          <tr>
+	            <td>FRS ID:</td><td>{{:facility.frsId}}</td>
+	          </tr>
+	          <tr>
+	            <td>NAICS Code:</td><td>{{:facility.naicsCode}}</td>
+	          </tr>
+	        </table>              
+	      </div>
+	      <br />
+	      <p><b> Total Facility Emissions in metric tons CO<sub>2</sub> equivalent (mt CO<sub>2</sub>e) </b></p>
+	      <b> (<a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">AR4 GWPs</a>, excluding Biogenic CO<sub>2</sub>) </b> 
+	      <div class="fd-rightSide"> {{:totalEmissions}} </div>
+	      <br />
+	      <br />
+	      <p><b> Emissions by Gas in mt CO<sub>2</sub>e </b></p>
+	      <div class="spatialDetail">      
+	        <table>
+	          {{if gasEmissions[0]}}
+	            <tr>
+	              <td>{{:gasEmissions[0].type}}</td><td>{{:gasEmissions[0].quantity}}</td>
+	            <tr>
+	          {{/if}}
+	          {{if gasEmissions[1]}}
+	            <tr>
+	              <td>{{:gasEmissions[1].type}}</td><td>{{:gasEmissions[1].quantity}}</td>
+	            <tr>
+	          {{/if}}
+	          {{if gasEmissions[2]}}
+	            <tr>
+	              <td>{{:gasEmissions[2].type}}</td><td>{{:gasEmissions[2].quantity}}</td>
+	            <tr>
+	          {{/if}}
+	        </table>            
+	      </div>
+      </script>
+                  
+    </div>
+        
+    <!-- footer -->
+    <div data-role="footer" data-id="navFooter" data-position="fixed" data-tap-toggle="false" data-theme="j">    
+      <div data-role="navbar" class="custom-nav">
+        <ul>
+          <li><a href="filter.htm" class="filterBtn" data-icon="custom">Filter</a></li>
+<!--           <li><a href="#" data-icon="check">Sort</a></li> -->
+          <li><a href="results-map.htm" class="mapBtn" data-icon="custom">Map</a></li>
+        </ul>
+      </div><!-- /navbar -->
+    </div><!-- /footer -->
+    
+  </div>
+  
+</body>
+  
+</HTML>

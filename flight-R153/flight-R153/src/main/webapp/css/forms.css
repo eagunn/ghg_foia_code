@@ -1,0 +1,352 @@
+/* Begin Form Elements */
+
+form{
+	clear:both;
+	margin-top:5px;
+}
+
+input.btn {
+	text-transform: uppercase;
+	clear: both;
+	margin: 5px 10px 0 0;
+	}	
+	
+fieldset {
+	background-color: #E2F7BA;
+	background-image: url(../img/cmxform-fieldset.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	width: 100%;
+	display: block;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #BDE;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #6AC;
+	clear: both;
+	margin: 0 0 10px 0;
+	padding: 0 0 5px 0;
+	}
+	
+legend {
+	text-transform: uppercase;
+	margin-left: 0px;
+	color: #268;
+	background-color: #FFF;
+	padding: 3px 3px 5px 0;
+	}
+	
+.formDIV {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CDB;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	display: block;
+	clear: both;
+	margin: 2px 0 2px 0;
+	}
+	
+label {
+	margin: 2px 0 4px 0;
+	position: relative;
+	clear: left;
+	float: left;
+	width: 165px;
+	padding-right: 15px;
+	line-height: 1.15em;
+	text-align: right;
+	font-weight: bold;
+	color: #456;
+	display: inline;
+	}
+	
+label.hidden{display:none;}
+	
+.hideasterik {
+		position: absolute;
+		left: -10000px;
+		top: 0px;
+	}
+	
+.req {
+		position: absolute;
+		left: -10000px;
+		top: 0px;
+	}
+	
+label span {
+		position: absolute;
+		left: -10000px;
+		top: 0px;
+	}
+	
+label.required {
+	background-image: url(../img/required2.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+	}
+
+span.required {
+	display:	inline-block;
+	width:	0px;
+	overflow:	hidden;
+}
+	
+.denotes {
+	background-color: transparent;
+	background-image: url(../img/required2.gif);
+	background-repeat: no-repeat;
+	background-position: -2px top;
+	padding-left: 6px;
+	padding-bottom:10px;
+}
+
+p span.required {
+	display:	inline-block;
+	vertical-align:	middle;
+	width:	9px;
+	line-height:	1.5em;
+	text-indent:	-10px;
+	overflow:	hidden;
+	background-color: transparent;
+	background-image: url(../img/required2.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	}
+
+textarea {
+	font-family:Arial, Helvetica, sans-serif;
+	padding:5px;
+	font-size: .95em;
+	}
+	
+.field {
+	padding: 1px;
+	margin: 1px 0 3px 0;
+	color: #000;
+	float: left;
+	}
+	
+.invisifield {
+	color: #000;
+	float: none;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-color: #EEE;
+	text-align: right;
+	}
+	
+.noReport {
+	background-color: #d4d0c8;
+	background-image: url(../img/hatch.gif);
+	background-repeat: repeat;
+	background-position: left top;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border: 1px solid #6AC;
+}
+	
+.field99 {width: 99%;}
+	
+.field50 {width: 50px;}
+	
+.field100 {width: 100px;}
+
+.field150 {width: 150px;}
+	
+.field200 {width: 200px;}
+	
+.field250 {width: 250px;}
+	
+.field300 {width: 300px;}
+	
+.field500 {width: 500px;}
+	
+.field25 {width: 25px;}
+	
+.field10 {width: 10px;}
+	
+.resultRef {
+	clear:both;
+	background-image: url(../img/result_arrow.gif);
+	background-repeat: no-repeat;
+	background-position: 5px center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	text-indent: 35px;
+}
+	
+input.radio {
+	border:	none;
+	background:	transparent;
+	width: auto;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	}
+	
+input.check {
+	padding:0px;
+	margin:0px;
+	}
+	
+input.submit {width: auto;}
+	
+.readOnly {
+	display: block;
+	float: left;
+	clear: right;
+	margin: 3px 0 6px 0;
+	width: auto;
+	}
+	
+.directions {
+	display:inline;
+	width:500px;
+	float: left;
+	margin-top: 2px;
+	margin-bottom: 10px;
+	padding-left:180px;
+	padding-right:5px;
+	color: #666666;
+	clear: both;
+	}
+	
+.radioTable TD {
+	vertical-align: top;
+	font-family: Arial, Helvetica, sans-serif;
+	padding-bottom:3px;
+	}
+	
+.radioTable label {
+	text-align: left;
+	width: 99%;
+	font-weight: normal;
+	color: #456;
+	padding: 0 0 0 3px;
+	}
+	
+.radioTableQ {
+	width:	165px;
+	padding-right:	15px;
+	line-height:	1.15em;
+	text-align:	right;
+	font-weight: bold;
+	color: #456;
+}
+	
+.radioTableQReq {
+	width:	165px;
+	padding-right:	15px;
+	line-height:	1.15em;
+	text-align:	right;
+	font-weight: bold;
+	color: #456;
+	background-image: url(../img/required2.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+	
+.alert { /* This may not be in use.  Was used in early demo, but use was overcome by design review changes. */
+	display:inline;
+	float: left;
+	margin: 2px 5px 10px 180px;
+	color: #666666;
+	background-image: url(../img/notification.jpg);
+	background-repeat: no-repeat;
+	background-position: 160px top;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+	
+.addlink {
+	display: inline-block;
+	clear: both;
+	background-image: url(../img/icon_+.gif);
+	background-repeat: no-repeat;
+	margin-top: 0px;
+	padding: 1px 0px 1px 15px;
+	background-position: left center;
+}
+
+.removelink {
+	display: inline-block;
+	clear: both;
+	background-image: url(../img/icon_x.gif);
+	background-repeat: no-repeat;
+	margin-top: 0px;
+	padding: 1px 0px 1px 15px;
+	background-position: left center;
+}
+
+.editlink {
+	display: inline-block;
+	clear: both;
+	background-image: url(../img/icon_edit_record.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin: 3px 0 6px 0;
+	padding: 1px 0px 1px 20px;
+}
+
+.colItem {
+	width: 250px;
+	float:left;
+	margin: 2px 0 5px 0;
+}
+
+.colLabel {
+	margin: 0;
+	width: 205px;
+	clear: none;
+	float: left;
+	padding: 0 15px 0 5px;
+	text-align: left;
+	display: inline;
+}
+	
+.colInput {
+	float: left;
+	margin:0px;
+	padding: 0px;
+}
+	
+.measure {
+	display:inline;
+	margin: 2px 0px 0px 4px;
+	float:left;
+}
+
+.dataFormatError {
+	display:none;
+	clear:both;
+	margin-left:180px;
+	vertical-align:middle;
+	width:368px;
+	padding-top:2px;
+	padding-left:23px;
+	background-image:url(../img/icon_error.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	color: #C00;
+	line-height: 1.25em;
+}
+
+.fauxLabel {
+	padding: 2px 0 4px 0;
+	line-height: 1.15em;
+	text-align:	left;
+	font-weight: bold;
+	color: #456;
+	}
+.label2 {
+	clear:none;
+	text-align:left;
+	width:535px;
+	padding-left:5px;
+}

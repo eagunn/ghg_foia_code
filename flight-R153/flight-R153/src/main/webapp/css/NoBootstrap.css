@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* .findFac { */
+/* 	background-image: url("../img/find_fac.gif"); */
+/* 	background-position: left top; */
+/* 	background-repeat: no-repeat; */
+/* 	float: left; */
+/* 	height: 37px; */
+/* 	padding-bottom: 5px; */
+/* 	padding-top: 5px; */
+/* 	width: 216px; */
+/* } */
+
+#facSearchFunction { 
+  margin-top:  18px;
+}
+
+.findFac #searchBtn {
+  height:    33px;
+}
+
+.findFac #facOrLocInput {
+  width:     220px;
+  height:    28px;
+}
+
+#facSearchFunction .facSearchField {
+   color: #776677;
+   font-size: 0.9em;
+   height: 28px;
+   padding: 0;
+   width: 255px;
+}
+
+.largeSelectMenu {
+  width:       180px;
+  height:      30px;
+  padding-top: 6px;
+}

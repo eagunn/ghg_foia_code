@@ -1,0 +1,70 @@
+<table cellspacing="0" summary="GHG Emissions data by sector">
+	<tr>
+		<td style="background-color:#CCC;">&nbsp;</td>
+		<td class="sectorGap_L3" style="background-color:#EC8; padding:2px 4px 0px 4px;">
+			<input onchange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector1" id="sector1checkbox" class="check" style="float:left;"/>
+			<label for="sector1"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#D87; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector2" id="sector2checkbox" class="check" style="float:left;"/>
+			<label for="sector2"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#EA8; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector3" id="sector3checkbox" class="check" style="float:left;"/>
+			<label for="sector3"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#EE9; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector4" id="sector4checkbox" class="check" style="float:left;"/>
+			<label for="sector4"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#8AD; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector5" id="sector5checkbox" class="check" style="float:left;"/>
+			<label for="sector5"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#9C9; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector6" id="sector6checkbox" class="check" style="float:left;"/>
+			<label for="sector6"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#99C; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector7" id="sector7checkbox" class="check" style="float:left;"/>
+			<label for="sector7"></label>
+		</td>
+		<td class="sectorGap_L1" style="background-color:#B9B; padding:2px 4px 0px 4px;">
+			<input onChange="javascript:generateURL('')" checked="checked" type="checkbox" name="sector8" id="sector8checkbox" class="check" style="float:left;"/>
+			<label for="sector8"></label>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" class="sectorGap_B3" style="background-color:#CCC;">Sector</td>
+		<th align="center" class="sectorDataLabel sectorGap_L3 sectorGap_B3" style="background-color:#EC8; padding:1px 5px 2px 5px;">Power Plants</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#D87; padding:1px 5px 2px 5px;">Landfills</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#EA8; padding:1px 5px 2px 5px;">Metals</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#EE9; padding:1px 5px 2px 5px;">Minerals</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#8AD; padding:1px 5px 2px 5px;">Refineries</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#9C9; padding:1px 5px 2px 5px;">Pulp &amp; Paper</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#99C; padding:1px 5px 2px 5px;">Chemicals</th>
+		<th align="center" class="sectorDataLabel sectorGap_B3 sectorGap_L1" style="background-color:#B9B; padding:1px 5px 2px 5px;">Other Stationary<br />Combustion</th>
+	</tr>
+	<tr>
+		<th align="right" class="sectorDataLabel sectorGap_B1" style="background-color:#BBB; padding:1px 3px 2px 3px;">2010 GHG Emissions <nobr style="font-size:.85em;">(million metric tons CO<sub>2</sub>e)</nobr></th>
+		<td id="s1Total" align="center" class="sectorGap_L3 sectorGap_B1" style="background-color:#DB7;"></td>
+		<td id="s2Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#C76;"></td>
+		<td id="s3Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#D97;"></td>
+		<td id="s4Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#DD8;"></td>
+		<td id="s5Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#79C;"></td>
+		<td id="s6Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#8B8;"></td>
+		<td id="s7Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#88B;"></td>
+		<td id="s8Total" align="center" class="sectorGap sectorGap_L1 sectorGap_B1" style="background-color:#A8A;"></td>
+	</tr>
+	<tr>
+		<th align="right" class="sectorDataLabel" style="background-color:#CCC; padding:1px 3px 2px 3px;"># of Reporting Facilities</th>
+		<td id="s1Facility" align="center" class="sectorGap_L3" style="background-color:#EC8;"></td>
+		<td id="s2Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#D87;"></td>
+		<td id="s3Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#EA8;"></td>
+		<td id="s4Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#EE9;"></td>
+		<td id="s5Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#8AD;"></td>
+		<td id="s6Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#9C9;"></td>
+		<td id="s7Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#99C;"></td>
+		<td id="s8Facility" align="center" class="sectorGap sectorGap_L1" style="background-color:#B9B;"></td>
+	</tr>
+</table>

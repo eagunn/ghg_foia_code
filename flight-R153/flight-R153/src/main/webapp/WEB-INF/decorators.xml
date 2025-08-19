@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<decorators defaultdir="/WEB-INF/decorators">
+
+	<excludes>
+		<pattern>*.html</pattern>
+		<pattern>*.jsp</pattern>
+		<pattern>*.ajx</pattern>
+	</excludes>
+
+	<decorator name="login" page="login.htm">
+		<pattern>/*.do</pattern>
+	</decorator>
+
+	<decorator name="userRegistration" page="userRegistration.htm">
+		<pattern>/userRegistration*.do</pattern>
+	</decorator>
+
+	<decorator name="main" page="main.htm">
+		<pattern>/main.do</pattern>
+	</decorator>
+
+	<decorator name="ldc" page="ldc.htm">
+		<pattern>/ldc.do</pattern>
+	</decorator>
+
+	<decorator name="suppliers" page="suppliers.htm">
+		<pattern>/suppliers.do</pattern>
+	</decorator>
+
+	<decorator name="helpdesk" page="helpdesk.htm">
+		<pattern>/helpdesk/*.do</pattern>
+	</decorator>
+	        
+<!--	<decorator name="appointment" page="appointment.htm">-->
+<!--		<pattern>/helpdesk/appointment/*.do</pattern>-->
+<!--	</decorator>-->
+<!---->
+<!--	<decorator name="management" page="management.htm">-->
+<!--		<pattern>/helpdesk/management/*.do</pattern>-->
+<!--	</decorator>-->
+<!---->
+<!--	<decorator name="appointment" page="appointment.htm">-->
+<!--		<pattern>/helpdesk/changename/*.do</pattern>-->
+<!--	</decorator>-->
+        
+	<decorator name="userprofile" page="userprofile.htm">
+		<pattern>/userprofile/*.do</pattern>
+	</decorator>
+
+	<decorator name="myprofile" page="myprofile.htm">
+		<pattern>/myprofile/*.do</pattern>
+	</decorator>
+	
+	<decorator name="usermgmnt" page="usermgmnt.htm" />
+
+	<decorator name="printable" page="printable.htm" />
+
+	<decorator name="drvalidation" page="drvalidation.htm">
+		<pattern>/registration/dr*.do</pattern>
+	</decorator>
+	<decorator name="facilitymanagement" page="facilitymanagement.htm">
+		<pattern>/facilitymanagement/*.do</pattern>
+	</decorator>
+	<decorator name="datareporting" page="datareporting.htm">
+		<pattern>/datareporting/*.do</pattern>
+	</decorator>
+	<decorator name="reports" page="reports.htm">
+		<pattern>/reports/*.do</pattern>
+	</decorator>
+    <decorator name="rollup" page="rollup.htm">
+        <pattern>/rollup/*.do</pattern>
+    </decorator>
+
+    <decorator name="reporting" page="reporting.htm">
+        <pattern>/reporting/*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpart_printable" page="printable.htm">
+        <pattern>/datareporting/*/print*.do</pattern>
+        <pattern>/datareporting/submitsummary.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartg" page="subpartg.htm">
+        <pattern>/datareporting/subpartg/g*.do</pattern>
+    </decorator>    
+
+    <decorator name="subpartg" page="subpartg.htm">
+        <pattern>/datareporting/subpartg/v2/g*.do</pattern>
+    </decorator>    
+
+    <decorator name="subpartc" page="subpartc.htm">
+        <pattern>/datareporting/subpartc/c*.do</pattern>
+    </decorator>
+
+    <decorator name="subpartd" page="subpartd.htm">
+        <pattern>/datareporting/subpartd/d*.do</pattern>
+    </decorator>
+
+    <decorator name="subparte" page="subparte.htm">
+        <pattern>/datareporting/subparte/e*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartf" page="subpartf.htm">
+        <pattern>/datareporting/subpartf/f*.do</pattern>
+    </decorator>
+    
+    <decorator name="subparth" page="subparth.htm">
+        <pattern>/datareporting/subparth/H*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartk" page="subpartk.htm">
+        <pattern>/datareporting/subpartk/k*.do</pattern>
+    </decorator>
+    
+     <decorator name="subpartn" page="subpartn.htm">
+        <pattern>/datareporting/subpartn/N*.do</pattern>
+    </decorator>
+
+    <decorator name="subparto" page="subparto.htm">
+        <pattern>/datareporting/subparto/o*.do</pattern>
+    </decorator>
+
+    <decorator name="subpartp" page="subpartp.htm">
+        <pattern>/datareporting/subpartp/p_*.do</pattern>
+    </decorator>
+    
+     <decorator name="subpartq" page="subpartq.htm">
+        <pattern>/datareporting/subpartQ/q*.do</pattern>
+    </decorator>
+    
+     <decorator name="subpartr" page="subpartr.htm">
+        <pattern>/datareporting/subpartr/r*.do</pattern>
+    </decorator>
+    
+    <decorator name="subparts" page="subparts.htm">
+        <pattern>/datareporting/subparts/s*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartu" page="subpartu.htm">
+        <pattern>/datareporting/subpartu/u*.do</pattern>
+    </decorator>
+    
+    <decorator name="sub" page="subpartv.htm">
+        <pattern>/datareporting/subpartv/v*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartx" page="subpartx.htm">
+        <pattern>/datareporting/subpartx/x*.do</pattern>
+    </decorator>  
+
+    <decorator name="subparty" page="subparty.htm">
+        <pattern>/datareporting/subparty/y*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartz" page="subpartz.htm">
+        <pattern>/datareporting/subpartz/z*.do</pattern>
+    </decorator>
+    
+     <decorator name="subpartaa" page="subpartaa.htm">
+        <pattern>/datareporting/subpartaa/a*.do</pattern>
+    </decorator>  
+    
+    <decorator name="subpartbb" page="subpartbb.htm">
+        <pattern>/datareporting/subpartbb/bb*.do</pattern>
+    </decorator>  
+    
+    <decorator name="subpartcc" page="subpartcc.htm">
+        <pattern>/datareporting/subpartcc/cc*.do</pattern>
+    </decorator>  
+    
+    <decorator name="subpartcabb" page="subpartcabb.htm">
+        <pattern>/datareporting/subpartcabb/cabb*.do</pattern>
+    </decorator>  
+
+    <decorator name="subpartee" page="subpartee.htm">
+        <pattern>/datareporting/subpartee/ee*.do</pattern>
+    </decorator>  
+    
+    <decorator name="subpartgg" page="subpartgg.htm">
+        <pattern>/datareporting/subpartgg/gg*.do</pattern>
+    </decorator>
+
+    <decorator name="subparthh" page="subparthh.htm">
+        <pattern>/datareporting/subparthh/hh*.do</pattern>
+    </decorator>
+
+    <decorator name="subpartnn" page="subpartnn.htm">
+        <pattern>/datareporting/subpartnn/nn*.do</pattern>
+    </decorator>
+
+    <decorator name="subpartoo" page="subpartoo.htm">
+        <pattern>/datareporting/subpartoo/oo*.do</pattern>
+    </decorator>
+    
+    <decorator name="subpartpp" page="subpartpp.htm">
+        <pattern>/datareporting/subpartpp/pp*.do</pattern>
+    </decorator>
+    
+    <decorator name="unitmanagement" page="unitmanagement.htm">
+    	<pattern>/unitmanagement/*.do</pattern>
+    </decorator>
+    
+    <decorator name="cemsml" page="cemsml.htm">
+    	<pattern>/datareporting/cemsml/*.do</pattern>
+    </decorator>
+
+    <decorator name="signsubmit" page="signsubmit.htm">
+        <pattern>/datareporting/reporting_signsubmit.do</pattern>
+    </decorator>
+    
+	<decorator name="signsuccess" page="signsuccess.htm">
+        <pattern>/datareporting/reporting_submitconfirm.do</pattern>
+    </decorator>
+    
+    <decorator name="signreview" page="signreview.htm">
+        <pattern>/datareporting/reporting_submitreview.do</pattern>
+    </decorator>
+    
+    <decorator name="signreceipt" page="signreceipt.htm">
+        <pattern>/datareporting/reporting_submitreceipt.do</pattern>
+    </decorator>
+</decorators>

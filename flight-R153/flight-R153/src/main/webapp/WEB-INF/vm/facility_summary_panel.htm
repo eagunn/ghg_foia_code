@@ -1,0 +1,79 @@
+#*
+this is the left-hand side panel that displays a clickable list of facilities currently on the view.
+this can be seen on all views of FLIGHT
+
+*#
+<div style="padding:0 5px 0 5px; clear:both;"><span class="emissionValue">$!numFacilities</span> <span class="DARK_GRAY">Total #if($ds ne 'S') #if($ds eq 'I')Injectors#else Emitters#end #else Suppliers#end Displayed</span><span id="facloading"><img src="img/ajaxloader.gif" height="20" alt="ajax loader image"></span></div>
+<div style="padding:5px 5px 0 5px;">
+<div id="facilityList" class="contentcolumn">
+	<table border="0" cellspacing="0" cellpadding="0" class="resultsTable">
+		<tr>
+			<th/>
+			<th class="alignL"><a href="javascript:sortSelected(0)" tabindex="1" title="Sorting">#if($ds ne 'S')Facility Name/Location#else Supplier#end<img id="facSort" src="img/icon-downarrow.png" alt="sort icon" width="8" height="6" align="absmiddle" style="margin-left:5px;"/></a></th>
+			<th class="alignR">$year #if($ds ne 'S') #if($ds eq 'I')CO<font class="fakeSub">2</font> Received for Injection#else Emissions#end #else GHG Quantity#end <nobr>(metric tons CO<font class="fakeSub">2</font>e)</nobr>#if($ds ne 'E')<img id="ghgSort" src="img/icon-downarrow.png" alt="sort icon" width="8" height="6" align="absmiddle" style="margin-left:5px;"/></a>#end</th>
+			## If sortable <th class="alignR">#if($ds ne 'E')<a href="javascript:sortSelected(1)" tabindex="2">#end $year #if($ds ne 'S')Emissions#else GHG Quantities#end <nobr>(metric tons CO<font class="fakeSub">2</font>e)</nobr>#if($ds eq 'S')<img id="ghgSort" src="img/icon-downarrow.png" alt="sort icon" width="8" height="6" align="absmiddle" style="margin-left:5px;"/></a>#end</th>
+		</tr>
+	</table>
+	#if($ds eq 'E' || $ds eq 'O' || $ds eq 'L' || $ds eq 'B' || $ds eq 'T')
+		<div style="height:397px; overflow-x: auto">
+	#elseif($ds eq 'I')
+		<div style="height:360px; overflow-x: auto">
+	#else
+		<div style="height:380px; overflow-x: auto">
+	#end
+	<table border="0" cellspacing="0" cellpadding="0" class="resultsTable">
+		#foreach($facility in $facilities)
+		<tr>
+			<td>
+			#if($facility.comments)<img src="#springUrl('/img/co2y.jpg')" title="$!facility.comments" alt="$!facility.comments" width="15" height="15" border="0">#end
+			#if($ds ne 'S' and $facility.co2Captured eq 'Y') $!co2g #end
+			#if($ds ne 'S' and $facility.co2EmittedSupplied eq 'Y') $!co2b #end
+			#if($ds eq 'I' and $facility.uuRandDExempt eq 'Y') $!co2o #end
+			#if($facility.reportingStatus and $facility.reportingStatus.shorthand ne 'VALID')
+				#set($rsTxt = $facility.reportingStatus.textBoxContents)
+				#set($rsTxt = $rsTxt.replace("'","&apos;"))
+				<img src="#springUrl('/img/notification.gif')" title="#evaluate($rsTxt)" alt="#evaluate($rsTxt)" width="15" height="15" border="0" align="absmiddle">
+			#end
+			</td>
+			<td class="alignL">
+				<a id="$facility.facilityId" href="javascript:displayFacilityDetail($facility.facilityId)" class="facName" title="$!facility.facilityName">$!facility.facilityName</a><br/>
+				<span style="font-weight: lighter; font-size: 0.8em;">#if($facility.city)$!facility.city, #end #if($facility.state)$facility.state,#end #if($facility.zip)$!facility.zip#end</span>
+			</td>
+			<td  class="alignR" style="font-weight: bold;">
+				#if($facility.totalCo2e)
+					$!number.format('##,###,###', $!facility.totalCo2e)
+				#else
+					#if($!facility.reportingStatus &&
+						($!facility.reportingStatus.shorthand eq 'UNKNOWN' ||
+						$!facility.reportingStatus.shorthand eq 'VALID' )) 
+						N/A
+					#else 
+						--- 
+					#end 
+				#end
+			</td>
+		</tr>
+		#end
+	</table>
+	</div>
+	<div id="emmitersDisplayed" style="float: left; margin-top: 5px">
+		#if($numFacilities>0)	
+			Page <b>$!page</b> of <b>$!pages</b> Pages
+		#end
+	</div>
+	#if($numFacilities>0)
+	<div style="text-align:right; margin-top: 5px">
+		<img onClick="javascript:goToPage(#if($page>1)0#else-1#end)" src="img/control-skip-180.png" width="16" height="16" align="absmiddle" alt="First page"/>
+		<img onClick="javascript:goToPage(#if($page>1)$!previousPage#else-1#end)" src="img/control-180.png" width="16" height="16" align="absmiddle" alt="Previous page" />
+		<img onClick="javascript:goToPage(#if($page<$pages)$!nextPage#else-1#end)" src="img/control-right.png" width="16" height="16" align="absmiddle" alt="Next page" />
+		#* #set($start = $page + 2)
+		#set($end = $page +5)
+		#set($range = [$start..$end])
+		#foreach($i in $range)
+		$i
+		#end *#
+		<img onClick="javascript:goToPage(#if($page<$pages)$!lastPage#else-1#end)" src="img/control-skip.png" width="16" height="16" align="absmiddle" title="Last page" />
+	</div>
+	#end
+	</div>
+</div>

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<property name="connection.url">
+			
+		</property>
+<!--Test Schema	-->
+		<property name="connection.username"></property>
+		<property name="connection.password"></property>
+<!--RPT Schema	-->
+<!--		<property name="connection.username"></property>-->
+<!--		<property name="connection.password"></property>-->
+<!--Dev Schema	-->
+<!--		<property name="connection.username"></property>-->
+<!--		<property name="connection.password"></property>-->
+
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="connection.pool_size">5</property>
+		<property name="hibernate.bytecode.use_reflection_optimizer">
+			true
+		</property>
+            	<mapping class="gov.epa.ghg.domain.ActionItem" />
+				<mapping class="gov.epa.ghg.domain.Announcements" />
+				<mapping class="gov.epa.ghg.domain.AppAreaPatterns" />
+				<mapping class="gov.epa.ghg.domain.Appointment" />
+				<mapping class="gov.epa.ghg.domain.Association" />
+				<mapping class="gov.epa.ghg.domain.CamdPull" />
+				<mapping class="gov.epa.ghg.domain.CdxCountry" />
+				<mapping class="gov.epa.ghg.domain.CdxQuestions" />
+				<mapping class="gov.epa.ghg.domain.CdxRoleType" />
+				<mapping class="gov.epa.ghg.domain.CdxState" />
+				<mapping class="gov.epa.ghg.domain.CdxSuffix" />
+				<mapping class="gov.epa.ghg.domain.CdxTitle" />
+				<mapping class="gov.epa.ghg.domain.CdxSubmission" />				
+				<mapping class="gov.epa.ghg.domain.ClassDetails" />
+				<mapping class="gov.epa.ghg.domain.CemsMonitoringLocation" />
+				<mapping class="gov.epa.ghg.domain.Cor" />
+				<mapping class="gov.epa.ghg.domain.CorporateFacility" />
+				<mapping class="gov.epa.ghg.domain.DimMsa" />
+				<mapping class="gov.epa.ghg.domain.EmailMessage" />
+				<mapping class="gov.epa.ghg.domain.EmailTemplate" />
+				<mapping class="gov.epa.ghg.domain.Facility" />
+				<mapping class="gov.epa.ghg.domain.FacilityAddressView" />
+				<mapping class="gov.epa.ghg.domain.FacilityDtos" />
+				<mapping class="gov.epa.ghg.domain.FacilityLocation" />
+				<mapping class="gov.epa.ghg.domain.FacilityNaics" />
+				<mapping class="gov.epa.ghg.domain.FacilityRepresentative" />
+				<mapping class="gov.epa.ghg.domain.FacilitySubmission" />
+				<mapping class="gov.epa.ghg.domain.FacilityUser" />
+				<mapping class="gov.epa.ghg.domain.Formula" />
+				<mapping class="gov.epa.ghg.domain.FuelAssociation" />
+				<mapping class="gov.epa.ghg.domain.FuelAssociationDtos" />
+				<mapping class="gov.epa.ghg.domain.FuelType" />
+				<mapping class="gov.epa.ghg.domain.GreenHouseGas" />
+				<mapping class="gov.epa.ghg.domain.GreenHouseEmission" />
+				<mapping class="gov.epa.ghg.domain.Group" />
+				<mapping class="gov.epa.ghg.domain.GroupUnit" />
+				<mapping class="gov.epa.ghg.domain.GroupUnitDtos" />
+				<mapping class="gov.epa.ghg.domain.HelpDeskEmail" />
+				<mapping class="gov.epa.ghg.domain.HelpLinks" />
+				<mapping class="gov.epa.ghg.domain.Invitations" />
+				<mapping class="gov.epa.ghg.domain.JctCmlSubPartGroupUnit" />
+				<mapping class="gov.epa.ghg.domain.JctGreenGasSubPart" />
+				<mapping class="gov.epa.ghg.domain.JctPermissionPatterns" />
+				<mapping class="gov.epa.ghg.domain.JctPermissionTabs" />
+				<mapping class="gov.epa.ghg.domain.JctStateMsa" />
+				<mapping class="gov.epa.ghg.domain.JctSubPartFacility" />
+				<mapping class="gov.epa.ghg.domain.JctSubPartFormula" />					
+				<mapping class="gov.epa.ghg.domain.JctUserPermissions" />
+				<mapping class="gov.epa.ghg.domain.KeyStore" />
+				<mapping class="gov.epa.ghg.domain.LuClass" />
+				<mapping class="gov.epa.ghg.domain.LuEquationDefaults" />
+				<mapping class="gov.epa.ghg.domain.LuFormulaField" />
+				<mapping class="gov.epa.ghg.domain.LuFuel" />
+				<mapping class="gov.epa.ghg.domain.LuGroupUnitType" />
+				<mapping class="gov.epa.ghg.domain.LuNaics2007" />
+				<mapping class="gov.epa.ghg.domain.LuState" />
+				<mapping class="gov.epa.ghg.domain.LuStatus" />
+				<mapping class="gov.epa.ghg.domain.LuSubPartFields" />
+				<mapping class="gov.epa.ghg.domain.LuSubParts" />
+				<mapping class="gov.epa.ghg.domain.LuValidationType" />
+				<mapping class="gov.epa.ghg.domain.LuWasteDisposalRate" />
+				<mapping class="gov.epa.ghg.domain.LuWasteTypeFactors" />
+				<mapping class="gov.epa.ghg.domain.NameChange" />
+				<mapping class="gov.epa.ghg.domain.Nod" />	
+				<mapping class="gov.epa.ghg.domain.Owner" />
+				<mapping class="gov.epa.ghg.domain.Page" />
+				<mapping class="gov.epa.ghg.domain.Permissions" />
+				<mapping class="gov.epa.ghg.domain.ReportingYear" />
+				<mapping class="gov.epa.ghg.domain.RefProgram" />
+				<mapping class="gov.epa.ghg.domain.Role" />
+				<mapping class="gov.epa.ghg.domain.RollUp" />
+				<mapping class="gov.epa.ghg.domain.State" />
+				<mapping class="gov.epa.ghg.domain.StateCounty" />
+				<mapping class="gov.epa.ghg.domain.Status" />
+				<mapping class="gov.epa.ghg.domain.SubPartFacility" />
+				<mapping class="gov.epa.ghg.domain.SubPartFacilityDtos" />
+				<mapping class="gov.epa.ghg.domain.SubPartFuelPeriod" />
+				<mapping class="gov.epa.ghg.domain.SubPartGroupUnit" />
+				<mapping class="gov.epa.ghg.domain.SubPartPeriod" />
+				<mapping class="gov.epa.ghg.domain.SubPartUnit" />
+				<mapping class="gov.epa.ghg.domain.Tabs" />
+				<mapping class="gov.epa.ghg.domain.Tier4Details" />
+				<mapping class="gov.epa.ghg.domain.TimePeriod" />
+				<mapping class="gov.epa.ghg.domain.Unit75" />
+				<mapping class="gov.epa.ghg.domain.Units" />
+				<mapping class="gov.epa.ghg.domain.User" />
+				<mapping class="gov.epa.ghg.domain.UserPrepareAttempt" />
+				<mapping class="gov.epa.ghg.domain.ValidationMessages" />
+				<mapping class="gov.epa.ghg.domain.VerificationToolReport" />
+				<mapping class="gov.epa.ghg.domain.UnitCategory" />
+				<mapping class="gov.epa.ghg.domain.CustomFuel"/>
+				<mapping class="gov.epa.ghg.domain.SpreadSheetLink"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionUC"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionPE"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionFC"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionCoal"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionNg"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionPet"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionOther"/>
+				<mapping class="gov.epa.ghg.domain.PubSectorGhgEmissionSorb"/>
+
+	</session-factory>
+</hibernate-configuration>

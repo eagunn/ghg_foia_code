@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="GGDS_KEYSTORE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.KeyStore">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_COUNTRY" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxCountry">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_STATE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxState">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="CAMD_PULL" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CamdPull">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_QUESTIONS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxQuestions">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_ROLE_TYPE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxRoleType">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_USER_SUFFIX" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxSuffix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_USER_TITLE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxTitle">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_ACTION_ITEM" schema="D_GGDS"
+		class="gov.epa.ghg.domain.ActionItem">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_ANNOUNCEMENTS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Announcements">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_COR" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Cor">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_EMAIL_MESSAGE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.EmailMessage">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_FACILITY" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Facility">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_FACILITY_LOCATION" schema="D_GGDS"
+		class="gov.epa.ghg.domain.FacilityLocation">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_HELP_LINKS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.HelpLinks">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_INVITATIONS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Invitations">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_JCT_FACILITY_USER" schema="D_GGDS"
+		class="gov.epa.ghg.domain.FacilityUser">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_JCT_OWNER_FACILITY" schema="D_GGDS"
+		class="gov.epa.ghg.domain.OwnerFacility">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_EMAIL_TEMPLATE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.EmailTemplate">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_PAGE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Page">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_REF_PROGRAM" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuRefProgram">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_ROLE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Role">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_STATUS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuStatus">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_ID_PROOF_USER" schema="D_GGDS"
+		class="gov.epa.ghg.domain.IdProofUser">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_GROUP" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Group">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_FUEL_TYPE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.FuelType">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_FUEL_ASSOCIATION" schema="D_GGDS"
+		class="gov.epa.ghg.domain.FuelAssociation">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_FUEL_ASSOCIATION_DTOS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.FuelAssociationDtos">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_SUB_PART_FACILITY_DTOS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.SubPartFacilityDtos">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_GROUP_UNIT" schema="D_GGDS"
+		class="gov.epa.ghg.domain.GroupUnit">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_DR_ADR_VALIDATION" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuDrAdrValidation">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_FORMULA_FIELD" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuFormulaField">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_FUEL" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuFuel">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_SUBPARTS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuSubParts">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_LU_SUB_PART_FIELDS" schema="D_GGDS"
+		class="gov.epa.ghg.domain.LuSubPartFields">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="CDX_REG_COUNTRY" schema="D_GGDS"
+		class="gov.epa.ghg.domain.CdxCountry">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_NAME_CHANGE" schema="D_GGDS"
+		class="gov.epa.ghg.domain.NameChange">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_NOD" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Nod">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_OWNER" schema="D_GGDS"
+		class="gov.epa.ghg.domain.Owner">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GGDS_REPORTING_YEAR" schema="D_GGDS"
+		class="gov.epa.ghg.domain.ReportingYear">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+<table name="GGDS_USER" schema="D_GGDS"
+	class="gov.epa.ghg.domain.User">
+	<primary-key>
+		<generator class="assigned"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>

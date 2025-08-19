@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+		xmlns="http://www.springframework.org/schema/beans"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+	   http://www.springframework.org/schema/util/spring-util.xsd 
+       http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+		default-lazy-init="true">
+	
+	<!--  The controllers are autodetected POJOs labeled with the @Controller annotation. -->
+	
+	<context:component-scan base-package="gov.epa.ghg.presentation.controller, gov.epa.ghg.rest"/>
+	<context:component-scan base-package="org.jstripe"/>
+	
+	<!-- See http://static.springsource.org/spring-mobile/docs/1.0.x/reference/htmlsingle/ -->
+	<mvc:interceptors>
+		<!-- On pre-handle, resolve the device that originated the web request -->
+		<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"/>
+		<!-- On pre-handle, manage the user's site preference (declare after DeviceResolverHandlerInterceptor) -->
+		<bean class="org.springframework.mobile.device.site.SitePreferenceHandlerInterceptor"/>
+	</mvc:interceptors>
+	
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.mobile.device.DeviceWebArgumentResolver"/>
+			<bean class="org.springframework.mobile.device.site.SitePreferenceWebArgumentResolver"/>
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	
+	<!-- context:annotation-config/ -->
+	
+	<bean id="themeResolver" class="org.springframework.web.servlet.theme.FixedThemeResolver">
+		<property name="defaultThemeName" value="theme-classic"/>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<util:list id="beanList">
+				<ref bean="mappingJacksonHttpMessageConverter"/>
+			</util:list>
+		</property>
+	</bean>
+	
+	<bean id="mappingJacksonHttpMessageConverter"
+			class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="objectMapper" ref="objectMapper"/>
+	</bean>
+	
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
+	
+	<!-- Enables plain Controllers -->
+	<!-- bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" / -->
+	
+	<!-- Declare the Interceptor -->
+	<!-- bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="locale"/>
+	</bean -->
+	
+	<!-- Declare the Resolver -->
+	<!-- bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" / -->
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="MessagesBundle"/>
+	</bean>
+	
+	<!-- bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>        
+    </bean -->
+	<!-- temporary jsp folder for viewing import and export xml added by michael smith 20101026 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/"
+			p:suffix=".jsp" p:order="2"/>
+	
+	<bean id="viewResolver" class="gov.epa.ghg.velocity.view.VelocityViewResolver">
+		<property name="cache" value="true"/>
+		<property name="prefix" value="/"/>
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="order" value="1"/>
+		<property name="contentType" value="text/html; charset=utf-8"/>
+		<property name="toolboxConfigLocation" value="/WEB-INF/velocity-tools.xml"/>
+		<property name="suffix" value=".htm"/>
+	</bean>
+	
+	<bean id="velocityConfig" class="gov.epa.ghg.velocity.view.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/vm/"/>
+	</bean>
+	
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> -->
+
+</beans>

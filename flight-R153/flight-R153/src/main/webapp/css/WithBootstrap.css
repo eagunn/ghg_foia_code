@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* #stateCountySelection { */
+/*  margin-top:  -20px;  */
+/* } */
+
+.facSearchField {
+  font-size:.9em;
+  padding:0px;
+  /*width:300px;*/
+  height:26px;
+/*  margin-left:12px; */
+  color:#767;
+  line-height:26px;
+  border: 1px solid #FFF;
+}

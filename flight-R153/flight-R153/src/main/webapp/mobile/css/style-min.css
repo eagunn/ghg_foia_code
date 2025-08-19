@@ -1,0 +1,149 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{margin:0;padding:0;border:0;font-size:medium;font-style:normal;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section{display:block;}
+html, body{height:100%;}
+ol, ul{list-style:none;}
+blockquote, q{quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+sub{font-size:smaller;vertical-align:sub;}
+div, img{-webkit-font-smoothing:antialiased;}
+html, body{font-size:.9em;font-family:'Segoe WP', 'Helvetica', 'Segoe UI', Tahoma, Arial, Verdana,'Sans-serif';background:transparent;color:#4F4F4F;}
+html .ui-page{background:url("../img/stitch_bg.gif") repeat scroll 0 0 transparent;overflow:hidden !important;position:relative;}
+.ui-page .ui-footer li a .ui-btn-text{font-size:1em;color:white;text-shadow:none;}
+h1{font-size:1.6em;}
+h2{font-size:1.3em;}
+h3{font-size:1.17em;}
+h5{font-size:.83em;}
+h6{font-size:.75em;}
+.ul-li-icon{top:9px;}
+.ui-page .ui-header .homeLogo{background:url(../img/logo_fullbird.png) no-repeat scroll 50% 35% transparent;text-indent:100%;white-space:nowrap;overflow:hidden;margin:0 20%;}
+.shareBtn{background:none repeat scroll 0 0 transparent;border:0 none;border-radius:0.3em 0.3em 0.3em 0.3em;box-shadow:none;}
+.shareBtn img{width:32px;height:32px;}
+.shareBtn .ui-btn-inner{border-top:0 none;padding:0.15em 8px 0.5em}
+.ui-content{border:0 none;}
+.ui-icon-searchfield:after{background-color:gray;}
+.version_number{font-size:0.6em;position:absolute;bottom:0;right:0;padding:5px;}
+.ui-btn-text{font-size:1em;}
+#selectStateMenu-button{display:none;}
+.homeScreen ul[data-role='listview'] li a{padding:15px 0 15px 66px !important;background-repeat:no-repeat;background-position:20px 50%;}
+.homeScreen ul[data-role='listview'] li a.nearMeBtn{background-position:20px 4px;background-size:32px 32px;background-image:url("../img/icons/green_gps.png");}
+.homeScreen ul[data-role='listview'] li a.selectStateMenu{background-position:12px 12px;background-size:42px;background-image:url("../img/icons/virginia.png");}
+.homeScreen ul[data-role='listview'] li a.bySectorBtn{background-position:20px 4px;background-size:32px 32px;background-image:url("../img/icons/green_factory.png");}
+.homeScreen .ui-content ul li.select_inline{padding:0;}
+li.select_inline .ui-select .ui-btn{background-color:rgba(121, 184, 225, 0);-webkit-border-radius:0;border-radius:0;margin:0;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;}
+li.select_inline .ui-select .ui-btn .ui-btn-inner{padding-right:40px;padding:15px 0 15px 66px !important;background-repeat:no-repeat;background-position:12px 12px;background-size:42px;background-image:url("../img/icons/virginia.png");}
+li.select_inline .ui-select .ui-btn .ui-btn-inner .selectStateMenu{float:left;}
+li.select_inline .ui-select .ui-btn .ui-btn-inner .ui-icon{right:10px;background-position:-108px -1px;}
+.ResultsList .ui-content .ui-listview li.ui-btn-up-j{background:none repeat scroll 0 0 rgba(201, 227, 242, 0.6);}
+#homeScreen [data-role="content"] .short-btn-wrapper a .ui-btn-inner{padding:1.1em 0.1em;}
+#homeScreen .ui-content .ui-btn-text{font-size:.75em;}
+.short-btn-wrapper:first-child{margin-left:0;}
+.short-btn-wrapper{width:32%;float:left;margin-left:2%;}
+.long-btn-wrapper:first-child{margin-left:0;}
+.long-btn-wrapper{width:49%;float:left;margin-left:2%;}
+#browse #selectStateBtn .ui-btn-inner{padding:1.25em 0.1em;}
+#browse, #moreInfo{width:100%;float:left;}
+.disclaimer{width:100%;float:left;padding-top:15px;font-size:0.85em;}
+.disclaimer h4{margin-bottom:0;}
+.disclaimer ul li{margin-top:0.5em;margin-left:0.5em;}
+#selectStateMenu-menu > .ui-li > .ui-btn-inner{padding:6px;}
+.helplinks{text-align:center;width:100%;margin-top:2px;display:inline-block;}
+.helplinks a{margin:0 6%;display:inline-block;text-decoration:none;}
+.link_divider{display:inline;}
+#popup_form-popup{width:60%;}
+.ui-popup-container .contact-form p.mandatory{color:darkred;}
+.ui-popup-container .contact-form textarea{height:80px;}
+.filterScreen .ui-content .ui-btn-text{font-size:0.75em;}
+.ui-navbar .ui-grid-c > *:nth-child(n){width:22%;}
+.ui-navbar .ui-grid-c > .ui-block-d{width:34%;}
+#popupPanel-popup{right:0 !important;left:auto !important;}
+#popupPanel{width:200px;border:1px solid #000;border-right:none;background:rgba(0,0,0,.5);margin:-1px 0;}
+#popupPanel .ui-btn{margin:2em 15px;}
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview{font-size:1em;font-weight:bolder;padding-top:15px;font-family:Lucida Grande;/**/}
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview > .facility-name{font-variant:small-caps;font-size:0.8em;}
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview > .emission-count{font-size:0.7em;font-weight:normal;font-variant:normal;}
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview > .distance{color:darkgreen;font-size:0.8em;font-variant:small-caps;font-weight:bold;text-transform:none;}
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .listview-facility-normal{padding-bottom:40px;padding-top:20px;}
+.emission-value{font-size:1.1em;margin-left:15px;margin-top:-36px;position:absolute;}
+.infoBoxWrapper{height:auto !important;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;display:block;margin-top:70%;z-index:20;padding:12px;position:absolute;background:whiteSmoke;border:1px solid #7C8681;-webkit-box-shadow:inset 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.08), inset -1px 0 rgba(255, 255, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.5);box-shadow:inset 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.08), inset -1px 0 rgba(255, 255, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.5);pointer-events:all;}
+.infoBoxWrapper:before{content:"";position:absolute;bottom:-17px;left:122px;border-width:17px 20px 0;border-style:solid;border-color:#7C8681 transparent;display:block;width:0;}
+.infoBoxWrapper:after{content:"";position:absolute;bottom:-13px;left:128px;border-width:13px 16px 0;border-style:solid;border-color:whiteSmoke transparent;display:block;width:0;}
+.infobox-title{font-weight:bold;font-size:1.1em;white-space:nowrap;overflow:hidden;}
+.infobox-body{float:left;max-width:88%;overflow:hidden;}
+.infobox-info{font-weight:normal;font-size:0.8em;font-variant:normal;}
+.infobox-stalk{float:right;width:26px;height:26px;background:url("../img/arrow-right.png") no-repeat center;background-size:contain;padding-top:6px;}
+#ResultsMap{height:100%;}
+#ResultsMap .ui-content{position:absolute;top:44px;width:100%;height:100%;padding:0;}
+#map_canvas{width:100%;height:100%;padding:0;text-shadow:none;}
+@-moz-keyframes pulsate{from{-moz-transform:scale(0.25);opacity:1.0;}
+95%{-moz-transform:scale(1.3);opacity:0;}
+to{-moz-transform:scale(0.3);opacity:0;}
+}
+@-webkit-keyframes pulsate{from{-webkit-transform:scale(0.25);opacity:1.0;}
+95%{-webkit-transform:scale(1.3);opacity:0;}
+to{-webkit-transform:scale(0.3);opacity:0;}
+}
+#map_canvas div.gmnoprint[title="You are here"], #map_canvas a.myLocation, #test_canvas a.myLocation{-moz-animation:pulsate 1.5s ease-in-out infinite;-webkit-animation:pulsate 1.5s ease-in-out infinite;border:1pt solid #fff;-moz-border-radius:51px;-webkit-border-radius:51px;border-radius:51px;-moz-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;-webkit-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;margin:-10px 0 0 -10px;height:51px !important;width:51px !important;}
+#map_canvas div.gmnoprint[title="You are here"] img, #map_canvas a.myLocation img, #test_canvas a.myLocation img{background-image:URL('../img/bluedot_retina.png');}
+@media only screen and (-webkit-min-device-pixel-ratio:1.5), only screen and (device-width:768px){#map_canvas div.gmnoprint[title="You are here"], #map_canvas a.myLocation{margin:-10px 0 0 -10px;}
+}
+#map_canvas div.gmnoprint[title="You are here"] img, #map_canvas a.myLocation2 img, #test_canvas a.myLocation2 img{width:16px;height:16px;}
+@media only screen and (-webkit-min-device-pixel-ratio:1.5), only screen and (device-width:768px){#map_canvas div.gmnoprint[title="You are here"], #map_canvas a.myLocation2{margin:-10px 0 0 -10px;}
+}
+.ResultsList .ui-btn-text{font-size:1em;}
+.ui-page .custom-nav .ui-btn .ui-icon{margin-left:-13px;}
+.ui-page .custom-nav .ui-btn .ui-icon{width:26px;height:26px;margin-left:-13px;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;-webkit-border-radius:0;border-radius:0;background-size:100% 100%;}
+.ui-page .ui-navbar li .ui-btn-icon-top .ui-btn-inner{padding-top:34px;}
+.ui-page .ui-navbar li .ui-btn .ui-btn-inner{padding-bottom:4px;}
+input.ui-input-text.ui-slider-input{width:80px;}
+.ui-rangeslider .ui-rangeslider-sliders{margin:4.5em 20px;}
+.ui-rangeslider input.ui-input-text.ui-slider-input{margin-left:5px;margin-right:5px;}
+.ui-rangeslider input.ui-input-text.ui-slider-input{margin-left:5px;margin-right:5px;}
+.filterScreen .custom-nav .ui-btn .ui-btn-inner{padding-top:40px !important;}
+.filterScreen .custom-nav-top .ui-btn .ui-icon{width:36px;height:32px;margin-left:-18px;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;-webkit-border-radius:0;border-radius:0;}
+.filterScreen .custom-nav-top ul li a .ui-icon{background-size:24px 16px;-moz-background-size:24px 16px;-o-background-size:24px 16px;-webkit-background-size:24px 16px;}
+.filterScreen .ui-navbar li .ui-btn-icon-top .ui-btn-inner{padding:34px 0 6px;}
+#sectorFilterLink .ui-icon{background:url(../img/custom-icons/136-tractor.png) 50% 50% no-repeat;}
+#stateFilterLink .ui-icon{background:url(../img/custom-icons/103-map.png) 50% 50% no-repeat;}
+#ghgFilterLink .ui-icon{background:url(../img/custom-icons/gas.png) 50% 50% no-repeat;}
+#emissionFilterLink .ui-icon{background:url(../img/custom-icons/106-sliders.png) 50% 50% no-repeat;}
+.ui-page .filterBtn .ui-icon{background:url(../img/icons/green_filter.png) 50% 50% no-repeat;}
+.ui-page .sortBtn .ui-icon{background:url(../img/icons/green_sort.png) 50% 50% no-repeat;}
+.ui-page .mapBtn .ui-icon{background:url(../img/icons/green_globe.png) 50% 50% no-repeat;}
+.ui-page .listBtn .ui-icon{background:url(../img/icons/list-icon.png) 50% 50% no-repeat;}
+[data-icon="share"] .ui-icon{background:url(../img/icons/green_share.png) 50% 50% no-repeat;background-size:24px 16px;}
+#filterScreen .filterFormBtns .ui-btn{width:42%;margin-left:5%;float:left;}
+#filterScreen .filterFormBtns .ui-btn-inner{font-size:1.2em;padding:1em 11px;}
+*/*/*/*/.ui-grid-b > *:nth-child(n){width:50%;}
+.spatialDetail table{width:100%;}
+.spatialDetail table tbody tr td:last-child{width:30%;}
+.spatialDetail table tbody tr td:first-child{width:70%;}
+.fd-leftSide{float:left;}
+.fd-rightSide{float:right;width:30%;}
+[data-role="content"] b{font-weight:bold;}
+[data-role="content"] strong{font-weight:bold;font-size:1.1em;}
+.mobile-share-container{display:none;height:100%;position:fixed;top:0;width:100%;z-index:999;}
+.mobile-share-container .share-overlay{background:none repeat scroll 0 0 #000000;height:100%;opacity:0.5;position:fixed;top:0;width:100%;}
+.mobile-share-list{background:none repeat scroll 0 0 #DDDCD7;border-radius:3px 3px 3px 3px;box-shadow:0 2px 13px #2B2B2B;margin:35% auto 0;min-width:250px;position:relative;width:40%;z-index:99;}
+.mobile-share-list li{border-bottom:1px solid #B9B9B9;list-style-type:none;}
+.mobile-share-list li.email-share{border:0 none;}
+.mobile-share-list li a{display:block;padding:16px 5px 24px 51px;}
+.mobile-share-list li a.fb-share{background:url("../img/facebook.png") no-repeat scroll 8px 11px;}
+.mobile-share-list li a.tw-share{background:url("../img/twitter.png") no-repeat scroll 8px 11px;}
+.mobile-share-list li a.google-plus-share{background:url("../img/google-plus.png") no-repeat scroll 8px 11px;}
+.mobile-share-list li.reddit-share a{background:url("../img/reddit.png") no-repeat scroll 8px 11px;}
+.mobile-share-list a.close, .lastScreen .close-btn{background:url("../img/ssmobilesprite.png") no-repeat scroll -11px -1703px transparent;height:28px;padding:0;position:absolute;right:-12px;top:-13px;width:28px;}
+#ResultsList .ui-footer .ui-navbar ul li a{pointer-events:all;}

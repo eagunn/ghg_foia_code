@@ -1,0 +1,41 @@
+There are five major views in FLIGHT:
+
+1. MAP (default view)
+2. LIST
+3. TRENDS
+4. BAR
+5. PIE
+
+usually a view has its own distinct components, there are however some components that are shared across all views:
+the DASHBOARD, which includes an UPPER section to specify search parameters
+and a LOWER section, which displays sector information.
+There is also a FACILITY SUMMARY PANEL, which can hidden in the left-hand side of all FLIGHT views.
+
+
+Map View -> (Emitters)
+  setURLPath() ->
+
+   /facility/ -> MapViewController.list
+
+
+List View
+
+
+
+
+
+
+LIST MODES/DOMAIN:
+
+when Tribe is picked, MODE is Facility. (both Geography/Facility  selectors)
+when State is picked, MODE is County.
+when County is picked, MODE is Facility.
+when MSA is picked, MODE is Facility.
+
+
+
+
+
+
+
+

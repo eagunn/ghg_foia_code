@@ -1,0 +1,574 @@
+<!--if popup needs to reload those resources as the new browser window has no previous context-->
+#if($popup)
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="#springUrl('/css/base.css')" type="text/css"/>
+	<link rel="stylesheet" href="#springUrl('/css/pub_emitter.css')" type="text/css"/>
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css" type="text/css"/>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//code.highcharts.com/highcharts.js"></script>
+	<!-- leaflet -->
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.css')"/>
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.control.topcenter.css')"/>
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.control.fullscreen.css')"/>
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.control.zoomlabel.css')"/>
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.ghgp.css')"/>
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.markercluster.css')"/>
+	<link rel="stylesheet" href="#springUrl('/css/leaflet/leaflet.markercluster.default.css')"/>
+	<script src="#springUrl('/js/app/leaflet/leaflet.js')"></script>
+	<script src="#springUrl('/js/app/leaflet/leaflet.ghgp.js')"></script>
+	<script src="#springUrl('/js/app/leaflet/leaflet.control.topcenter.js')"></script>
+	<script src="#springUrl('/js/app/leaflet/leaflet.control.fullscreen.js')"></script>
+	<script src="#springUrl('/js/app/leaflet/leaflet.control.zoomlabel.js')"></script>
+	<script src="#springUrl('/js/app/leaflet/leaflet.markercluster.js')"></script>
+	<script src="#springUrl('/js/app/leaflet/leaflet.markercluster.layersupport.js')"></script>
+	<title>GHG Facility Details</title>
+#end
+	<script>
+		$(document).ready(function () {
+			//if not popup, there is an ajax callback which calls drawFacilityInfo(), here we need to do this explicitly
+			#if($popup)
+				drawFacilityInfo();
+			#end
+			var vUrl = window.location.href;
+			var vParams = vUrl.substring(vUrl.indexOf('?') + 1);
+			$(".triggerRY").change(function () {
+				var vYear = $(this).val();
+				if (vYear != '') {
+					window.location = "#springUrl('/service/facilityDetail/')" + vYear + "?" + vParams;
+				}
+				return false;
+			});
+		});
+		var facilityName = "$!fd.facility.facilityName";
+		var dataSource = getUrlVar()["ds"];
+		var emissionsType = $("#emissionsType").val();
+		var rptStatus = "$!reportingStatus";
+		
+		function drawFacilityInfo() {
+			#if($fd.facility)
+				#if($fd.facility.latitude && $fd.facility.longitude)
+					var position = new L.LatLng($!fd.facility.latitude, $!fd.facility.longitude);
+					var mapOptions = {
+						zoom: 8,
+						maxZoom: 16,
+						center: position,
+						layers: new L.TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png"),
+						// panControl: false,
+						zoomControl: false,
+						// mapTypeControl: false,
+						// streetViewControl: false,
+						// overviewMapControl: false
+					};
+					var dmap = new L.Map(L.DomUtil.get('dmap'), mapOptions);
+					var dType = "factory";
+					var color = "black";
+					if (dataSource == 'I') {
+						dType = "co2"
+					} // CO2 Injection (UU)
+					if (dataSource == 'O' || dataSource == 'B') {
+						dType = "derrick"
+					} // Onshore Oil & Gas Production, Onshore Oil & Gas Gathering & Boosting
+					if (dataSource == 'F') {
+						dType = "electricity"
+					} // SF6 from Elect. Dist. Systems
+					if (dataSource == 'S') {
+						dType = "fuel"
+					} // Suppliers
+					if (dataSource == 'L' || dataSource == 'T') {
+						dType = "pipeline"
+					} // Local Distribution Companies, Onshore Gas Transmission Pipelines
+					if (dataSource == 'A') {
+						dType = "sequestration"
+					} // Geologic Sequestration of CO2 (RR)
+					if (rptStatus != null) {
+						if (rptStatus == 'POTENTIAL_DATA_QUALITY_ISSUE' 
+							|| rptStatus == 'NOT_VERIFIED_SUBMITTED_LATE') {
+							color = "orange"
+						}
+						if (rptStatus == 'STOPPED_REPORTING_UNKNOWN_REASON' 
+							|| rptStatus == 'IS_VERIFIED_SUBMITTED_LATE') {
+							color = "red"
+						}
+						if (rptStatus == 'STOPPED_REPORTING_VALID_REASON') {
+							color = "gray"
+						}
+					}
+					var industryIcon = L.icon({
+						iconUrl: "#springUrl('/img/icon_marker/')" + dType + '_' + color + '.png'
+					});
+					L.marker(position, {
+						// animation: google.maps.Animation.DROP,
+						title: facilityName,
+						icon: industryIcon
+					}).addTo(dmap);
+				#end
+				#if($fd.hasTrend eq 'true')
+					jQuery.getJSON("#springUrl('/service/facilityTrend/')" + dataSource + "/" + "$fd.facility.id.facilityId" + "/" + "?et=" + $("#emissionsType").val(), function (data) {
+						if (data.series[0].data.length > 0) {
+							data.series.showInLegend = false;
+							var title = 'Reported Emissions for ' + facilityName;
+							if (dataSource == 'S') {
+								title = 'Reported Greenhouse Gas Quantity for ' + facilityName;
+							} else if (dataSource == 'I') {
+								title = 'Reported Quantity of CO2 Injection (UU) for ' + facilityName;
+							} else if (dataSource == 'A') {
+								title = 'Reported Quantity of Geologic Sequestration of CO2 (RR) for ' + facilityName;
+							}
+							$('#ftrend').highcharts({
+								chart: {
+									marginBottom: 60
+								},
+								credits: {
+									enabled: false
+								},
+								title: {
+									text: '',
+								},
+								subtitle: {
+									text: data.subtitle,
+									align: 'left',
+									style: {fontSize: '8px', width: '385px'},
+									x: 30,
+									y: 360,
+									useHTML: true
+								},
+								xAxis: data.xAxis,
+								yAxis: {
+									title: {
+										text: data.unit + ' CO2e'
+									},
+									//hardcoded minimum value, as per PUB-591
+									min: 0,
+									plotLines: [{
+										value: 0,
+										width: 1,
+										color: '#808080'
+									}]
+								},
+								tooltip: {
+									pointFormat: '{series.name}: <b>{point.y}</b> ' + data.unit + ' CO2e'
+								},
+								legend: {
+									layout: 'vertical',
+									align: 'right',
+									verticalAlign: 'middle',
+									borderWidth: 0
+								},
+								series: data.series,
+								exporting: {
+									enabled: false
+								}
+							});
+						}
+					});
+					//popover
+					#if($fd.hasBT eq 'true')
+						$("#btText").html("GHG data for this facility is not directly comparable between 2011-2015 and 2016 onwards. Emissions from the Onshore Oil & Gas Gathering & Boosting and Onshore Gas Transmission Pipelines industry segments were reported for the first time in 2016. Emissions from other industry segments were reported in prior years.");
+						$('#btPopup').toggle();
+						$('.dPopover > .close').click(function () {
+							$('.dPopover').hide();
+						});
+					#end
+				#end
+				$("#tabs").tabs({event: "mouseover"});
+				#if($fd.hasTrend ne 'true')
+					$("#tabs").tabs("remove", 1);
+				#end
+			#end
+		}
+		
+		function openPublicHtml(year, facilityId) {
+			var link = "#springUrl('/service/html/')" + year + "?id=" + facilityId + "&et=" + emissionsType;
+			window.open(link, '_blank');
+		}
+		
+		function openPublicXml(year, facilityId) {
+			var link = "#springUrl('/service/xml/')" + year + "?id=" + facilityId + "&et=" + emissionsType;
+			window.open(link, '_blank');
+		}
+		
+		function openRRFile(facilityId, year) {
+			var link = "$!fd.facility.rrFilename";
+			window.open(link, '_blank');
+		}
+		
+		function goBack() {
+			window.location.replace($("#lastURL").val());
+		}
+		
+		function getUrlVar() {
+			var vars = {};
+			var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+				vars[key] = value;
+			});
+			return vars;
+		}
+	</script>
+</head>
+<body>
+#if (!$!popup)
+<div class="backBtn" style="margin-top: 10px; margin-left: 20px;">
+    <a href="javascript:goBack();">&nbsp;&nbsp;Back</a>
+</div>
+#end
+<div class="detail">
+	#if ($fd.facility)
+        <table style="width: 210px; margin-top: 10px; margin-left: 20px; margin-right: 20px; float: left">
+            <tr>
+                <td style="vertical-align:top;">
+                	<span style="color: darkgray;">Data Year</span>
+                	<select id="facRY" class="triggerRY field field200" title="Facility detail reporting year selection" >
+						#foreach ($ry in $fd.facReportingYears)
+						<option id="ry$ry" value="$ry"#if($ry eq $year) selected#end>$ry</option> #end
+					</select>
+					<p style="font-size: 14px; font-weight: bold; margin-bottom: 10px">$!fd.facility.facilityName</p>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 10px">
+					$!fd.facility.address1<br/>
+					#if($fd.facility.address2)$!fd.facility.address2<br/>#end
+					#if($!ds ne 'T') $!fd.facility.city, $!fd.facility.state, $!fd.facility.zip #end
+					#if($!ds eq 'T') $!fd.facility.city, $!fd.facility.zip #end
+                </td>
+                <td>
+				## #if($fd.facility.verificationComplete eq 1)*Data verification complete#end
+                </td>
+            </tr>
+			#if($!fd.parentCompanies)
+                <tr valign="top">
+                    <td style="padding-bottom: 10px">
+                        <strong>#if($fd.parentCompanies.size()>1)Parent Companies: #else Parent Company: #end</strong><br/>
+						#if($fd.parentCompanies.size()>5)
+                            (This facility listed more than 5 corporate parents.
+                            <a href="http://www.epa.gov/enviro/facts/ghg/customized.html" target="_blank">View a Complete List of Corporate Parents.</a>)<br/>
+						#end
+						#set ($count = 0)
+						#foreach ($company in $fd.parentCompanies)
+							#if ($count eq 5)
+								#break
+							#end
+							$company<br/>
+							#set ($count = $count + 1)
+						#end
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+			#end
+            <tr>
+                <td>
+                    <div id="dmap" style="background-color:#fff; height: 200px; width: 200px; border: 2px solid #435258;"></div>
+                </td>
+            </tr>
+			#if($fd.facility.tribalLand)
+                <tr valign="top">
+                    <td style="padding-top: 10px; width: 350px">
+                        This facility is located on <span style="font-weight:bold;">$fd.facility.tribalLand.tribalLandName</span> land
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+			#end
+            <tr valign="top">
+                <td style="padding-top: 10px">
+                    <strong>Latitude:</strong> $latitude
+                    <br/>
+                    <strong>Longitude:</strong> $longitude
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td style="padding-top: 10px">
+                    <strong>GHGRP Id:</strong> $!fd.facility.id.facilityId
+                    <br/>
+					#if($fd.facility.frsId)
+                        <strong>FRS Id:</strong> $!fd.facility.frsId
+                        <br/>
+					#end
+                    <strong>NAICS Code:</strong> $!fd.facility.naicsCode
+                    <br/>
+					#if($fd.facility.programName && $fd.facility.programName ne 'FRS' && $fd.facility.programName ne 'OTAQ' && $fd.facility.programName ne 'Green House Gas e-GGRT')
+                        <strong>$fd.facility.programName Id:</strong> $!fd.facility.programSysId
+                        <br/>
+					#end
+                </td>
+            </tr>
+			#if($fd.facility.html)
+            <tr valign="top">
+                <td style="padding-top: 10px">
+                    <div class="download grey"><a href="javascript:openPublicHtml($fd.facility.id.year, $fd.facility.id.facilityId)" title="View reported data">View reported data</a></div>
+                </td>
+            </tr>
+			#end
+            #if($fd.facility.publicXml)
+            <tr valign="top">
+                <td style="padding-top: 10px">
+                    <div class="download grey"><a href="javascript:openPublicXml($fd.facility.id.year, $fd.facility.id.facilityId)" title="Download reported data (XML)">Download reported data (XML)</a></div>
+                </td>
+            </tr>
+			#end
+            #if($fd.facility.rrMonitoringPlan || $fd.facility.rrFilename)
+            <tr valign="top">
+                <td style="padding-top: 10px">
+                    <div class="download grey"><a href="javascript:openRRFile($fd.facility.id.facilityId, $fd.facility.id.year)" title="View annual monitoring report">View annual monitoring report</a></div>
+                </td>
+            </tr>
+            #end
+            #if($fd.facility.rrLink)
+            <tr valign="top">
+                <td style="padding-top: 10px">
+                    <div class="download grey"><a href="$fd.facility.rrLink" target="_blank" title="View MRV plan">View MRV plan</a></div>
+                </td>
+            </tr>
+            #end
+        </table>
+    <div id="tabs" style="float:left; font-size:1em; border: none; width: 385px">
+        <ul style="border: none; background: none">
+            <li><a href="#tabs-1" title="Facility Information">Facility Information</a></li>
+			#if($ds eq 'S')
+                <li><a href="#tabs-2" title="Net GHG Quantity by Year">Net GHG Quantity by Year</a></li>
+			#elseif($ds eq 'I')
+                <li><a href="#tabs-2" title="CO2 Received for Injection by Year">CO2 Received for Injection by Year</a></li>
+			#elseif($ds eq 'A')
+                <li><a href="#tabs-2" title="Geologic Sequestration of CO2 (RR) by Year">Geologic Sequestration of CO2 (RR) by Year</a></li>
+			#else
+                <li><a href="#tabs-2" title="Facility Emissions by Year">Facility Emissions by Year</a></li>
+			#end
+        </ul>
+        <div id="tabs-1">
+            <div border="0" cellspacing="0" cellpadding="0">
+				#if ($!reportingStatus)
+					#set($rsTxt = $!reportingStatus.textBoxContents)
+					#set($rsTxt = $rsTxt.replace("'","&apos;"))
+					<div id="reportingStatusTextBox" class="$!reportingStatus.shorthand">
+                    	#if ($!reportingStatus.shorthand ne 'VALID')
+                            <img src="#springUrl('/img/notification.gif')" title="#evaluate($rsTxt)" alt="#evaluate($rsTxt)" width="15" height="15" border="0" align="absmiddle">
+						#end
+						
+						#evaluate($rsTxt)
+
+                        <br/>
+						#if ($!reportingStatus.shorthand eq 'QUALITY')
+                            <a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139281" target="_blank">Click here</a> to learn more.
+						#end
+                    </div>
+				#end
+				#if($!fd.facility.comments)
+				<div>
+			        <img src="#springUrl('/img/co2y.jpg')" title="$!fd.facility.comments" alt="$!fd.facility.comments" width="15" height="15" border="0">
+			        $!fd.facility.comments
+				</div>
+				#end
+				#if ($!reportingStatus.shorthand eq 'QUALITY' || $!reportingStaus.shorthand eq 'LATE' || $!reportingStatus.shorthand eq 'EXTENDED' || !$!reportingStatus)
+                    #if($!isEmitter)
+                        <table style="margin-left: -3px; margin-top: 15px">
+                            <tr>
+                                <td width="523px" valign="top" style="font-weight: bold">
+                                    Total Facility Emissions in metric tons CO<sub>2</sub> equivalent (mt CO<sub>2</sub>e)
+                                    (<a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">AR4 GWPs</a>, excluding Biogenic CO<sub>2</sub>)
+                                </td>
+                                <td width="120px" valign="top" style="text-align: right">
+									#if($fd.totalEmissions)$!number.format('##,###,###', $!fd.totalEmissions)#else---#end
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 15px; font-weight: bold">
+                            Emissions by Gas in mt CO<sub>2</sub>e
+                            (<a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">AR4 GWPs</a>)
+                        </div>
+                        <table style="margin-left: 20px">
+							#foreach ($emission in $fd.gasEmissions)
+                                <tr>
+                                    <td width="200px" valign="top">
+                                    	$emission.type
+                                    </td>
+                                    <td width="120px" valign="top" style="text-align: right">
+										#if($emission.quantity)$!number.format('##,###,###', $emission.quantity)#else---#end
+                                    </td>
+                                </tr>
+							#end
+                        </table>
+                        #if($!showPerProcessSection)
+                            <div style="margin-top: 15px; font-weight: bold">
+                                Emissions by Source/Process in mt CO<sub>2</sub>e
+                                (<a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">AR4 GWPs</a>, excluding Biogenic CO<sub>2</sub>)
+                            </div>
+                            <table style="margin-left: 20px">
+                                #set($cmls = [])
+                                #foreach ($emission in $fd.subpartEmissions)
+                                    #if($!fd.facility.cemsUsed eq 'Y' && $cmlSubparts.contains($emission.subpartName))
+                                        #set($sc_caveat = true)
+                                        #set($added = $cmls.add($emission.type))
+                                    #end
+                                    <tr>
+                                        <td width="200px" valign="top">
+                                            $emission.type
+                                        </td>
+                                        <td width="120px" valign="top" style="text-align:right">
+                                            #if($emission.quantity)$!number.format('##,###,###', $emission.quantity)#if($!fd.facility.cemsUsed eq 'Y' && $cmlSubparts.contains($emission.subpartName))*#end #else---#end
+                                        </td>
+                                    </tr>
+                                    #if($emission.type eq 'Municipal Landfills')
+                                        #set($hh6 = false)
+                                        #set($hh8 = false)
+                                        #foreach($detail in $fd.subpartDetails.get('Information on Municipal Landfills'))
+                                            #if($detail.luKey.keyName eq 'LF_HH6_EQUATION_VAL' || $detail.luKey.keyName eq 'LF_HH8_EQUATION_VAL')
+                                                #if($detail.luKey.keyName eq 'LF_HH6_EQUATION_VAL')
+                                                    #set($hh6 = true)
+                                                #end
+                                                #if($detail.luKey.keyName eq 'LF_HH8_EQUATION_VAL')
+                                                    #set($hh8 = true)
+                                                #end
+                                                <tr>
+                                                    <td width="200px" valign="top" style="padding-left:20px">
+                                                        $!detail.luKey.keyDescription
+                                                    </td>
+                                                    <td width="120px" valign="top" style="text-align:right">
+                                                        $!number.format('##,###,###', $!detail.value)
+                                                    </td>
+                                                </tr>
+                                            #end
+                                        #end
+                                        #if($hh6 eq 'true' && $hh8 eq 'true')
+                                            <tr>
+                                                <td colspan="2" style="padding-left:20px">
+                                                    Landfills with active landfill gas collection systems must calculate and report GHG emissions in two ways.  The results of each are displayed here. Only one of these numbers (in most cases the larger value) is used as the emissions from the landfill.
+                                                    <a style="color:#439F3E" href="https://ccdsupport.com/confluence/display/ghgp/Detailed+Description+of+Data+for+Certain+Sources+and+Processes" target="_blank">Learn more about calculating emissions at landfills.</a>
+                                                </td>
+                                            </tr>
+                                        #end
+                                    #end
+                                #end
+                                #if($sc_caveat eq 'true')
+                                    <tr>
+                                        <td colspan="2">
+                                            <br/>
+                                            <sup>*</sup>Some of the CO<sub>2</sub> emissions from
+                                            #foreach($sp in $cmls)
+                                                $sp#if($cmls.indexOf($sp) < $cmls.size() - 2), <!-- Formatted this way so there was no space between the comma and subpart name -->
+                                            #elseif($cmls.indexOf($sp) == $cmls.size() - 2)
+                                                and
+                                            #elseif($cmls.indexOf($sp) == $cmls.size() - 1)
+                                                <!-- Prints a space " " here -->
+                                            #end
+                                            #end
+                                            may be from stationary fuel combustion, but are monitored by a CEMS and cannot be differentiated.
+                                            #foreach($sp in $cmls)
+                                            	#if($sp == "Cement Production")
+                                            		CH<sub>4</sub> and N<sub>2</sub>O emissions from stationary fuel combustion in each kiln are also included in the value displayed for Cement Production.
+                                            	#end
+                                            #end
+                                        </td>
+                                    </tr>
+                                #end
+                            </table>
+                        #end
+					#end
+					#foreach($key in $fd.subpartDetails.keySet())
+					<div style="margin-top: 15px; font-weight: bold">
+						$!key
+						#if($key.contains('Information on Petroleum and Natural Gas Systems') && $year < 2013)
+							#if($fd.subpartDetails.get($key).get(0).notes.contains('i') == false )
+								(emissions values use <a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">AR4 GWPs</a>)
+							#end
+						#end
+					</div>
+					<table style="margin-left: 20px">
+						#foreach($detail in $fd.subpartDetails.get($key))
+							#if($detail.luKey.keyName ne 'LF_HH6_EQUATION_VAL' && $detail.luKey.keyName ne 'LF_HH8_EQUATION_VAL')
+							<tr>
+								<td width="200px" valign="top">$!detail.luKey.keyDescription</td>
+								<td width="120px" valign="top" style="text-align:right">$!detail.value</td>
+							</tr>
+							#end
+						#end
+					</table>
+					#end
+					<table style="margin-left: -3px; width: 320px">
+						#if($ds eq 'E' and $fd.facility.cemsUsed)
+                         <tr valign="top">
+                             <td style="padding-top: 10px">
+                                 <strong>Employs technologies to directly monitor some or all GHG emissions:</strong> #if($!fd.facility.cemsUsed eq 'Y') Yes #else No #end
+                             </td>
+                         </tr>
+						#end
+						#if($ds eq 'E' and $!fd.facility.co2Captured eq 'Y')
+                        <tr valign="top">
+                            <td style="padding-top: 10px">
+                                $!co2g
+                                $!co2gText
+                            </td>
+                        </tr>
+						#end
+						#if($ds eq 'E' and $!fd.facility.co2EmittedSupplied eq 'Y')
+                        <tr valign="top">
+                            <td style="padding-top: 10px">
+                                $!co2b
+                                $!co2bText
+                            </td>
+                        </tr>
+						#end
+						#if(($ds eq 'I' or $ds eq 'A') and $!fd.facility.uuRandDExempt eq 'Y')
+                        <tr valign="top">
+                            <td style="padding-top: 10px">
+                                $!co2o
+                                $!co2oText
+                                A list of projects with subpart RR R&D project exemptions can be found <a style="color:#439F3E" href="https://www.epa.gov/ghgreporting/subpart-rr-geologic-sequestration-carbon-dioxide" target="_blank">here</a>.
+                            </td>
+                        </tr>
+						#end
+                    </table>
+                    <!-- AR4 GWPs -->
+					#if ( ($!reportingStatus.shorthand eq 'QUALITY' || !$!reportingStatus) && ($ds eq 'E' || $ds eq 'O' || $ds eq 'L') && $year < 2013 )
+                        <div style="padding-top: 10px; font-size: 9px">
+                            <span style="font-weight:bold;">**</span>
+                            Emissions values presented here have been re-calculated by EPA to display a consistent time-series using Global Warming Potential (GWP) values updated for 2013.
+							#if($fd.facility.html)Click "View Reported Data" to view the original data reported to EPA.#end
+                            Click <a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">here</a> to learn more.
+                        </div>
+					#end
+				#end
+            </div>
+        </div>
+        <div id="tabs-2">
+			#if ($!reportingStatus)
+				#set($rsTxt = $!reportingStatus.textBoxContents)
+				#set($rsTxt = $rsTxt.replace("'","&apos;"))
+				<div id="reportingStatusTextBox" class="$!reportingStatus.shorthand">
+                	#if ($!reportingStatus.shorthand ne 'VALID')
+                        <img src="#springUrl('/img/notification.gif')" title="#evaluate($rsTxt)" alt="#evaluate($rsTxt)" width="15" height="15" border="0" align="absmiddle">
+					#end
+
+					#evaluate($rsTxt)
+
+					#if ($!reportingStatus.shorthand eq 'QUALITY')
+                        <br/>
+                        <a href="http://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139281" target="_blank">Click here</a> to learn more
+					#end
+                </div>
+                <div>
+                </div>
+			#end
+            <div id="ftrend" style="width:375px; margin-top: 10px; margin-left:-20px"></div>
+			<div id="btPopup" class="dPopover dPopup">
+				<p id="btText"></p>
+				<button class="close" title="close popup">&times;</button>
+			</div>
+        </div>
+	#else
+        <div style="display:table-cell; vertical-align:middle; text-align:center">
+            No facility detail for $year
+        </div>
+	#end
+</div>
+</div>
+</body>
+</html>

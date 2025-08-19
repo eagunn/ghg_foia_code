@@ -1,0 +1,49 @@
+debug: false
+
+#ghg:
+#    name: "FLIGHT"
+#    build-id: "FLIGHT R.151"
+#
+#server:
+#    servlet:
+#        context-path: /ghgp
+#        session:
+#            cookie:
+#                same-site: "none"
+#            timeout: 60m
+#
+#spring:
+#    profiles:
+#        default: production
+#        active: production
+#    autoconfigure:
+#        exclude: org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration
+#    datasource:
+#        url: 
+#        username: 
+#        password: 
+#        driver-class-name: oracle.jdbc.OracleDriver
+#    jpa:
+#        open-in-view: false
+#        properties:
+#            hibernate:
+#                dialect: org.hibernate.dialect.Oracle12cDialect
+#                show_sql: true
+#    mvc:
+#        dispatch-options-request: true
+#        servlet:
+#            path: /ghgp
+#        view:
+#            prefix: /WEB-INF/jsp/
+#            suffix: .jsp
+logging:
+    level:
+        root: "warn"
+        org.hibernate: "debug"
+        sql: "error"
+        tomcat: "debug"
+        web: "debug"
+    group:
+        sql: "org.springframework.jdbc.core,org.hibernate.SQL,org.jooq.tools.LoggerListener"
+        tomcat: "org.apache.catalina,org.apache.coyote,org.apache.tomcat"
+        web: "org.springframework.core.codec,org.springframework.http,org.springframework.web,org.springframework.boot.actuate.endpoint.web,org.springframework.boot.web.servlet.ServletContextInitializerBeans"

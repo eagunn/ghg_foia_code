@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript" language="JavaScript" src="$base/js/jquery.js"></script>
+<script type="text/javascript">
+		var sslSupport = 'false';
+		var browserCompany = navigator.appName;
+		var browserName = navigator.appCodeName;
+		var browserVersion = navigator.appVersion;
+		var browserSupported = 'false';
+		var browerVerIE = navigator.userAgent;
+		var browserVerId;
+
+		var browserApple = navigator.vendor;
+		var browserAppleVer = browserVersion.substr(0,3);
+		var browserChromeVer = browserVersion.substr(85,4);
+
+		browserVerId = browerVerIE.indexOf('MSIE');
+		browserVerId = browserVerId+5;
+		browerVerIE = browerVerIE.substr(browserVerId,3);
+		jQuery(document).ready(function() {
+		
+		// Check for Mobile Device Capabilities
+		if( ('querySelector' in document
+			     && 'localStorage' in window
+			     && 'addEventListener' in window
+			     && ('ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch)
+			     )
+			     || navigator.userAgent.indexOf('IEMobile') > 0){       
+			 
+			        location.replace('results-list.htm');
+		} 
+			
+			jQuery.ajax({
+				type: "GET",
+				url: location.protocol + '//' + location.host + '$base//index.htm',
+				data: '',
+				asynch: false,
+				success: function(data, textStatus, XMLHttpRequest) {
+					sslSupport = 'true'
+					if(browserCompany == 'Netscape') {
+						if(browserApple != 'Apple Computer, Inc.' && browserApple != 'Google Inc.') {
+							browserVersion = browserVersion.substring(0,4);
+							if(parseFloat(browserVersion)>=3) {
+								browserSupported = 'true'
+							} else {
+								browserSupported = 'false';
+							}
+						} else {
+							browserSupported = 'true';
+						}
+					} else if (browserCompany == 'Microsoft Internet Explorer') {
+						if(parseFloat(browerVerIE)>=7) {
+							browserSupported = 'true'
+						} else {
+							browserSupported = 'false';
+						}
+					} else {
+						browserSupported = 'true';
+					}
+
+					if (browserSupported == 'true' && sslSupport == 'true') {
+						window.location="$base/main.do";
+					} else if(browserSupported == 'false') {
+						document.getElementById('browserMessage').style.display='inline';
+					}
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+					if(sslSupport == 'false') {
+						document.getElementById('sslMessage').style.display='inline';
+					}
+				}
+			});
+		});
+</script>
+</head>
+<body>
+	<div id='sslMessage' style="display:none;">
+		<h2>Your browser does not fulfill the <i>e-GGRT</i> system's browser compatibility requirements</h2>
+			<h3>Your browser doesn't have SSL enabled or not supported</h3>
+	</div>
+	<div id='browserMessage' style="display:none;">
+		<h2>Your browser does not fulfill the e-GGRT Publishing Tool&#39s browser compatibility requirements.</h2>
+		<hr>
+		<b>Reason:</b>
+		Your current Browser is
+		<script type="text/javascript">
+			if(browserCompany == 'Microsoft Internet Explorer' && browserApple != 'Apple Computer, Inc.') {
+				document.write(browserCompany+" v"+browerVerIE);
+			} else if(browserCompany == 'Netscape' && browserApple != 'Apple Computer, Inc.') {
+				document.write(browserName+" Firefox v"+browserVersion);
+			} else if(browserApple == 'Apple Computer, Inc.') {
+				document.write(browserApple+", Safari v"+browserAppleVer);
+			} else if(browserApple == 'Google Inc.') {
+				document.write(browserApple+", Chrome v"+browserChromeVer);
+			}
+		</script>
+		<br><br>
+		<b>Solution:</b>  You must use one of the following browser versions before you can use e-GGRT.<br><br>
+
+		The following browser versions are currently supported:
+		<ul>
+			<li>Microsoft Internet Explorer 7.0 (or above)&nbsp
+			<a target="_blank" href="http://www.microsoft.com/windows/internet-explorer/default.aspx">Go to Download website</a></li>
+			<li>Mozilla Firefox 3.0 (or above)&nbsp <a target="_blank" href="http://www.mozilla.com/">Go to Download website</a></li>
+		</ul>
+	</div>
+	<noscript>
+		<h2>Your browser does not fulfill the e-GGRT Publishing Tool&#39s browser compatibility requirements.</h2>
+		<hr><br>
+		<b>Reason:</b>  JavaScript is disabled on this browser.<br><br>
+		<b>Solution:</b>  You must enable JavaScript on this browser before you can use e-GGRT.  Instructions for enabling JavaScript are provided below.  After you have enabled JavaScript, refresh this page.<br><br>
+		<b>Internet Explorer (7.0 and 8.0)</b>
+		<ol>
+		<li>Select 'Tools' from the top menu</li>
+		<li>Choose 'Internet Options'</li>
+		<li>Click on the 'Security' tab</li>
+		<li>Click on 'Custom Level'</li>
+		<li>Scroll down until you see section labeled 'Scripting'</li>
+		<li>Under 'Active Scripting', select 'Enable' and click OK</li>
+		</ol>
+
+		<b>Mozilla Firefox (3+)</b>
+		<ol>
+		<li>Select 'Tools' from the top menu</li>
+		<li>Choose 'Options'</li>
+		<li>Choose 'Content' from the top navigation</li>
+		<li>Select the checkbox next to 'Enable JavaScript' and click OK</li>
+		</ol>
+	</noscript>
+</body>
+</html>

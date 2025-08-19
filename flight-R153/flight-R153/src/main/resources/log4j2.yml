@@ -1,0 +1,90 @@
+Configuration:
+    name: FlightLog
+    monitorInterval: 30
+    Properties:
+        Property:
+            -   name: log-path
+                value: /public/data/logs/ghgp
+            -   name: layout-pattern
+                value: "%d %-5level [%c{2.2}] (%t) %msg%n"
+    thresholdFilter:
+        level: warn
+    Appenders:
+        Console:
+            name: Console
+            PatternLayout:
+                pattern: ${layout-pattern}
+        RollingFile:
+            -   name: RollingFile
+                fileName: ${log-path}/ghgp.log
+                filePattern: ${log-path}/ghgp-%d.log.gz
+                PatternLayout:
+                    pattern: ${layout-pattern}
+                Policies:
+                    TimeBasedTriggeringPolicy:
+                        interval: 1
+                        modulate: true
+                DefaultRollOverStrategy:
+                    max: 10
+                    Delete:
+                        basePath: ${log-path}
+                        maxDepth: 1
+                        IfFileName:
+                            glob: "*/ghgp*log.gz"
+                        IfLastModified:
+                            age: 7d
+            -   name: Hibernate
+                fileName: ${log-path}/hibernate.log
+                filePattern: ${log-path}/hibernate-%d.log.gz
+                PatternLayout:
+                    pattern: ${layout-pattern}
+                Policies:
+                    TimeBasedTriggeringPolicy:
+                        interval: 1
+                        modulate: true
+                DefaultRollOverStrategy:
+                    max: 10
+                    Delete:
+                        basePath: ${log-path}
+                        maxDepth: 1
+                        IfFileName:
+                            glob: "*/hibernate*log.gz"
+                        IfLastModified:
+                            age: 7d
+    Loggers:
+        Root:
+            level: warn
+            AppenderRef:
+                -   ref: Console
+                -   ref: RollingFile
+        AsyncLogger:
+            -   name: gov.epa.ghg
+                level: warn
+                additivity: false
+                AppenderRef:
+                    -   ref: Console
+                    -   ref: RollingFile
+            -   name: org.hibernate.SQL
+                level: debug
+                additivity: false
+                AppenderRef:
+                    -   ref: Console
+                    -   ref: Hibernate
+            -   name: org.hibernate.type
+                level: trace
+                additivity: false
+                AppenderRef:
+                    -   ref: Console
+                    -   ref: Hibernate
+            -   name: org.hibernate.type.descriptor.sql
+                level: trace
+                additivity: false
+                AppenderRef:
+                    -   ref: Console
+                    -   ref: Hibernate
+            -   name: org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer
+                level: error
+                additivity: false
+                AppenderRef:
+                    -   ref: Console
+                    -   ref: RollingFile

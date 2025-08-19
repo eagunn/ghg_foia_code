@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+       http://www.springframework.org/schema/jee 
+       http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/util
+	   http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+       <context:component-scan base-package="gov.epa.ghg.service" />
+
+       <context:annotation-config />
+
+       <!-- <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+           <constructor-arg ref="dataSource"/>
+       </bean> -->
+
+       <context:property-placeholder location="classpath:ghg.properties" />
+
+       <!--
+           spring framework data source
+           (used for running j-unit test)
+       -->
+
+       <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+       <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+           <property name="host" value="${ghg.email.host}"/>
+           <property name="port" value="${ghg.email.port}"/>
+           <property name="username" value="${ghg.email.username}"/>
+           <property name="password" value="${ghg.email.password}"/>
+           <property name="javaMailProperties">
+               <props>
+                   <prop key="mail.smtp.auth">${ghg.email.authenticate}</prop>
+               </props>
+           </property>
+       </bean>
+
+       <bean id="emailService" class="gov.epa.ghg.service.EmailService">
+           <property name="mailSender" ref="mailSender"/>
+           <property name="fromEmail" value="${ghg.email.from}"/>
+           <property name="toEmail" value="${ghg.email.to}"/>
+           <property name="replytoEmail" value="${ghg.email.replyto}"/>
+           <property name="reqnamechngEmail" value="${ghg.email.reqnamechang}"/>
+           <property name="reqacctlinkEmail" value="${ghg.email.reqacctlink}"/>
+           <property name="helpdeskPhone" value="${ghg.helpdesk.phone}"/>
+           <property name="helpdeskEmail" value="${ghg.helpdesk.email}"/>
+           <property name="helpdeskMailAddress" value="${ghg.helpdesk.mailAddress}"/>
+           <property name="helpdeskCourierAddress" value="${ghg.helpdesk.courierAddress}"/>
+           <property name="securityFooter" value="${ghg.security.footer}"/>
+           <property name="helpdeskbccEmail" value="${ghg.helpdesk.bcc.email}"/>
+           <property name="loginURL" value="${ghg.login.url}"/>
+       </bean> -->
+
+       <!-- <bean id="facilityDataUrl" class="java.lang.String">
+           <constructor-arg value="${ghg.facility.url}" />
+       </bean> -->
+
+       <util:map id="reportingYears" map-class="java.util.LinkedHashMap">
+              <entry key="2010" value="2010"/>
+              <entry key="2011" value="2011"/>
+              <entry key="2012" value="2012"/>
+              <entry key="2013" value="2013"/>
+              <entry key="2014" value="2014"/>
+       </util:map>
+
+       <bean id="dataDate" class="java.lang.String">
+              <constructor-arg value="04/02/2015" />
+       </bean>
+
+       <bean id="dataText" class="java.lang.String">
+              <constructor-arg value="Data reported to EPA as of " />
+       </bean>
+
+       <bean id="dataCredit" factory-bean="dataText" factory-method="concat">
+              <constructor-arg ref="dataDate"/>
+       </bean>
+
+       <bean id="startYear" class="java.lang.Long">
+              <constructor-arg value="2011" />
+       </bean>
+
+       <bean id="endYear" class="java.lang.Long">
+              <constructor-arg value="2014" />
+       </bean>
+
+       <bean id="helplinkurlbase" class="java.lang.String">
+              <!-- short Google URL for: http://www.ccdsupport.com/confluence/display/ghgp/Home -->
+              <constructor-arg value="http://goo.gl/8086HU" />
+       </bean>
+</beans>
+

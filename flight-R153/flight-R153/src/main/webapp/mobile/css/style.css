@@ -1,0 +1,989 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 	0;
+	padding: 	0;
+	border: 	0;
+	font-size: 	medium;
+	font-style: normal;
+	font: 		inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+/*make sure the viewport is 100% height*/
+html, body {
+	height: 100%;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+sub {
+	font-size: smaller;
+	vertical-align: sub;
+}
+
+
+div, img {
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/*** END CSS RESET ***/
+
+html, body {
+	font-size: .9em;
+	font-family: 'Segoe WP', 'Helvetica', 'Segoe UI', Tahoma, Arial, Verdana,'Sans-serif';
+	background: transparent;    
+	color: #4F4F4F;
+}
+
+/**
+ * Setup the page's background image
+ * to fix performance issues 
+**/
+html .ui-page {
+/*     background: url("../img/paint_bg.jpg") repeat scroll center top #FFFEFD !important; */
+    background: url("../img/stitch_bg.gif") repeat scroll 0 0 transparent;
+    overflow: hidden !important;
+    position: relative;
+}
+
+/* EXPERIMENTAL :: Force hardware acceleration on mobile devices */
+/* #map_canvas { */
+/*   -webkit-transform: translateZ(0);  */
+/*   -moz-transform: translatez(0); */
+/*   -ms-transform: translatez(0); */
+/*   -o-transform: translatez(0); */
+/*   transform: translatez(0); */
+/*   -webkit-backface-visibility: hidden; */
+/*   -webkit-perspective: 1000; */
+/* } */
+
+/* html .ResultsList.ui-page { */
+/* 	background: none; */
+/* } */
+
+/* END PERFORMANCE CHANGES */
+
+/* Consistent styling for similar elements on all pages */
+.ui-page .ui-footer li a .ui-btn-text {
+  font-size: 1em;
+  color: white;
+  text-shadow: none;
+}
+
+h1 { font-size: 1.6em; }
+h2 { font-size: 1.3em; }
+h3 { font-size: 1.17em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+
+
+.ul-li-icon {
+  top: 9px;	
+}
+
+.ui-page .ui-header .homeLogo {
+  background: url(../img/logo_fullbird.png) no-repeat scroll 50% 35% transparent;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; 
+  margin: 0 20%;
+/*   min-height: 46px; */
+}
+
+/* END Global styling */
+
+
+
+/**
+ * Homepage Styling
+ **/
+ 
+/* Style the Share button, remove its text and keep only the image */
+.shareBtn {
+	background: none repeat scroll 0 0 transparent;
+	border: 0 none;
+	border-radius: 0.3em 0.3em 0.3em 0.3em;
+	box-shadow: none;
+}
+
+.shareBtn img {
+  width: 32px; 
+  height: 32px;
+}
+
+.shareBtn .ui-btn-inner {
+  border-top: 0 none;
+  padding:    0.4em 8px 0.5em
+}
+/* End Share Button fix */
+
+/* Remove the black line near the bottom of the page */
+.ui-content {
+	border: 0 none;
+}
+    
+.ui-icon-searchfield:after {
+  background-color: gray;
+}
+
+/* [type="search"] { */
+/*     -moz-appearance:    textfield; */
+/*     -webkit-appearance: textfield; */
+/*     appearance: textfield; */
+/* } */
+
+/* ::-webkit-input-placeholder { WebKit browsers */
+/*     color:    #999; */
+/* } */
+/* :-moz-placeholder { Mozilla Firefox 4 to 18 */
+/*     color:    #999; */
+/* } */
+/* ::-moz-placeholder { Mozilla Firefox 19+ */
+/*     color:    #999; */
+/* } */
+/* :-ms-input-placeholder { Internet Explorer 10+ */
+/*     color:    #999; */
+/* } */
+
+.version_number {
+	font-size: 0.6em;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 5px;
+}
+
+.ui-btn-text {
+	font-size: 1em;
+}
+
+
+/**
+ * Home Screen Style
+ */
+ 
+/* New Homepage Layout */
+#selectStateMenu-button {
+	display: none;
+}
+
+.homeScreen ul[data-role='listview'] li a {
+	padding: 15px 0 15px 66px !important;
+  background-repeat: no-repeat;
+  background-position: 20px 50%;
+}
+
+.homeScreen ul[data-role='listview'] li a.nearMeBtn {
+	background-position: 20px 4px;
+	background-size: 32px 32px;
+  background-image: url("../img/icons/green_gps.png");
+}	
+.homeScreen ul[data-role='listview'] li a.selectStateMenu {
+	background-position: 12px 12px;
+	background-size: 42px;
+	background-image: url("../img/icons/virginia.png");
+}
+.homeScreen ul[data-role='listview'] li a.bySectorBtn {
+  background-position: 20px 4px;
+  background-size: 32px 32px;
+	background-image: url("../img/icons/green_factory.png");
+}
+
+/* Special Case for the inline select menu */
+.homeScreen .ui-content ul li.select_inline {
+	padding: 0;
+}
+
+li.select_inline .ui-select .ui-btn {
+	background-color: rgba(121, 184, 225, 0);
+	-webkit-border-radius: 0;
+  border-radius: 0;
+  margin: 0;
+  -moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+li.select_inline .ui-select .ui-btn .ui-btn-inner {
+	padding-right: 40px;
+	padding: 15px 0 15px 66px !important;
+  background-repeat: no-repeat;
+  
+  background-position: 12px 12px;
+  background-size: 42px;
+  background-image: url("../img/icons/virginia.png");
+}
+
+li.select_inline .ui-select .ui-btn .ui-btn-inner .selectStateMenu {
+	float: left;
+}
+
+li.select_inline .ui-select .ui-btn .ui-btn-inner .ui-icon {
+	right: 10px;
+	background-position: -108px -1px;
+}
+
+/* ADD THIS FOR LIST VIEW PERFORMANCE BOOST
+.ResultsList .ui-content .ui-listview {	
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;	
+}
+.ResultsList .ui-content .ui-listview li.ui-btn-up-j {
+  background: rgb(201, 227, 242) none repeat scroll 0 0; #C9E3F2 
+}
+*/
+
+.ResultsList .ui-content .ui-listview li.ui-btn-up-j {
+	background: none repeat scroll 0 0 rgba(201, 227, 242, 0.6);
+}
+
+
+/* End new Homepage layout */
+
+#homeScreen [data-role="content"] .short-btn-wrapper a .ui-btn-inner {
+  padding: 1.1em 0.1em;
+}
+
+/* Decrease button text so its readable */
+#homeScreen .ui-content .ui-btn-text {
+    font-size: .75em; 
+}
+
+.short-btn-wrapper:first-child {
+  	margin-left: 0;
+}
+	
+.short-btn-wrapper {
+	width: 32%;
+	float: left;
+	margin-left: 2%;
+}
+
+.long-btn-wrapper:first-child {
+	margin-left: 0;
+}
+
+.long-btn-wrapper {
+	width: 49%;
+	float: left;
+  margin-left: 2%;
+}
+
+/* Resize the Select State Button so it matches the rest */
+#browse #selectStateBtn .ui-btn-inner {
+  padding: 1.25em 0.1em;
+}
+
+#browse, #moreInfo {
+	width: 100%;
+	float: left;
+}
+
+.disclaimer {
+	width: 100%;
+	float: left;
+	padding-top: 15px;
+	font-size: 0.85em;
+}
+
+.disclaimer h4 {
+  	margin-bottom: 0;
+}
+
+.disclaimer ul li {
+	margin-top: 0.5em;
+	margin-left: 0.5em;
+}
+
+#selectStateMenu-menu > .ui-li > .ui-btn-inner {
+	padding: 6px;
+}
+
+/* Help links */
+.helplinks {
+	text-align: center;
+	width: 100%;
+	margin-top: 2px;
+	display: inline-block;
+}
+
+.helplinks a {
+  margin: 0 6%;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.link_divider {
+	display: inline; 
+}
+
+#popup_form-popup {
+	width: 60%;
+}
+
+.ui-popup-container .contact-form p.mandatory {
+	color: darkred;
+}
+
+.ui-popup-container .contact-form textarea {
+	height: 80px;
+}
+
+/* State Selection popup should take up most of the screen */
+/*#stateSelectPopup-popup {
+	width: 60%;
+}*/
+
+/**
+ * Filter Form page
+ **/
+
+.filterScreen .ui-content .ui-btn-text {
+  font-size: 0.75em;
+}
+
+/* Make Emission Range tab larger than the rest */
+.ui-navbar .ui-grid-c > *:nth-child(n) {
+    width: 22%;
+}
+
+.ui-navbar .ui-grid-c > .ui-block-d {
+    width: 34%;
+}
+
+/* Right Side Panel for Sector filter selection */
+#popupPanel-popup {
+    right: 0 !important;
+    left: auto !important;
+}
+
+#popupPanel {
+    width: 200px;
+    border: 1px solid #000;
+    border-right: none;
+    background: rgba(0,0,0,.5);
+    margin: -1px 0;
+}
+
+#popupPanel .ui-btn {
+    margin: 2em 15px;
+}
+
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview {
+	font-size:       1em;
+	font-weight:     bolder;
+	padding-top:     15px;
+  font-family: Lucida Grande; /**/
+/*   text-transform: uppercase; */
+}
+
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview > .facility-name {
+/* 	text-transform: capitalize; */
+	font-variant: small-caps;
+	font-size: 0.8em;
+}
+
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview > .emission-count {
+	font-size:     0.7em;
+	font-weight:   normal;
+	font-variant:  normal;
+}
+
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .facility-in-listview > .distance {
+	color:   darkgreen;
+	font-size:     0.8em;
+	font-variant:  small-caps;
+	font-weight:   bold;
+	text-transform:  none;
+}
+
+/* In case we decide to remove ui-li-count */
+.ui-listview .ui-li .ui-btn-inner .ui-btn-text .listview-facility-normal {
+	padding-bottom: 40px;
+  padding-top: 20px;
+}
+.emission-value {
+	font-size: 1.1em;
+	margin-left: 15px;
+	margin-top: -36px;
+	position: absolute;
+}
+
+
+
+/***
+ * ResultsMap : Bing Map 
+ **/
+ 
+.infoBoxWrapper {	  
+/* 	min-width: 180px; */
+/* 	max-width: 280px; */
+/*   width:     auto !important; */
+  height:    auto !important;
+  
+  -moz-border-radius:     10px;
+  -webkit-border-radius:  10px;
+  border-radius:          10px;
+  display:    block;
+  margin-top: 70%;
+  z-index:    20;
+  padding:    12px;
+  position:   absolute;
+  background: whiteSmoke;
+  border:     1px solid #7C8681;
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.08), inset -1px 0 rgba(255, 255, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow:         inset 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.08), inset -1px 0 rgba(255, 255, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.5);  
+  pointer-events: all;
+}
+
+/* THE TRIANGLE */
+.infoBoxWrapper:before {
+  content:      "";
+  position:     absolute;
+  bottom:       -17px; /* value = - border-top-width - border-bottom-width */
+  left:         122px; /* controls horizontal position */
+	border-width: 17px 20px 0;
+  border-style: solid;
+  border-color: #7C8681 transparent;
+  /* reduce the damage in FF3.0 */
+  display:      block; 
+  width:        0;
+}
+
+/* creates the smaller  triangle */
+.infoBoxWrapper:after {
+  content:      "";
+  position:     absolute;
+  bottom:       -13px; /* value = - border-top-width - border-bottom-width */
+  left:         128px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width: 13px 16px 0;
+  border-style: solid;
+  border-color: whiteSmoke transparent;
+  /* reduce the damage in FF3.0 */
+  display:      block; 
+  width:        0;
+}
+
+.infobox-title {
+	font-weight: bold;
+	font-size:   1.1em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.infobox-body {
+	float: left;
+  max-width: 88%;
+  overflow: hidden;
+}
+
+.infobox-info {
+	font-weight: normal;
+	font-size: 0.8em;
+	font-variant: normal;
+}
+
+.infobox-stalk {
+	float:   right;
+	width:   26px;
+	height:  26px;
+  background: url("../img/arrow-right.png") no-repeat center;
+  background-size: contain;
+  padding-top: 6px;
+}
+
+
+/** MAP RELATED **/
+/*make the page element 100% height*/
+#ResultsMap {
+    height : 100%;
+}
+
+/*set the content to be full-width and height except it doesn't overlap the header or footer*/
+#ResultsMap .ui-content {
+	position: absolute;
+  top:      44px;
+  width:    100%;
+  height:   100%;
+  padding:  0;
+}
+
+#map_canvas {
+	width:    100%;
+  height:   100%;
+  padding:  0;
+  text-shadow: none;
+}
+
+/*
+ * Credit To: plebeosaur.us :: 'Here We Are Again'
+ * Pulsating Location Beacon 
+ */
+@-moz-keyframes pulsate {
+	from {
+		-moz-transform: scale(0.25);
+		opacity: 1.0;
+	}
+	95% {
+		-moz-transform: scale(1.3);
+		opacity: 0;
+	}
+	to {
+		-moz-transform: scale(0.3);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes pulsate {
+	from {
+		-webkit-transform:  scale(0.25);
+		opacity:  1.0;
+	}
+	95% {
+		-webkit-transform:  scale(1.3);
+		opacity:  0;
+	}
+	to {
+    -webkit-transform:  scale(0.3);
+    opacity:  0;
+	}
+}
+
+/* get the container that's just outside the marker image,
+which just happens to have our Marker title in it */
+#map_canvas div.gmnoprint[title="You are here"], #map_canvas a.myLocation, #test_canvas a.myLocation {
+	-moz-animation:      pulsate 1.5s ease-in-out infinite;
+	-webkit-animation:   pulsate 1.5s ease-in-out infinite;
+	border:              1pt solid #fff;
+	/* make a circle */
+	-moz-border-radius:    51px;
+	-webkit-border-radius: 51px;
+	border-radius:         51px;
+	/* multiply the shadows, inside and outside the circle */
+	-moz-box-shadow:     inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+	-webkit-box-shadow:  inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+	box-shadow:          inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+	/* PROBLEM WITH IMAGE NOT CENTERED HERE */
+/* 	margin:  -102px -10px;  */
+/* 	margin: -18px 0 0 -18px; */
+	margin: -10px 0 0 -10px;
+  /* set the ring's new dimension and re-center it */
+  height:  51px !important;
+	width:   51px !important;
+}
+
+/* hide the superfluous marker image since it would expand and shrink with its containing element */
+/* #map_canvas div[style*="987654"][title] img, #map_canvas a.myLocation img {*/
+#map_canvas div.gmnoprint[title="You are here"] img, #map_canvas a.myLocation img, #test_canvas a.myLocation img {
+/*   display:  none; */
+  background-image: URL('../img/bluedot_retina.png');
+}
+	
+/* compensate for iPhone and Android devices with high DPI, add iPad media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (device-width: 768px) {
+	#map_canvas div.gmnoprint[title="You are here"], #map_canvas a.myLocation {
+    margin:-10px 0 0 -10px;
+  }
+}
+
+#map_canvas div.gmnoprint[title="You are here"] img, #map_canvas a.myLocation2 img, #test_canvas a.myLocation2 img {
+/*   display:  none; */
+/*   margin:-10px 0 0 -10px; */
+/*   background-image: URL('../img/bluedot_retina.png'); */
+  width: 16px;
+  height: 16px;
+}
+
+/* compensate for iPhone and Android devices with high DPI, add iPad media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (device-width: 768px) {
+  #map_canvas div.gmnoprint[title="You are here"], #map_canvas a.myLocation2 {
+    margin:-10px 0 0 -10px;
+  }
+}
+
+
+/*
+ * End Code Snippet
+ */
+ 
+/* Results page */
+
+.ResultsList .ui-btn-text {
+  font-size: 1em;
+}
+
+.ui-page .custom-nav .ui-btn .ui-icon {
+/* 	margin:  0 0 4px -16px; */
+  margin-left: -13px;
+}
+
+.ui-page .custom-nav .ui-btn .ui-icon { 
+  width: 26px; 
+  height: 26px; 
+  margin-left: -13px; 
+  box-shadow: none; 
+  -moz-box-shadow: none; 
+  -webkit-box-shadow: none; 
+  -webkit-border-radius: 0; 
+  border-radius: 0; 
+  background-size: 100% 100%;
+}
+
+.ui-page .ui-navbar li .ui-btn-icon-top .ui-btn-inner {
+  padding-top: 34px;
+}
+
+.ui-page .ui-navbar li .ui-btn .ui-btn-inner {
+  padding-bottom: 4px;
+}
+
+/*
+ * ====== Filter Page =======
+ * Left Panel for Filter Page
+ */ 
+ 
+input.ui-input-text.ui-slider-input {
+	width: 80px; 
+}
+
+.ui-rangeslider .ui-rangeslider-sliders {
+	margin: 4.5em 20px;
+}
+
+.ui-rangeslider input.ui-input-text.ui-slider-input {
+  margin-left: 5px;
+  margin-right: 5px;	
+}
+
+.ui-rangeslider input.ui-input-text.ui-slider-input {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Icons by Glyphish: www.glyphish.com */ 
+.filterScreen .custom-nav .ui-btn .ui-btn-inner { 
+	padding-top: 40px !important; 
+}
+
+.filterScreen .custom-nav-top .ui-btn .ui-icon { 
+  width: 36px;
+	height: 32px;
+	margin-left: -18px;
+  box-shadow: none; 
+  -moz-box-shadow: none; 
+  -webkit-box-shadow: none; 
+  -webkit-border-radius: 0; 
+  border-radius: 0; 
+}
+
+.filterScreen .custom-nav-top ul li a .ui-icon {
+  background-size: 24px 16px; 
+  -moz-background-size: 24px 16px;
+  -o-background-size: 24px 16px;
+  -webkit-background-size: 24px 16px; 
+}
+
+.filterScreen .ui-navbar li .ui-btn-icon-top .ui-btn-inner {
+    padding: 34px 0 6px;
+}
+    
+#sectorFilterLink .ui-icon { 
+	background:  url(../img/custom-icons/factory.png) 50% 50% no-repeat; 
+}
+
+#stateFilterLink .ui-icon { 
+	background:  url(../img/custom-icons/103-map.png) 50% 50% no-repeat; 
+}
+
+#ghgFilterLink .ui-icon { 
+	background:  url(../img/custom-icons/gas.png) 50% 50% no-repeat; 
+}
+
+#emissionFilterLink .ui-icon { 
+	background:  url(../img/custom-icons/106-sliders.png) 50% 50% no-repeat; 
+}
+
+.ui-page .filterBtn .ui-icon { 
+	background:  url(../img/icons/green_filter.png) 50% 50% no-repeat; 
+/* 	background-size: 100% 100%;   */
+}
+
+.ui-page .sortBtn .ui-icon { 
+	background:  url(../img/icons/green_sort.png) 50% 50% no-repeat; 
+}
+
+.ui-page .mapBtn .ui-icon { 
+	background:  url(../img/icons/green_globe.png) 50% 50% no-repeat;
+}
+
+.ui-page .listBtn .ui-icon { 
+  background:  url(../img/icons/list-icon.png) 50% 50% no-repeat;
+}
+
+[data-icon="share"] .ui-icon { background:  url(../img/icons/lime_share.png) 50% 50% no-repeat; background-size: 24px 16px;  }
+
+/* .nav-glyphish-example .ui-btn-active { */
+/*     background: white !important; */
+/* } */
+/** End Glyphish Icon set */
+
+/** Change in the future **/
+/*
+#filterScreen #leftPanel-popup {
+    right: 0 !important;
+    left: auto !important;
+    float: left;
+    width: 40%;
+}
+
+#filterScreen #leftPanel {
+    border: 1px solid #000;
+    border-right: none;
+    background: rgba(0,0,0,.5);
+}
+
+#filterScreen #leftPanel .ui-btn {
+	padding: 0;
+  margin: 10px 0;
+}
+
+#filterScreen #leftPanel li a {
+  padding: 15% 5px;
+  display: block;
+}
+
+#filterScreen #leftPanel li a[href='#emissionRangeFilter'] {
+  padding-top: 55%;
+  padding-bottom: 55%;
+  display: block;
+}
+
+#filterScreen .filterSection {
+	float: right;
+	width: 60%;
+}
+*/
+/** End Change **/
+/*
+#filterScreen fieldset[data-role='controlgroup'] {
+	margin: 0;
+}
+
+#filterScreen fieldset[data-role='controlgroup'] .ui-btn-inner {
+	padding: 0.6em 0.2em 0.6em 45px;
+}
+
+#filterScreen #stateFilter .ui-select {
+	margin: 0 0.4em;
+}
+*/
+
+#filterScreen .filterFormBtns .ui-btn {
+	width:         42%;
+	margin-left:   5%;
+	float:         left;
+}
+
+
+/* Confirmation Buttons */
+#filterScreen .filterFormBtns .ui-btn-inner {
+  font-size: 1.2em;
+  padding: 1em 11px;
+}
+
+
+/* Style for Dual Range Slider */
+
+/* .emissionRange { */
+/*   position: relative; */
+/*   height: 30px; */
+/*   margin-top: 10%; */
+/* }         */
+
+/* /* moves label field */ */
+/* .emissionRange #emission_slider_min { */
+/*   top: -40px; */
+/*   position: absolute; */
+/*   left: 100px; */
+/* }        */
+
+/* /* moves first input field  */ */
+/* .emissionRange #emission_slider_max { */
+/*   top: -40px; */
+/*   position: absolute; */
+/*   left: 170px; */
+/* }       */
+
+/* /* move second input field  */ */
+/* .emissionRange div.ui-slider { */
+/* 	position:   absolute; */
+/* 	margin-top: 10%; */
+/* }                    */
+
+/* /* move both sliders - addressing 1st slider with CSS is hard  */ */
+/* .emissionRange div:last-child { */
+/* 	position: absolute; */
+/* 	left: 0px; */
+/* } */
+
+/* .emissionRange .minEmissionSlider, .emissionRange .maxEmissionSlider { */
+/* 	display:   none; */
+/* } */
+
+/* .emissionRange p { */
+/* 	font-size:     0.8em; */
+/* 	padding-left:  20px; */
+/* } */
+
+
+/**
+ * Results List Page
+***/
+.ui-grid-b > *:nth-child(n) {
+	width: 50%;
+}
+
+/*
+#resultsList [data-role="footer"] [data-role="navbar"] .filterBtn {
+	.ui-icon { background:  url(../img/custom-icons/136-tractor.png) 50% 50% no-repeat; background-size: 24px 16px;  }
+}
+*/
+
+
+/**
+ * Facility Detail Page
+**/
+ 
+.spatialDetail table {
+	width: 100%;
+}
+
+.spatialDetail table tbody tr td:last-child {
+    width: 30%;
+}
+
+.spatialDetail table tbody tr td:first-child {
+    width: 70%;
+}
+
+.fd-leftSide {
+	float: left;
+}
+
+.fd-rightSide {
+	float: right;
+	width: 30%;
+}
+
+[data-role="content"] b {
+	font-weight: bold;
+}
+
+[data-role="content"] strong {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.mobile-share-container {
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+.mobile-share-container .share-overlay {
+    background: none repeat scroll 0 0 #000000;
+    height: 100%;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.mobile-share-list {
+    background: none repeat scroll 0 0 #DDDCD7;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 2px 13px #2B2B2B;
+    margin: 35% auto 0;
+    min-width: 250px;
+    position: relative;
+    width: 40%;
+    z-index: 99;
+}
+.mobile-share-list li {
+    border-bottom: 1px solid #B9B9B9;
+    list-style-type: none;
+}
+.mobile-share-list li.email-share {
+    border: 0 none;
+}
+.mobile-share-list li a {
+/*     background: url("mobile/img/ssmobilesprite.png") no-repeat scroll 4px -1544px transparent; */
+    display: block;
+    padding: 16px 5px 24px 51px;
+}
+.mobile-share-list li a.fb-share {
+	background: url("../img/facebook.png") no-repeat scroll 8px 11px;
+}
+.mobile-share-list li a.tw-share {
+	background: url("../img/twitter.png") no-repeat scroll 8px 11px;
+}
+.mobile-share-list li a.google-plus-share {
+	background: url("../img/google-plus.png") no-repeat scroll 8px 11px;
+}
+.mobile-share-list li.reddit-share a {
+	background: url("../img/reddit.png") no-repeat scroll 8px 11px;
+}
+.mobile-share-list a.close, .lastScreen .close-btn {
+    background: url("../img/ssmobilesprite.png") no-repeat scroll -11px -1703px transparent;
+    height: 28px;
+    padding: 0;
+    position: absolute;
+    right: -12px;
+    top: -13px;
+    width: 28px;
+}  
+
+
+/* Keep click events from going through the footer elements */
+#ResultsList .ui-footer .ui-navbar ul li a { 
+  pointer-events: all;
+}

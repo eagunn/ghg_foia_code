@@ -1,0 +1,98 @@
+[
+  { 
+    "name": "Oregon Facility",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "81,123 mt CO2e"
+  },
+  {
+    "name": "Naval Research Labs",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "412,231 mt CO2e"
+  },
+  {
+    "name": "Navada Facility",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "613 mt CO2e"
+  },
+  {
+    "name": "Capital Power Plant",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "21,546 mt CO2e"
+  },
+  { 
+    "name": "Oregon Facility",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "81,123 mt CO2e"
+  },
+  {
+    "name": "Naval Research Labs",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "412,231 mt CO2e"
+  },
+  {
+    "name": "Navada Facility",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "613 mt CO2e"
+  },
+  {
+    "name": "Capital Power Plant",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "21,546 mt CO2e"
+  },
+  {
+    "name": "Navada Facility",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "613 mt CO2e"
+  },
+  {
+    "name": "Capital Power Plant",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "21,546 mt CO2e"
+  },
+  {
+    "name": "Navada Facility",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "613 mt CO2e"
+  },
+  {
+    "name": "Capital Power Plant",
+    "street": "123 Street Dr",
+    "city" : "Fairfax",
+    "state" : "VA",
+    "zip" : "22030",
+    "emissions": "21,546 mt CO2e"
+  }         
+]

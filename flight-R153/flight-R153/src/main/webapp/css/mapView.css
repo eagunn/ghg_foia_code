@@ -1,0 +1,58 @@
+.overlayToggleWrapper {
+  margin: 10px;
+  z-index: 0;
+  position: absolute;
+  cursor: pointer;
+  left: 0px;
+  top: 0px; }
+
+.overlayToggleElement, .overlayToggleElementSelected {
+  float: left;
+  direction: ltr;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  color: #565656;
+  font-family: Roboto, Arial, sans-serif;
+  -webkit-user-select: none;
+  font-size: 11px;
+  padding: 8px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.29804) 0px 1px 4px -1px;
+  border-left-width: 0px;
+  min-width: 37px;
+  background-color: white;
+  background-clip: padding-box; }
+
+.overlayToggleElementSelected {
+  color: black;
+  min-width: 21px;
+  font-weight: 500; }
+
+.moving,
+.moving * {cursor: move !important;} 
+
+#bubbleSliderWrapper {
+  margin-top: 40px;
+  min-width: 200px;
+  width: 210px; }
+  #bubbleSliderWrapper p {
+    float: left;
+    color: #439f3e; }
+    #bubbleSliderWrapper p#lowEText {
+      margin-left: -25px; }
+    #bubbleSliderWrapper p#highEText {
+      margin-left: 10px; }
+    #bubbleSliderWrapper p#bubbleSliderTitle {
+      text-align: center;
+      font-weight: bold;
+      float: none; }
+  #bubbleSliderWrapper #bubbleSlider {
+    float: left;
+    width: 100px; }
+
+#bubbleSliderSubWrapper {
+  margin-left: 18px; }
+
+/*# sourceMappingURL=mapView.css.map */

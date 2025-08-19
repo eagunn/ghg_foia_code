@@ -1,0 +1,17 @@
+[
+  {
+    "facilityName"    :   "The George Washington University",
+    "totalEmissions"  :   "29835",
+    "street"          :   "2026 F St NW",
+    "city"            :   "Washington",
+    "state"           :   "DC",
+    "zipcode"         :   "20065",
+    "latitude"        :   "38 53.84 N",
+    "longitude"       :   "77 02.76 W",
+    "frsId"          :   "110002500945",
+    "naicsCode"      :   "611310",
+    "carbonDioxide"   :   "29806",
+    "methane"         :   "126",
+    "nitrousOxide"    :   "21"
+  }  
+]

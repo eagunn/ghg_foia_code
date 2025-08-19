@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context crossContext="true" displayName="FLIGHT" reloadable="false" privileged="true">
+	<!-- <ResourceLink
+			name="jdbc/ghgp-ds"
+			global="jdbc/ghgp-ds"
+			auth="Container"
+			type="javax.sql.DataSource"
+	/> -->
+	<Resource
+		auth="Container"
+		name="jdbc/ghgp-ds"
+		type="javax.sql.DataSource"
+		driverClassName="oracle.jdbc.OracleDriver"
+		url=
+		username=
+		password=
+		maxTotal="5"
+		maxIdle="2"
+		maxWaitMillis="10000"
+		removeAbandonedOnBorrow="true"
+		removeAbandonedOnMaintenance="true"
+		logAbandoned="true"
+		removeAbandonedTimeout="60"
+	/>
+</Context>

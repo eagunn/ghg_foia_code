@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+		xmlns="http://www.springframework.org/schema/beans"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/util
+	   http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:component-scan base-package="gov.epa.ghg">
+		<context:exclude-filter type="aspectj" expression="gov.epa.ghg.presentation.*"/>
+	</context:component-scan>
+	
+	<context:annotation-config/>
+	
+	<context:property-placeholder location="classpath:ghg.properties"/>
+	
+	<!--
+		spring framework data source
+		(used for running j-unit test)
+	-->
+	<!--
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+				<property name="driverClassName">
+						<value>${ghg.ds.driver}</value>
+				</property>
+				<property name="url">
+						<value>${ghg.ds.url}</value>
+				</property>
+				<property name="username">
+						<value>${ghg.ds.username}</value>
+				</property>
+				<property name="password">
+						<value>${ghg.ds.password}</value>
+				</property>
+		</bean>
+	 -->
+	<!--
+		JNDI dataSource lookup
+	-->
+	<jee:jndi-lookup id="dataSource" jndi-name="${ghg.jndi.name}"/>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="gov.epa.ghg.domain"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${ghg.ds.dialect}</prop>
+				<prop key="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</prop>
+				<prop key="hibernate.spatial.connection_finder">org.geolatte.geom.codec.db.oracle.DefaultConnectionFinder</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">ehcache-singleton</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">/ehcache.xml</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<bean id="switchDataSourceUrl" class="java.lang.String">
+		<constructor-arg value="https://cfpub.epa.gov/ghgdata/inventoryexplorer/"/>
+	</bean>
+	
+	<util:map id="reportingYears" map-class="java.util.LinkedHashMap">
+		<entry key="2023" value="2023"/>
+		<entry key="2022" value="2022"/>
+		<entry key="2021" value="2021"/>
+		<entry key="2020" value="2020"/>
+		<entry key="2019" value="2019"/>
+		<entry key="2018" value="2018"/>
+		<entry key="2017" value="2017"/>
+		<entry key="2016" value="2016"/>
+		<entry key="2015" value="2015"/>
+		<entry key="2014" value="2014"/>
+		<entry key="2013" value="2013"/>
+		<entry key="2012" value="2012"/>
+		<entry key="2011" value="2011"/>
+		<entry key="2010" value="2010"/>
+	</util:map>
+	
+	<bean id="dataDate" class="java.lang.String">
+		<constructor-arg value="08/16/2024"/>
+	</bean>
+	
+	<bean id="dataText" class="java.lang.String">
+		<constructor-arg value="Data reported to EPA as of "/>
+	</bean>
+	
+	<bean id="dataCredit" factory-bean="dataText" factory-method="concat">
+		<constructor-arg ref="dataDate"/>
+	</bean>
+	
+	<bean id="startYear" class="java.lang.Long">
+		<constructor-arg value="2011"/>
+	</bean>
+	
+	<bean id="endYear" class="java.lang.Long">
+		<constructor-arg value="2023"/>
+	</bean>
+	
+	<bean id="helplinkurlbase" class="java.lang.String">
+		<!-- short Google URL: http://goo.gl/8086HU -->
+		<constructor-arg value="https://ccdsupport.com/confluence/display/ghgp/Home"/>
+	</bean>
+</beans>

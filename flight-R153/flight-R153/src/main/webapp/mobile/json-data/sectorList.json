@@ -1,0 +1,12 @@
+[
+  { "id": "s1",  "name": "Power Plants"                       },
+  { "id": "s2",  "name": "Petroleum and Natural Gas Systems"  },
+  { "id": "s3",  "name": "Refineries"                         },
+  { "id": "s4",  "name": "Chemicals"                          },
+  { "id": "s5",  "name": "Other"                              },
+  { "id": "s6",  "name": "Waste"                              },
+  { "id": "s7",  "name": "Metals"                             },
+  { "id": "s8",  "name": "Minerals"                           },
+  { "id": "s9",  "name": "Pulp and Paper"                     } 
+]
+    

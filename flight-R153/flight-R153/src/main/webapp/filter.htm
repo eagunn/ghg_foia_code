@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta charset="UTF-8">    
+  <title>GHG Data | Welcome To The Green House Gases Mobile Website</title>        
+</head>
+
+<body>
+
+  <div data-role="page" id="filterScreen" data-theme="j" class="filterScreen">
+  
+    <!-- No Header -->
+      
+    <!-- Navigation bar instead of Side panel -->
+    <div data-role="navbar" class="custom-nav-top" data-theme="j" >
+      <ul>
+        <li><a data-theme="c" id="sectorFilterLink" href="#" data-icon="custom" class="ui-btn-active ui-state-persist">Sector</a></li>
+        <li><a data-theme="c" id="stateFilterLink" href="#" data-icon="custom">State</a></li>
+        <li><a data-theme="c" id="ghgFilterLink" href="#" data-icon="custom">GHG</a></li>
+        <li><a data-theme="c" id="emissionFilterLink" href="#" data-icon="custom">Emission Range</a></li>
+      </ul>
+    </div>
+	  <!-- /navbar -->
+			    
+    <!-- content -->
+    <div data-role="content">
+    	    
+	    <form id="filterForm" class="filterSection" action="service/filterFacilities/2015" method="post">
+	    
+        <div id="sectorFilter" class="menuSection">
+          <fieldset data-role="controlgroup">
+            <!-- JSON Sector Filters inserted here -->
+            <script type="text/x-jsrender" id="sectorListTmpl">              
+              <label for="{{:id}}"> {{:name}} </label>
+              <input type="checkbox" name="{{:id}}" id="{{:id}}" class="custom" checked/>              
+            </script>
+			    </fieldset>
+        </div>
+        
+        <div id="stateFilter" class="menuSection">
+          <select name="st" id="stateMenu" data-native="true" data-theme="j">
+<!--             <option value="" data-placeholder="true">United States DEFAULT</option> -->
+            <!-- JSON States inserted here -->
+             <script type="text/x-jsrender" id="stateListTmpl">              
+              <option value="{{:id}}"> {{:name}} </option>              
+            </script>
+          </select>
+        </div>
+        
+        <div id="ghgFilter" class="menuSection">
+          <fieldset data-role="controlgroup">
+            <!-- JSON GHG Filters inserted here -->
+             <script type="text/x-jsrender" id="ghgListTmpl">
+                <label for="{{:id}}"> {{:name}} </label>
+                <input type="checkbox" name="{{:id}}" id="{{:id}}" class="custom" checked/>
+            </script>
+         </fieldset>          
+        </div>
+        
+        <div id="emissionRangeFilter" class="menuSection">
+          <div data-role="rangeslider">
+            <label for="emission_slider_min">Emission Range in Metric Tons CO<sub>2</sub>e</label>
+            <input type="range" name="lowE" id="emission_slider_min" min="0" max="23000000" value="0">
+            <label for="emission_slider_max">Emission Range in Metric Tons CO<sub>2</sub>e</label>
+            <input type="range" name="highE" id="emission_slider_max" min="0" max="23000000" value="23000000">
+          </div>          
+        </div>
+        
+        <input type="hidden" name="q" />
+        <input type="hidden" name="fc"/>
+        <input type="hidden" name="sc" value="0"/>
+        <input type="hidden" name="so" value="0"/>
+        <input type="hidden" name="ds" value="E"/>
+        <input type="hidden" name="pg" value="0"/>
+        
+	    </form>
+	    
+    </div>
+    
+    <!-- footer -->
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="j">   
+      <!-- Footer will consist of a Confirmation and Cancellation button -->
+      <div class="filterFormBtns">
+	      <a data-role="button" id="saveBtn" data-theme="e">Save</a>
+	      <a data-role="button" id="cancelBtn" data-theme="g" data-rel="back">Cancel</a>
+      </div>         
+    </div>
+    
+  </div>
+
+</body>
+</html>

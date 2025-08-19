@@ -1,0 +1,110 @@
+	#foreach($!tab in $!roleInfoBean.permittedTabs)
+		#if($!tab == 'Home') #set($home = 'true') #end
+		#if($!tab == 'Facility Registration') #set($facreg = 'true') #end
+		#if($!tab == 'Facility Management') #set($facmgmt = 'true') #end
+		#if($!tab == 'Data Reporting') #set($datarep = 'true') #end
+		#if($!tab == 'Reports') #set($rep = 'true') #end
+		#if($!tab == 'Helpdesk') #set($helpdesk = 'true') #end
+		#if($!tab == 'User Registration') #set($userreg = 'true') #end
+	#end
+        <div id="header">
+            <div class="epalogo">
+                <a href="http://www.epa.gov/" title="US EPA Home Page">
+                    <img src="$base/img/print-epa-logo.gif" alt="US Environmental Protection Agency logo" style="display:none;"/>
+                </a>
+            </div>
+			<ul id="primary_navigation">
+		                #if($!home)<li id="nav_01"><a href="$base/main.do" #if($!roleInfoBean.currentPattern eq '/ghg/main.do') id="primaryON" #end name="home" title="Home">Home</a></li>#end
+		                #if($!facreg)<li id="nav_02"><a href="$base/registration/process.do" #if($!roleInfoBean.currentPattern eq '/ghg/registration/' or $!roleInfoBean.currentPattern eq '/ghg/assignment/')
+		                								id="primaryON" #end name="facilityRegistration" title="Facility Registration">Facility Registration</a></li>#end
+		                #if($!facmgmt)<li id="nav_03">
+		                			  <a href="$base/facilitymanagement/main.do" #if($!roleInfoBean.currentPattern eq '/ghg/facilitymanagement/')
+		                			  	 id="primaryON" #end name="facilityManagement" title="Facility Management">Facility Management</a></li>#end
+		                ## #if($!datarep)<li id="nav_04"><a href="$base/datareporting/main.do" #if($!roleInfoBean.currentPattern eq '/ghg/datareporting/') id="primaryON" #end name="dataReporting" title="Data Reporting">Data Reporting</a></li>#end
+		                #if($!datarep)<li id="nav_04"><a href="$base/datareporting/facility_select.do" #if($!roleInfoBean.currentPattern eq '/ghg/datareporting/') id="primaryON" #end name="dataReporting" title="Data Reporting">Data Reporting</a></li>#end
+		                #if($!rep)<li id="nav_05"><a href="$base/reports/main.do" #if($!roleInfoBean.currentPattern eq '/ghg/reports/') id="primaryON" #end name="reports" title="Reports">Reports</a></li>#end
+		                
+		                #if($!helpdesk)<li id="nav_06"><a href="$base/helpdesk/main.do" #if($!roleInfoBean.currentPattern eq '/ghg/helpdesk/') id="primaryON" #end name="helpDesk" title="Help Desk">Help Desk</a></li>#end
+            </ul>
+			#if($userreg && $!roleInfoBean.currentPattern ne '/ghg/login.do')
+			<ul id="ur_navigation">
+            	<li id="nav_01"><a href="$base/userRegistrationMain.do" #if($!roleInfoBean.currentPattern eq '/ghg/userRegistrationMain.do') id="primaryON" #end title="User Registration">User Registration</a></li>
+  			</ul>
+  			#end
+        </div>
+        <div id="tabbar">
+        #if(!$!roleInfoBean.userPermissionName)<!-- If it's the login page, don't display anything-->
+            <ul id="subtabs">
+                <li id="not">&nbsp;</li>
+            </ul>
+        #elseif($!roleInfoBean.currentPattern eq '/ghg/registration/')
+            #set($phase = $session.getAttribute("phase"))
+            <ul style="color:#FFFFFF;">
+                <li id="#{if}($request.getAttribute('phase') eq 1)current#{else}not#end">
+                    <nobr>About Registration</nobr>
+                </li>
+                <li id="#{if}($request.getAttribute('phase') gt 1)current#{else}not#end">
+                    <nobr>
+                        <img src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />
+                        Facility Setup
+                    </nobr>
+                </li>
+                <li id="not">
+                    <nobr>
+                        <img src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />
+                        Verification
+                    </nobr>
+                </li>
+                <li id="not">
+                    <nobr>
+                        <img src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />
+                        Accept Assignments
+                    </nobr>
+                </li>
+            </ul>
+		#elseif($!roleInfoBean.currentPattern eq '/ghg/facilitymanagement/')
+            <ul style="color:#FFFFFF;">
+                <li id="current">
+                    <nobr>
+                        <a href="$base/facilitymanagement/main.do">My Facilities</a>
+                    </nobr>
+                </li>
+                <li id="not">
+                    <nobr>
+                        <img src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />
+                        Facility Summary
+                    </nobr>
+                </li>
+            </ul>
+		#elseif($!roleInfoBean.currentPattern eq '/ghg/assignment/')
+            <ul style="color:#FFFFFF;">
+                <li id="not">
+                    <nobr>About Registration</nobr>
+                </li>
+                <li id="not">
+                    <nobr><img alt="" src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />Facility Setup</nobr>
+                </li>
+                <li id="not">
+                    <nobr><img alt="" src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />Verification</nobr>
+                </li>
+                <li id="current">
+                    <nobr><img alt="" src="$base/img/arrow_icon_grey2.gif" width="9" height="11" style="margin-right:3px;" />Accept Assignment</nobr>
+                </li>
+            </ul>
+		#end
+           <ul id="subtabs">
+               <li id="not">&nbsp;</li>
+           </ul>
+        #if($!roleInfoBean.currentPattern ne '/ghg/login.do' &&
+        	($!roleInfoBean.esaStatus eq 24) || $!roleInfoBean.esaStatus eq 25 || $!roleInfoBean.esaStatus eq 26)
+        	<!-- Only display, if it's not the login page or the User Registration-->
+            <div id="welcome">
+                #set($user = $session.getAttribute("user"))
+                Hello, $user.firstName $user.lastName &nbsp;|&nbsp;
+                #if($!user.esaStatus ne 24 && $!roleInfoBean.esaStatus ne 26)
+	                <a href="$base/myprofile/profile.do">My Profile</a> &nbsp;|&nbsp;
+                #end
+                <a href="$base/logout.do">Logout</a>
+            </div>
+        #end
+        </div>

@@ -1,0 +1,145 @@
+	.centerDIV {
+	background-color: #FFFFFF;
+	width: 766px;
+	}
+	
+    #TABnav {
+	font-size: 1.0em;
+	font-family: Arial, Helvetica, sans-serif;
+	padding-top: 0px;
+	padding-left: 10px;
+	background-image: url(../img/5x8_tab_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left bottom;
+	background-color: #37A;
+    }
+	
+    #TABnav ul {
+	margin:0;
+	list-style:none;
+	position: relative;
+	left: -40px;
+    }
+	
+    #TABnav li {
+	float:left;
+	margin-right:1px;
+	padding:0px;
+    }
+	
+    #TABnav a {
+    display:list-item;
+    text-decoration:none;
+    }
+	
+    #TABnav #current {
+	background:url(../img/tab_a_right.gif) no-repeat right top;
+	border-width:0;
+	font-weight: bold;
+    }
+	
+    #TABnav #current a {
+    background:url(../img/tab_a_left.gif) no-repeat left top;
+    color:#000;
+	padding: 4px 10px 5px 10px;
+    }
+	
+    #TABnav #current a:hover {
+	cursor: default;
+    }
+	
+	#TABnav #not {
+	background: url(../img/tab_right.gif) no-repeat right top;
+	margin-top: 3px;
+	
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #556677;
+	}
+	
+    #TABnav #not a {
+	background:url(../img/tab_left.gif) no-repeat left top;	
+	color: #000;
+	padding: 2px 10px 3px 10px;
+    }
+	
+    #TABnav #not a:hover {
+	color:#FFF;
+	text-decoration: none;
+    }
+
+/* - - - SUB NAV -- TABBAR - - - - - - - - - - - - - - - */
+
+#SUBnav {
+	font-size: 1.0em;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image:  url(../img/sub_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left center;
+	background-color: #CCDDEE;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #556677;
+	border-left-color: #556677;
+	/*
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #556677;
+	border-left-color: #556677;
+	*/
+    }
+	
+    #SUBnav ul {
+	margin:0;
+	list-style:none;
+	position: relative;
+	left: -40px;
+    }
+	
+    #SUBnav li {
+	float:left;
+	padding:3px 12px 4px 12px;
+    }
+	
+    #SUBnav a {
+    text-decoration:none;
+    }
+	
+    #SUBnav #current {
+	background:url(../img/sub_bg_a.gif) repeat-x left center;
+	font-weight: bold;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #493;
+    }
+	
+    #SUBnav #current a {
+    color:#000;
+    }
+	
+    #SUBnav #current a:hover {
+	cursor: default;
+    }
+	
+	#SUBnav #not {
+	}
+	
+    #SUBnav #not a {
+	color: #000;
+    }
+	
+    #SUBnav #not a:hover {
+	text-decoration: underline;
+    }
+	
+	.tabbedcontent {
+	padding: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #334455;
+	}

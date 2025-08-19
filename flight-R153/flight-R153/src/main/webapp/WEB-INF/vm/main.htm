@@ -1,0 +1,1687 @@
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="keywords" content="climate change, global warming, United States, greenhouse gas emissions, GHG, GHG emissions, GHG information, carbon dioxide, methane, nitrous oxide, greenhouse gas reporting program, GHGRP, GHG data, data, facility, city, state, emissions, EPA, 2010, power plants, refineries, landfills, oil, gas, coal, suppliers"/>
+	<!-- Following lines are used for Facebook integration via Open Graph meta tags -->
+	<meta property="og:url" content="https://ghgdata.epa.gov/ghgp/main.do"/>
+	<meta property="og:title" content="EPA Facility Level GHG Emissions Data"/>
+	<meta property="og:description" content="Facility Level Information on Greenhouse Gases Tool"/>
+	<meta property="og:image" content="https://ghgdata.epa.gov/ghgp/img/flight_logo.png"/>
+	<!-- Following line is used for Twitter integration -->
+	<meta name="title" content="EPA Facility Level GHG Emissions Data"/>
+	<!--[if IE]><![endif]--> <!-- See https://www.1stwebdesigner.com/design/snippets-html5-boilerplate -->
+	<!-- Following line is used for Facebook integration -->
+	<link rel="image_src" href="img/map.png"/>
+	<!-- CSS -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="css/WithBootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="css/pub_emitter.css"/>
+	<link type="text/css" rel="stylesheet" href="css/dropdown.css"/>
+	<link type="text/css" rel="stylesheet" href="css/base.css"/>
+	<link type="text/css" rel="stylesheet" href="css/PieChart.css"/>
+	<link type="text/css" rel="stylesheet" href="css/BarChart.css"/>
+	<link type="text/css" rel="stylesheet" href="css/trendChart.css"/>
+	<link type="text/css" rel="stylesheet" href="css/mapView.css"/>
+	<link type="text/css" rel="stylesheet" href="css/dashboard.css"/>
+	<link type="text/css" rel="stylesheet" href="css/autocomplete.css"/>
+	<link type="text/css" rel="stylesheet" href="css/layout-default-latest.css"/>
+	<link type="text/css" rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css"/>
+	<link type="text/css" rel="stylesheet" href="css/slick.grid.css"/>
+	<link type="text/css" rel="stylesheet" href="css/slick-default-theme.css"/>
+	<link type="text/css" rel="stylesheet" href="css/animate.css"/>
+	<!-- leaflet css -->
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.css"/>
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.control.topcenter.css"/>
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.control.fullscreen.css"/>
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.control.zoomlabel.css"/>
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.ghgp.css"/>
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.markercluster.css"/>
+	<link type="text/css" rel="stylesheet" href="css/leaflet/leaflet.markercluster.default.css"/>
+	<!-- JAVASCRIPT -->
+	<!-- anything that Javascript needs and which Velocity supplies is transported here to JS -->
+	<script>
+		//application root
+		var ROOT = '#springUrl("")';
+		var startYr = "$!{startYear}";
+		var ryear = "$!{endYear}";
+		var dataDate = "$!{dataDate}";
+		var dsUrl = "$!{dsUrl}";
+		var helplinkurlbase = "$!{helplinkurlbase}";
+	</script>
+	<!-- part of new requirejs app, later!-->
+	<!-- <script data-main="js/app_config" src="js/require.js"></script> -->
+	<!-- dependencies -->
+	<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.layout.min.js"></script>
+	<script type="text/javascript" src="//www.google.com/jsapi"></script>
+	<script type="text/javascript" src="js/pubsub.js"></script>
+	<script type="text/javascript" src="//code.highcharts.com/12.1.0/highcharts.js"></script>
+	<script type="text/javascript" src="//code.highcharts.com/12.1.0/modules/exporting.js"></script>
+	<script type="text/javascript" src="js/jquery.address-1.4.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/lodash/4.14.2/lodash.js"></script>
+	<script type="text/javascript" src="js/jquery.ddslick.min.js"></script>
+	<script type="text/javascript" src="js/jquery.event.drag-2.2.js"></script>
+	<script type="text/javascript" src="js/slick.core.js"></script>
+	<script type="text/javascript" src="js/slick.grid.js"></script>
+	<script type="text/javascript" src="js/slick.dataview.js"></script>
+	<script type="text/javascript" src="js/slick.autotooltips.js"></script>
+	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<!-- app -->
+	<!-- leaflet library -->
+	<script type="text/javascript" src="js/app/leaflet/leaflet.js"></script>
+	<script type="text/javascript" src="js/app/leaflet/esri-leaflet.js"></script>
+	<script type="text/javascript" src="js/app/leaflet/leaflet.ghgp.js"></script>
+	<script type="text/javascript" src="js/app/leaflet/leaflet.control.topcenter.js"></script>
+	<script type="text/javascript" src="js/app/leaflet/leaflet.control.fullscreen.js"></script>
+	<script type="text/javascript" src="js/app/leaflet/leaflet.control.zoomlabel.js"></script>
+	<script type="text/javascript" src="js/app/leaflet/leaflet.markercluster.js"></script>
+	<!-- heatmap unused -->
+	<!-- <script type="text/javascript" src="js/app/heatmap.js"></script> -->
+	<script type="text/javascript" src="js/app/backend.js"></script>
+	<script type="text/javascript" src="js/app/bounceButtons.js"></script>
+	<script type="text/javascript" src="js/app/export.js"></script>
+	<script type="text/javascript" src="js/app/filter.js"></script>
+	<script type="text/javascript" src="js/app/helpers.js"></script>
+	<script type="text/javascript" src="js/app/map.js"></script>
+	<script type="text/javascript" src="js/app/popups.js"></script>
+	<script type="text/javascript" src="js/app/query_generators.js"></script>
+	<script type="text/javascript" src="js/app/sector.js"></script>
+	<script type="text/javascript" src="js/app/share.js"></script>
+	<script type="text/javascript" src="js/app/states.js"></script>
+	<script type="text/javascript" src="js/app/trend.js"></script>
+	<script type="text/javascript" src="js/app/ui.js"></script>
+	<script type="text/javascript" src="js/app/ui_reset.js"></script>
+	<script type="text/javascript" src="js/app/barchart.js"></script>
+	<script type="text/javascript" src="js/app/listChart.js"></script>
+	<script type="text/javascript" src="js/app/piechart.js"></script>
+	<script type="text/javascript" src="js/app/treemap.js"></script>
+	<!-- new app files added gradually -->
+	<script type="text/javascript" src="js/app/new_app/_ParameterPrototype.js"></script>
+	<script type="text/javascript" src="js/app/new_app/_Parameters.js"></script>
+	<script type="text/javascript" src="js/app/new_app/State.js"></script>
+	<script type="text/javascript" src="js/app/new_app/County.js"></script>
+	<script type="text/javascript" src="js/app/new_app/TribalLand.js"></script>
+	<script type="text/javascript" src="js/app/new_app/MetroArea.js"></script>
+	<script type="text/javascript" src="js/app/new_app/FacOrLoc.js"></script>
+	<script type="text/javascript" src="js/app/new_app/LowE.js"></script>
+	<script type="text/javascript" src="js/app/new_app/HighE.js"></script>
+	<script type="text/javascript" src="js/app/new_app/DataSource.js"></script>
+	<script type="text/javascript" src="js/app/new_app/ReportingYear.js"></script>
+	<script type="text/javascript" src="js/app/new_app/EmissionsType.js"></script>
+	<script type="text/javascript" src="js/app/new_app/App.js"></script>
+	<script type="text/javascript" src="js/app/main.js"></script>
+	<!-- shim -->
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+	<script>
+		window.attachEvent("onload", function () {
+			CFInstall.check({
+				onmissing: function () {
+					var cfString = "<img src='img/ie8-logo.png' alt='Internet Explorer logo' width='30' height='30' align='absmiddle' style='margin-right:10px'/>You are using Internet Explorer 8 or below.  This tool will perform better in your browser if you download <a href='https://www.google.com/chromeframe/eula.html?quickenable=true'>Google Chrome Frame</a>";
+					$('#welcomeWindowEmitters').attr('style', 'padding-bottom:90px;background-image:url(img/welcomeBG2.gif);background-color:#FFF;background-position:center;background-repeat:no-repeat;border:4px solid #999;padding-left:5px');
+					$('#ieEmitter').attr('style', 'padding:10px; margin:15px; border:1px solid #666; background-color:#DFD; color:#000');
+					$('#ieEmitter').html(cfString);
+					$('#ieSupplier').attr('style', 'padding:10px; margin:15px 15px 15px -20px; border:1px solid #666; background-color:#DFD; color:#000');
+					$('#ieSupplier').html(cfString);
+					$('#ieCloseEmitter').attr('style', 'padding:10px; margin:15px; border:1px solid #666; background-color:#DFD; color:#000');
+					$('#ieCloseEmitter').html(cfString);
+					$('#ieCloseSupplier').attr('style', 'padding:10px; margin:15px; border:1px solid #666; background-color:#DFD; color:#000');
+					$('#ieCloseSupplier').html(cfString);
+				},
+				preventPrompt: "true"
+			});
+		});
+	</script>
+	<![endif]-->
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-41373665-1', 'epa.gov');
+		ga('send', 'pageview');
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#ShareLink a').click(function (event) {
+				$("#shareInputLink").val('');
+				event.preventDefault();
+				var longUrl = encodeURIComponent(window.location.href);
+				jQuery.ajax({
+					type: 'GET',
+					url: '#springUrl("/service/urlShortener")',
+					data: 'longUrl=' + longUrl,
+					success: function (response) {
+						if (response.statusCode == "ERROR") {
+							$("#shareInputLink").val(response.errorMessage);
+						} else {
+							var shortUrl = response.data.entry[0].short_url
+							$("#shareInputLink").val(shortUrl);
+						}
+					},
+					error: function (err) {
+						$("#shareInputLink").val(err.errorMessage);
+					}
+				});
+			});
+			
+			//clear placeholder text on focus
+			$(".srchFind").on("click focusin", function() {
+			    this.value = '';
+			});
+			
+			//search options popups
+			$(".srchSelect").click(function() {
+			    $(".srchOption").prop("checked", true);
+			});
+			$(".srchDeselect").click(function() {
+			   $(".srchOption").prop("checked", false);
+			});
+		});
+	</script>
+	<style>
+		#boxes .window {
+			position: absolute;
+			left: -3px;
+			top: -4px;
+			width: 440px;
+			height: 200px;
+			display: none;
+			z-index: 9999;
+			line-height: 1.5em;
+		}
+		
+		#boxes #dialog {
+			width: 150px;
+			height: 40px;
+			padding: 3px;
+			background-color: #ffffff;
+		}
+		
+		#boxes #dialogDownload {
+			width: 150px;
+			height: 110px;
+			padding: 10px;
+			background-color: #ffffff;
+		}
+		
+		#boxes #dialogShare {
+			width: 150px;
+			height: 110px;
+			padding: 10px;
+			background-image: url(img/dialogueShareBG.gif)
+		}
+		
+		#boxes #dialogShare a {
+			font-size: 15px;
+			font-weight: bold;
+		}
+		
+		#boxes #welcomeWindow {
+			width: 875px;
+			height: 410px;
+		}
+		
+		#mask {
+			position: fixed;
+			z-index: 9000;
+			background-color: #000;
+			margin: -15px 0px 0px -15px;
+			display: none;
+		}
+		
+		.listHeader {
+			background: url("title-bg.gif") repeat-x scroll left bottom #FFFFFF;
+			font-size: 0.9em;
+			font-weight: bold;
+		}
+		
+		#container {
+			height: 100%;
+			width: 100%;
+			height: 500px;
+		}
+		
+		/** FIX for Bootstrap and Google Maps Info window styes problem **/
+		img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+			max-width: none;
+		}
+	</style>
+	<script>(function (w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+		j.async = true;
+		j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, 'script', 'dataLayer', 'GTM-L8ZB');
+	</script>
+</head>
+<body>
+<noscript>
+	<iframe src="//www.googletagmanager.com/ns.html?id=GTM-L8ZB" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<div id="mask"></div>
+<input id="lastTribalLandId" type="hidden" value="">
+<input id="lastURL" type="hidden" value="">
+<input id="lastEmissionsType" type="hidden" value="">
+<input id="lastState" type="hidden" value="">
+<input id="lastState2" type="hidden" value="">
+<input id="lastFacOrLoc" type="hidden" value="Facility%20or%20Location">
+<input id="lastFipsCode" type="hidden" value="">
+<input id="lastMsaCode" type="hidden" value="">
+<input id="lastStateLevel" type="hidden" value="0">
+<input id="lastBasin" type="hidden" value="">
+<input id="lastLowE" type="hidden" value="0">
+<input id="lastHighE" type="hidden" value="23000000">
+<input id="lastg1" type="hidden" value="">
+<input id="lastg2" type="hidden" value="">
+<input id="lastg3" type="hidden" value="">
+<input id="lastg4" type="hidden" value="">
+<input id="lastg5" type="hidden" value="">
+<input id="lastg6" type="hidden" value="">
+<input id="lastg7" type="hidden" value="">
+<input id="lastg8" type="hidden" value="">
+<input id="lastg9" type="hidden" value="">
+<input id="lastg10" type="hidden" value="">
+<input id="lasts1" type="hidden" value="">
+<input id="lasts2" type="hidden" value="">
+<input id="lasts201" type="hidden" value="">
+<input id="lasts202" type="hidden" value="">
+<input id="lasts203" type="hidden" value="">
+<input id="lasts204" type="hidden" value="">
+<input id="lasts3" type="hidden" value="">
+<input id="lasts301" type="hidden" value="">
+<input id="lasts302" type="hidden" value="">
+<input id="lasts303" type="hidden" value="">
+<input id="lasts304" type="hidden" value="">
+<input id="lasts305" type="hidden" value="">
+<input id="lasts306" type="hidden" value="">
+<input id="lasts307" type="hidden" value="">
+<input id="lasts4" type="hidden" value="">
+<input id="lasts401" type="hidden" value="">
+<input id="lasts402" type="hidden" value="">
+<input id="lasts403" type="hidden" value="">
+<input id="lasts404" type="hidden" value="">
+<input id="lasts405" type="hidden" value="">
+<input id="lasts5" type="hidden" value="">
+<input id="lasts6" type="hidden" value="">
+<input id="lasts601" type="hidden" value="">
+<input id="lasts602" type="hidden" value="">
+<input id="lasts7" type="hidden" value="">
+<input id="lasts701" type="hidden" value="">
+<input id="lasts702" type="hidden" value="">
+<input id="lasts703" type="hidden" value="">
+<input id="lasts704" type="hidden" value="">
+<input id="lasts705" type="hidden" value="">
+<input id="lasts706" type="hidden" value="">
+<input id="lasts707" type="hidden" value="">
+<input id="lasts708" type="hidden" value="">
+<input id="lasts709" type="hidden" value="">
+<input id="lasts710" type="hidden" value="">
+<input id="lasts711" type="hidden" value="">
+<input id="lasts8" type="hidden" value="">
+<input id="lasts801" type="hidden" value="">
+<input id="lasts802" type="hidden" value="">
+<input id="lasts803" type="hidden" value="">
+<input id="lasts804" type="hidden" value="">
+<input id="lasts805" type="hidden" value="">
+<input id="lasts806" type="hidden" value="">
+<input id="lasts807" type="hidden" value="">
+<input id="lasts808" type="hidden" value="">
+<input id="lasts809" type="hidden" value="">
+<input id="lasts810" type="hidden" value="">
+<input id="lasts9" type="hidden" value="">
+<input id="lasts901" type="hidden" value="">
+<input id="lasts902" type="hidden" value="">
+<input id="lasts903" type="hidden" value="">
+<input id="lasts904" type="hidden" value="">
+<input id="lasts905" type="hidden" value="">
+<input id="lasts906" type="hidden" value="">
+<input id="lasts907" type="hidden" value="">
+<input id="lasts908" type="hidden" value="">
+<input id="lasts909" type="hidden" value="">
+<input id="lasts910" type="hidden" value="">
+<input id="lasts911" type="hidden" value="">
+<input id="lastds" type="hidden" value="">
+<input id="lastst" type="hidden" value="">
+<input id="lastis" type="hidden" value="">
+<input id="lastso" type="hidden" value="">
+<input id="lastyr" type="hidden" value="">
+<input id="lastrs" type="hidden" value="">
+<input id="fipsCode" type="hidden" value="">
+<input id="countyName" type="hidden" value="">
+<input id="facilityId" type="hidden" value="">
+<input id="subsectorName" type="hidden" value="">
+<input id="sectorId" type="hidden" value="">
+<input id="isGeoList" type="hidden" value=""/>
+<input id="selectedOverlay" type="hidden" value=""/>
+<input id="selectedLevel" type="hidden" value=""/>
+<input id="visType" type="hidden" value="" />
+<!-- Original Table -->
+<div id="browserWarning" width="100%" style="text-align:center; display:none">
+	<br>
+	<strong>
+		*Note: Some features of this site will not function properly with your current web browser. We suggest that you update Internet Explorer to version 9 or higher or use a different browser such as Google Chrome or Firefox. If you are using Internet Explorer version 9 or higher, your browser&#39;s document mode is likely set to an earlier version of Internet Explorer. You will need to change this to version 9 or higher. Click
+		<a href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=259686519" target="_blank">here</a> for directions to change your document mode setting.
+	</strong>
+	<br><br>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:0px;">
+	<tr>
+		<td width="314">
+			<a href="https://www.epa.gov" target="_blank" title="epa.gov home page" alt="EPA dot gov home page" class="epaLogo epaLogoPadding">
+				<img src="img/epa_logo.png" width="140px" alt="US Environmental Protection Agency logo" border="0" id="GhgPubLogo"/>
+			</a>
+			<a id="home" href="javascript:refreshView(dataSource)" title="ghgdata.epa.gov home page" alt="ghgdata.epa.gov home page" class="flightLogo">
+				<img src="img/flight_logo_refresh.png" alt="US Environmental Protection Agency logo" border="0"/>
+			</a>
+		</td>
+		<td id="dashboardType" style="padding-left:10px; font-weight:bold; color:#000;"></td>
+		<td width="580">
+			<!-- <a href="https://epa.gov/climatechange/emissions/ghgdata/2010data.html" style="display: none;"><img src="img/image1x1.gif" alt="Download"></a> -->
+			<div id="welcome">
+				<span id="ShareLink"><a href="#myModal" data-toggle="modal" class="link" title="Share">Share</a></span><span class="EPA_MED_GRAY">&nbsp;|&nbsp;</span>
+				#* <a href="#" tabindex="100">My Reports</a> <span class="EPA_MED_GRAY">&nbsp;|&nbsp;</span> *#
+				<a href="$dsUrl" target="_blank" tabindex="105" title="View U.S. GHG Inventory">View U.S. GHG Inventory</a><span class="EPA_MED_GRAY">&nbsp;|&nbsp;</span>
+				<a id="download" href="https://www.epa.gov/ghgreporting/ghg-reporting-program-data-sets" target="_blank" class="link" tabindex="110" title="View Other GHGRP Data Products">View Other GHGRP Data Products</a><span class="EPA_MED_GRAY">&nbsp;|&nbsp;</span>
+				<a class="link" href="$!helplinkurlbase" target="_blank" tabindex="115" title="Help">Help</a>
+			</div>
+			<div class="mobileNotice">
+				<!-- <img src="img/mobile_ghg.png" width="60" alt="View GHG from your mobile device" align="left">Now you can visit ghgdata.epa.gov from your mobile device.
+				<span><a href="https://www.ccdsupport.com/confluence/display/ghgp/How+to+Create+Bookmarks+In+FLIGHT" target="_blank" title="Click here to learn how to create a bookmark to our page on your mobile device.">Click here</a> to learn how to create a bookmark to our page on your mobile device.</span>
+				 -->
+			</div>
+		</td>
+	</tr>
+</table>
+<!-- Share This Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="close popup">&times;</button>
+		<h3 id="myModalLabel">Share This Search</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="shareInputLink">Link to this search</label>
+				<div class="controls">
+					<input type="text" id="shareInputLink" placeholder="loading link..." readonly="readonly"/>
+					<span class="subscript">Your search criteria will be retained</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Right side popout for Sector Information -->
+<div id="popout-container" class="floatingBox">
+	<button class="close top-right-spacing"></button>
+	<div id="popout-content">
+		<div id="electronics_manufacturing_infolink">
+			<p>For information on opportunities to reduce perfluorocompounds (PFCs) emissions from semiconductor manufacturing, visit -
+				<a href="https://www.epa.gov/f-gas-partnership-programs/semiconductor-industry" target="_blank">https://www.epa.gov/f-gas-partnership-programs/semiconductor-industry</a></p>
+		</div>
+		<div id="electrical_power_infolink">
+			<p>For information on opportunities to reduce sulfur hexafluoride (SF6) emissions from electric power systems, visit -
+				<a href="https://www.epa.gov/eps-partnership" target="_blank">https://www.epa.gov/eps-partnership</a>
+			</p>
+		</div>
+		<div id="magnesium_infolink">
+			<p>For information on opportunities to reduce sulfur hexafluoride (SF6) emissions from magnesium production and casting processes, visit -
+				<a href="https://www.epa.gov/f-gas-partnership-programs/magnesium-industry" target="_blank">https://www.epa.gov/f-gas-partnership-programs/magnesium-industry</a></p>
+		</div>
+		<div id="oilandgas_infolink">
+			<p>For information on opportunities to reduce methane emissions from oil and gas systems, please visit -
+				<a href="https://www.epa.gov/gasstar/" target="_blank">https://www.epa.gov/gasstar/</a></p>
+		</div>
+		<div id="municipal_landfill_infolink">
+			<p>For information on landfill methane mitigation opportunities, visit - <a href="https://www.epa.gov/lmop/" target="_blank">https://www.epa.gov/lmop/</a></p>
+		</div>
+		<div id="aluminum_infolink">
+			<p>For information on opportunities to reduce perfluorocompounds (PFC) emissions from primary aluminum production, visit -
+				<a href="https://www.epa.gov/highgwp/aluminum-pfc/index.html" target="_blank">https://www.epa.gov/highgwp/aluminum-pfc/index.html</a></p>
+		</div>
+		<div id="underground_coal_mines_infolink">
+			<p>For information on opportunities to reduce methane emissions from coal mining activities, visit - <a href="https://www.epa.gov/coalbed/" target="_blank">https://www.epa.gov/coalbed/</a>
+			</p>
+		</div>
+		<div id="gwp_4th_infolink">
+			<p>
+				Emissions values presented for the selected year have been re-calculated by EPA to display a consistent time-series using Global Warming Potential (GWP) values updated for 2013. Click
+				<a href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=243139278" target="_blank">here</a> to learn more.
+			</p>
+		</div>
+		<div id="petroUnderground_infolink">
+			<p>The Southern California Gas Company - Aliso Canyon facility's actual 2015 emissions were higher than those reported to the GHGRP. The GHGRP provides well-vetted average emission factors to calculate emissions. The facility followed these GHGRP calculation methods for 2015 reporting. Actual emissions differ from those reported due to an exceptional leak event. See
+				<a href="https://www.arb.ca.gov/research/aliso_canyon_natural_gas_leak.htm" target="_blank">California Air Resource Board's Aliso Canyon Natural Gas Leak</a> webpage for more information.
+			</p>
+		</div>
+	</div>
+</div>
+<!-- Right side popout for State -->
+<div id="popout-container-state" class="floatingBox">
+	<button class="close top-right-spacing"></button>
+	<div id="popout-content-state">
+		<div id="MA_infolink">
+			<p>The state of Massachusetts collects GHG data from facilities not required to report to EPA. Click
+				<a href="https://www.mass.gov/dep/ghgreporting" target="_blank">here</a> for this information</p>
+		</div>
+		<div id="WA_infolink">
+			<p>The state of Washington collects GHG data from facilities not required to report to EPA. Click
+				<a href="https://www.ecy.wa.gov/programs/air/permit_register/ghg/ghg.html" target="_blank">here</a> for this information</p>
+		</div>
+	</div>
+</div>
+<!-- Right side popout for GHG -->
+<div id="popout-container-ghg" class="floatingBox">
+	<button class="close top-right-spacing"></button>
+	<div id="popout-content-ghg">
+		<div id="co2_infolink">
+			<p>For a complete accounting of total U.S. Carbon Dioxide emissions, visit:
+				<a href="https://epa.gov/climatechange/ghgemissions/gases/co2.html" target="_blank">https://epa.gov/climatechange/ghgemissions/gases/co2.html</a></p>
+		</div>
+		<div id="methane_infolink">
+			<p>For a complete accounting of total U.S. Methane emissions, visit:
+				<a href="https://epa.gov/climatechange/ghgemissions/gases/ch4.html" target="_blank">https://epa.gov/climatechange/ghgemissions/gases/ch4.html</a></p>
+		</div>
+		<div id="n2o_infolink">
+			<p>For a complete accounting of total U.S. Nitrous Oxide emissions, visit:
+				<a href="https://epa.gov/climatechange/ghgemissions/gases/n2o.html" target="_blank">https://epa.gov/climatechange/ghgemissions/gases/n2o.html</a></p>
+		</div>
+		<div id="flourinated_gases_infolink">
+			<p>For a complete accounting of total U.S. Fluorinated Gases emissions, visit:
+				<a href="https://epa.gov/climatechange/ghgemissions/gases/fgases.html" target="_blank">https://epa.gov/climatechange/ghgemissions/gases/fgases.html</a></p>
+		</div>
+	</div>
+</div>
+<!-- Main Container - EDIT: Remove Width:100% -->
+<div style="border-color:#999; border-style:solid; border-width:1px; float: left; width: 100%">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none">
+		<tr>
+			<td id="bar1" height="29" background="img/green_bar_bg.gif">
+				<div id="usBCDiv" class="bc2"><a href="javascript:resetStateCounty();">United States</a></div>
+				<div id="stateBCDiv" class="bc1" style="display:none"><a id="stateBC" href="javascript:resetCounty();">Virginia</a></div>
+				<div id="countyBCDiv" class="bc1" style="display:none"><a id="countyBC" href="#">Fairfax</a></div>
+				<div id="facilityBCDiv" class="bc2" style="display:none"><a id="facilityBC" href="#">Facility</a></div>
+			</td>
+			<td id="bar2" background="img/green_bar_bg.gif">
+				<div class="green_button" id="share" style="display:none">
+					<a href="javascript:displayShareWindow()" style="line-height:29px;" onmouseover="Javascript:greenButtonOn('share')" onmouseout="Javascript:greenButtonOff('share')">Share<img src="img/widgets/share.png" width="10" height="11" alt="Share" style="margin-left:5px;"/></a>
+				</div>
+				<div class="green_button" id="download">
+					<a href="https://epa.gov/climatechange/emissions/ghgdata/2010data.html" style="line-height:29px;" onmouseover="Javascript:greenButtonOn('download')" onmouseout="Javascript:greenButtonOff('download')">Download<img src="img/widgets/download.gif" alt="Download" width="12" height="13" style="margin-left:5px;"/></a>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div id="mapWidgets">
+		<div class="mapWidgetLeft">
+			<div class="selection-row">
+				<!-- Data Year (A1) -->
+				<div id="reportingYearSelection"
+					class="input-box input-dropdown"
+					#if( $reportingYears.size() eq 1 ) style="display: none" #end>
+					<span class="input-field-text">Data Year</span> <br/>
+					<div class="input-append">
+						<select id="reportingYear" title="Reporting year selection" class="applyTrigger field" tabindex="300">
+							#foreach ($year in $reportingYears.keySet())
+							<option id="ry$year" value="$year">$year</option>
+							#end
+						</select>
+					</div>
+					<div id="yearChangeText" class="mPopover">
+						<button class="close" title="close popup">&times;</button>
+						<p style="font-size: 11px">
+							GHG data for some source categories are <a class="link" target="_blank"
+							href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=188776486">not
+							directly comparable between 2010 and subsequent years</a>. <a class="link" target="_blank"
+							href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=322699300">12
+							new source categories</a> began reporting for 2011.
+						</p>
+					</div>
+				</div>
+				<!-- Data Type (A2) -->
+				<div id="dataTypeSelection" class="input-box input-dropdown">
+					<span class="input-field-text">Facility Type</span>
+					<span id="whatsThisLink" style="padding-left: 80px; font-size: 0.8em; font-weight: bold;"><a href="#" title="What's this?">What's this?</a></span>
+					<div id="whatsThisPopover" class="mPopover whatsThisPopover">
+						<button class="close" title="close popup">&times;</button>
+						<p id="whatsThisText"></p>
+					</div>
+					<div class="input-append" style="display: block;">
+						<select id="dataType" title="Facility type selection"
+							class="applyTrigger field" tabindex="305"
+							onchange="javascript:setDataType(this.value);" style="display:none; visibility:hidden;">
+							<option id="opt_allEmitters" value="E" style="font-weight: bold">All Direct Emitters</option>
+							<option id="opt_pointSources" value="P">&nbsp;&nbsp;Point Sources</option>
+							<option id="opt_onshore" value="O">&nbsp;&nbsp;Onshore Oil & Gas Production</option>
+							<option id="opt_boosting" value="B">&nbsp;&nbsp;Onshore Oil & Gas Gathering & Boosting</option>
+							<option id="opt_ldc" value="L">&nbsp;&nbsp;Local Distribution Companies</option>
+							<option id="opt_transmission" value="T">&nbsp;&nbsp;Onshore Gas Transmission Pipelines</option>
+							<option id="opt_sf6" value="F">&nbsp;&nbsp;SF6 from Elect. Dist. Systems</option>
+							<option id="opt_suppliers" value="S" style="font-weight: bold">Suppliers</option>
+							<option id="opt_co2injection" value="I" style="font-weight: bold">CO2 Injection (UU)</option>
+							<option id="opt_rr" value="A" style="font-weight: bold">Geologic Sequestration of CO2 (RR)</option>
+						</select>
+						<div id="facilityTypeDropdown" class="dropdown">
+							<button class="btn btn-default dropdown-toggle" type="button"
+								data-toggle="dropdown" style="min-width:210px;
+										background:rgb(255, 255, 255) none repeat scroll 0% 0%;">
+								All Direct Emitters<span class="caret" style="float:right;"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype0');" style="font-weight: bold">All Direct Emitters</a></li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype1');">&nbsp;&nbsp;Point Sources</a></li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype2');">&nbsp;&nbsp;Onshore Oil & Gas Production</a></li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype3');">&nbsp;&nbsp;Onshore Oil & Gas Gathering & Boosting</a></li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype4');">&nbsp;&nbsp;Local Distribution Companies</a></li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype5');">&nbsp;&nbsp;Onshore Gas Transmission Pipelines</a></li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype6');">&nbsp;&nbsp;SF6 from Elect. Dist. Systems</a></li>
+								<li class="dropdown-submenu">
+									<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Suppliers</a>
+									<ul class="dropdown-menu">
+										<li class="dropdown-submenu">
+											<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Coal-based Liquid Fuel Suppliers</a>
+											<ul class="dropdown-menu">
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-1');">Producers</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Petroleum Product Suppliers</a>
+											<ul class="dropdown-menu">
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-2');">Refineries</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-3');">Importers</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-4');">Exporters</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Natural Gas and Natural Gas Liquids Suppliers</a>
+											<ul class="dropdown-menu">
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-5');">Local Distribution Companies</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-6');">Natural Gas Liquids Fractionators</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Industrial Gas Suppliers</a>
+											<ul class="dropdown-menu">
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-7');">Importers</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-8');">Exporters</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-9');">Producers</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Equipment Containing Fluorinated GHGs</a>
+											<ul class="dropdown-menu">
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-10');">Importers</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype7-11');">Exporters</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown-submenu">
+									<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">CO<sub>2</sub> Capture, Supply and Underground Injection</a>
+									<ul class="dropdown-menu">
+										<li class="dropdown-submenu">
+											<a class="test" tabindex="-1" href="javascript:facTypeSelect('');" style="font-weight: bold">Suppliers of CO<sub>2</sub></a>
+											<ul class="dropdown-menu">
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype8-1');">Importers (PP)</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype8-2');">Exporters (PP)</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype8-3');">CO<sub>2</sub> Capture (PP)</a></li>
+												<li><a tabindex="-1" href="javascript:facTypeSelect('factype8-4');">CO<sub>2</sub> Production Wells (PP)</a></li>
+											</ul>
+										</li>
+										<li><a tabindex="-1" href="javascript:facTypeSelect('factype8-5');">All CO<sub>2</sub> Injectors (UU)</a></li>
+										<li><a tabindex="-1" href="javascript:facTypeSelect('factype8-6');">CO<sub>2</sub> Injectors with an R&amp;D Exemption (UU)</a></li>
+									</ul>
+								</li>
+								<li><a tabindex="-1" href="javascript:facTypeSelect('factype9');" style="font-weight: bold">Geologic Sequestration of CO<sub>2</sub> (RR)</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="btDashboardTrend" class="dPopover">
+					<button class="close" title="close popup">&times;</button>
+					<p style="font-size: 11px">
+						GHG data for the Petroleum and Natural Gas Systems source category is not directly comparable between 2011-2015 and 2016 onwards. Facilities in the Onshore Oil & Gas Gathering & Boosting and Onshore Gas Transmission Pipelines industry segments began reporting in 2016.
+					</p>
+				</div>
+				<!-- Search field and button (A3) -->
+				<span id="searchOptionsLink" style="font-size: 0.8em; font-weight: bold; float: left; display: block; padding-left: 210px; float: left"><a href="#" title="Search Options">Search Options</a></span>
+				<br/>
+				<div id="searchOptionsPopover" class="mPopover">
+					<button class="close" title="close popup">&times;</button>
+					<p style="border-bottom: 1px dotted black; padding-bottom: 10px; margin-bottom: 10px;">You can search by Facility name, Facility City, Facility County, Facility State, Facility Zip Code, Reporting Program ID, NAICS code and Parent Company name.</p>
+					<p>Restrict your search to: <a href="#" class="srchSelect">Select all</a> <a href="#" class="srchDeselect">Deselect all</a></p>
+					<ul style="float: left;">
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" checked="checked" id="advSearch_name"
+							title="Facility Name">Facility Name</label></li>
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" checked="checked" id="advSearch_city"
+							title="Facility City">Facility City</label></li>
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" id="advSearch_county"
+							title="Facility County">Facility County</label></li>
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" id="advSearch_state" title="Facility State">Facility
+							State</label></li>
+					</ul>
+					<ul style="float: right">
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" checked="checked" id="advSearch_zipcode"
+							title="Zip code">ZIP Code</label></li>
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" checked="checked" id="advSearch_facId" title="Facility ID">Facility
+							ID</label></li>
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" id="advSearch_naicsCode" title="NAICS Code">NAICS
+							Code</label></li>
+						<li><label class="checkbox"><input class="srchOption"
+							type="checkbox" id="advSearch_corpParent"
+							title="Parent Company">Parent Company</label></li>
+					</ul>
+				</div>
+				<div id="facSearchFunction">
+					<input id="facOrLocInput" class="applyTrigger facSearchField input-xlarge srchFind"
+						type="text" title="Find a Facility or Location" tabindex="310"/>
+					<div style="margin-left: 250px; margin-top: -41px; position: absolute; z-index: 20;">
+						<span id="autocompleteLoading" style="display: none">
+							<img src="img/ajaxloader.gif" height="20" alt="ajax loader image">
+						</span>
+					</div>
+				</div>
+				<div class="input-box dropdown"></div>
+				<div class="input-box long-text"></div>
+			</div>
+			<div class="selection-row" id="bottom-selection-row">
+				<div id="stateSelectAndSearch" style="float: left">
+					<!-- State selection (A4) -->
+					<div id="stateSelection" class="input-append">
+						<label id="selectionLabel" class="mapWidgetsFont" for="parentState">Browse to a State</label>
+						<select title="Basin selection" class="field input-medium" id="basin" name="basin" tabindex="315" style="float: right; display: none;">
+							<option value="" selected="selected">Choose Basin</option>
+						</select>
+						<select title="State selection" class="field input-medium state-infobox" id="parentState" name="parentState" tabindex="316" style="float: right; display: inline; height: 30px;">
+							<option value="" selected="selected">Choose State</option>
+							#foreach($state in $states)
+							#if($state.state ne 'US')
+							<option value="$state.state">$state.stateName</option>
+							#end
+							#end
+						</select>
+					</div>
+				</div>
+				<div id="countySelectAndSearch" style="display: none; float: left; width: 155px">
+					<div id="countySelection" class="input-append">
+						<label id="countyLabel" class="mapWidgetsFont" for="countyState"></label>
+						<select title="County selection" class="field input-medium" id="countyState" name="countyState" tabindex="317" style="float: left; height: 30px">
+							<option value=''>Choose County</option>
+						</select>
+					</div>
+				</div>
+				<div id="tribeSelectAndSearch" style="display: none; float: left; width: 155px">
+					<div id="tribeSelection" class="input-append">
+						<label id="tribeLabel" class="mapWidgetsFont" for="tribe">Pick a Tribal Land</label>
+						<select title="Tribe selection" class="applyTrigger field input-medium" id="tribe" name="tribe" tabindex="318" style="float: left; height: 30px">
+							<option value=''>Choose Tribe</option>
+							#foreach($tribe in $tribes)
+							<option value="$tribe.tribalLandId">$tribe.tribalLandName</option>
+							#end
+						</select>
+					</div>
+				</div>
+				<div id="emissionsTypeSelectAndSearch" style="float: left; width: 215px">
+					<div id="emissionsTypeSelection">
+						<label id="emissionsTypeLabel" class="mapWidgetsFont" for="emissionsType">Emissions by Fuel Type
+							<span id="whatsThisLinkEmissionsType" style="padding-left: 10px; font-size: 0.8em; font-weight: bold;"><a href="#" title="What's this?">What's this?</a></span>
+						</label>
+						<div id="whatsThisPopoverEmissionsType" class="mPopover whatsThisPopover">
+							<button class="close" title="close popup">&times;</button>
+							<p id="whatsThisTextEmissionsType">
+								Facilities report emissions from many process types defined by the GHGRP. Reporting requirements for each process type are contained in different subparts of the regulation.
+								<br/>
+								<br/>
+								Fuel Combustion emissions are defined as those reported under Subpart AA, Subpart D, and Subpart C except Subpart C emissions from use of sorbent which are given their own category. Emissions from Use of Carbonate are defined as those reported under Subpart U.
+								<br/>
+								<br/>
+								All other reported direct emissions are categorized as Process Emissions.
+								<a href="https://www.epa.gov/ghgreporting/resources-subpart-ghg-reporting" target="_blank">Click here</a> to learn more.
+								<br/>
+								<br/>
+								Emissions values presented by fuel type are not directly reported to EPA by facilities in all cases. Some values have been estimated by EPA based on publicly available reported data.
+							</p>
+						</div>
+						<div class="input-append input-dropdown" style="display: block;">
+							<select title="Emissions Type Selection" class="field input-medium" id="emissionsType"
+								name="emissionsType" tabindex="320" style="float: left; height: 30px; width: 200px">
+								<option value="" selected="selected">Choose Fuel Type</option>
+								<option value="FC" style="font-weight: bold">All Fuel Combustion</option>
+								<option value="FC_CL" id="opt_cl">&nbsp;&nbsp; Coal</option>
+								<option value="FC_NG" id="opt_ng">&nbsp;&nbsp; Natural Gas</option>
+								<option value="FC_PP" id="opt_pp">&nbsp;&nbsp; Petroleum Products</option>
+								<option value="FC_OT" id="opt_ot">&nbsp;&nbsp; Other</option>
+								<option value="PE" style="font-weight: bold">Process Emissions</option>
+								<option value="SORB" style="font-weight: bold">Use of Sorbent</option>
+								<option value="UC" style="font-weight: bold">Use of Carbonates</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div id="emitterDiv2" class="filterBy">
+					<!-- Filter By Greenhouse Gas (A4) -->
+					<label for="ghgFilterMenu" class="mapWidgetsFont">Filter By</label>
+					<button class="widgetBtn" id="ghgBtn" title="Greenhouse Gas">Greenhouse Gas</button>
+					<div id="ghgPopover" class="mPopover" tabindex="325">
+						<button class="close" title="close popup">&times;</button>
+						<h3>Greenhouse Gases</h3>
+						<ul>
+							<li>
+								<label class="checkbox"><input type="checkbox" id="gas1check" title="Carbon Dioxide" checked="checked" onclick="javascript:checkDefaultFilter()">Carbon Dioxide (CO<sub>2</sub>)</label>
+							</li>
+							<li><label class="checkbox"><input type="checkbox" id="gas2check" title="Methane" checked="checked">Methane (CH<sub>4</sub>)</label></li>
+							<li><label class="checkbox"><input type="checkbox" id="gas3check" title="Nitrous Oxide" checked="checked">Nitrous Oxide (N<sub>2</sub>O)</label></li>
+							<li><label class="checkbox"><input type="checkbox" id="flourinatedgasescheck" title="Fluorinated GHGs" checked="checked">Fluorinated GHGs</label></li>
+							<div style="margin-left: 20px">
+								<li><label class="checkbox"><input type="checkbox" id="gas7check" title="HFCs" checked="checked" class="flourinated">HFCs</label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas8check" title="PFCs" checked="checked" class="flourinated">PFCs</label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas4check" title="SF6" checked="checked" class="flourinated">SF<sub>6</sub></label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas5check" title="NF3" checked="checked" class="flourinated">NF<sub>3</sub></label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas12check" title="NF3" checked="checked" class="flourinated">Other Fully Fluorinated GHGs</label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas9check" title="HFEs" checked="checked" class="flourinated">HFEs</label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas11check" title="NF3" checked="checked" class="flourinated">Very Short Lived Compounds</label></li>
+								<li><label class="checkbox"><input type="checkbox" id="gas10check" title="Other" checked="checked" class="flourinated">Other</label></li>
+								<li style="display: none"><label class="checkbox"><input type="checkbox" id="gas6check" title="HFC-23" class="flourinated">HFC-23</label></li>
+							</div>
+						</ul>
+					</div>
+					<!-- Filter By Emission Range (A5) -->
+					<button class="widgetBtn" id="emissionsBtn" title="Emission Range">Emission Range</button>
+					<div id="emissionRangePopover" class="mPopover" tabindex="330">
+						<button class="close" title="close popup">&times;</button>
+						<h3>Emission Range</h3>
+						<p style="text-align: center;"><b>Facility Emissions Range (MT CO2e)</b></p>
+						<div id="divRangefilter">
+							<div id="slider-range" class="rangeSlider"></div>
+							<input id="lowEmissionRange" class="applyTrigger" name="lowEmissions" title="Low emission range" type="number" size="10" min="-20000" max="23000000" value="-20000">
+							<input id="highEmissionRange" class="applyTrigger" name="highEmissions" title="High emission range" type="number" size="10" min="-20000" max="23000000" value="23000000">
+							<br/>
+						</div>
+					</div>
+				</div>
+				<div id="reportingStatusSelection" class="input-box input-dropdown">
+					<label for="reportingStatusFilterMenu" class="mapWidgetsFont">Filter By Status
+						<span id="whatsThisLinkReportingStatus" style="padding-left: 20px; font-size: 0.8em; font-weight: bold;"><a href="#" title="What's this?">What's this?</a></span>
+					</label>
+					<div id="whatsThisPopoverReportingStatus" class="mPopover whatsThisPopover">
+						<button class="close" title="close popup">&times;</button>
+						<p id="whatsThisTextReportingStatus">As of August 18, 2014, these facilities have either not responded to a concern EPA raised regarding their data quality or have not submitted a 2014 report.</p>
+					</div>
+					<div class="input-append" title="Reporting Status selection">
+						<select id="reportingStatus" title="Select reporting status" tabindex="335">
+							<option value="ALL">All Facilities</option>
+							<option value="ORANGE" data-imagesrc="img/icon_marker/factory_orange.png"></option>
+							<option value="RED" data-imagesrc="img/icon_marker/factory_red.png"></option>
+							<option value="GRAY" data-imagesrc="img/icon_marker/factory_gray.png"></option>
+							<option value="BLACK" data-imagesrc="img/icon_marker/factory_black.png"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Right side of the Map widgets -->
+		<div class="mapWidgetRight">
+			<div class="appMarketLinks"
+				style="float: right; clear: right; margin: 2px -12px 12px 0; display: none">
+				<a href="https://play.google.com/store/apps/details?id=epa_flight_android" style="float: left;">
+					<img alt="Get it on Google Play" style="width: 78%; opacity: 0.6; filter: alpha(opacity = 60);" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"/>
+				</a>
+				<a href="" style="float: left;">
+					<img alt="Available on the App Store" style="width: 75%; opacity: 0.6; filter: alpha(opacity = 60);" src="mobile/img/Available_on_the_App_Store_45.png">
+				</a>
+			</div>
+			<div class="encapsulate">
+				<!-- Type of view for Data (A6) -->
+				<div id="dataView" style="float:right">
+					<label for="usa" class="mapWidgetsFont">Data View</label>
+					<div class="btn-toolbar">
+						<div class="btn-group">
+							<a id="vMap" class="btn"><i class="icon-map-dp desaturate" title="Map View"></i></a>
+							<a id="vList" class="btn"><i class="icon-list-dp desaturate" title="List View for Current Search"></i></a>
+							<a id="vLine" class="btn"><i class="icon-line-dp desaturate" title="Trend View for 2011 through the Current Year"></i></a>
+							<a id="vBar" class="btn"><i class="icon-bar-dp desaturate" title="Bar Chart View for Current Search"></i></a>
+							<a id="vPie" class="btn"><i class="icon-pie-dp desaturate" title="Pie Chart View for Current Search"></i></a>
+						</div>
+						<div>
+							<div style="width:50px; float:left; text-align:center">
+								<span id="mapLabel" style="font-size:9px">Map</span>
+							</div>
+							<div style="width:50px; float:left; text-align:center">
+								<span id="listLabel" style="font-size:9px">List</span>
+							</div>
+							<div style="width:50px; float:left; text-align:center">
+								<span id="lineLabel" style="font-size:9px">Trends</span>
+							</div>
+							<div style="width:50px; float:left; text-align:center">
+								<span id="barLabel" style="font-size:9px">Bar Chart</span>
+							</div>
+							<div style="width:50px; float:left; text-align:center">
+								<span id="pieLabel" style="font-size:9px">Pie Chart</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="search-form-buttons" style="margin-right: 15px; float:right">
+					<span class="buttons-block">
+						<input id="applySearch" class="btn btn-primary btn-sm applyButtons" type="button" title="APPLY SEARCH" value="APPLY &#13;&#10; SEARCH" onclick="setURLPath('')"/>
+						<div class="dropdownMenu">
+							<input id="resetForm" class="btn" type="button" title="Clear Filter" value="Clear Filter&nbsp;" onclick="resetForm()"/>
+					  		<input id="exportButton" class="btn dropdownButton" type="button" title="Download data as an excel file" value="Export Data" onClick="$('#exportOptions').toggle()"/>
+							<div id="exportOptions" class="dropdownOptions">
+								<a href="javascript:generateURL('excel')" title="Current Reporting Year">Current Reporting Year</a>
+								<a href="javascript:generateURL('excel', 'all')" title="All Reporting Years">All Reporting Years</a>
+							</div>
+							<input id="exportByChanges" class="btn" type="button" title="Download Data as an excel file" value="Export Data" onClick="javascript:downloadListExcel();"/>
+						</div>
+					</span>
+			</div>
+		</div>
+		<div id="selectionPanel" style="display: none">
+			<div class="beveledRule"></div>
+			<div id="oldSelectors" style="display: none;">
+				<!-- Selector Selection in Suppliers Page -->
+				<ul id="sectorSelection" class="nav" style="display: none">
+					<li class="top"><a href="#" class="top_link"><span id="sectorLabel" class="down">Choose Sector</span></a>
+						<ul id="sectorDropdown" class="sub" title="Choose a Sector">
+							<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Coal-based Liquid Fuel Suppliers</a></li>
+							<!--<li><a href="javascript:supplierSectorSelected(11)"><span style="padding:20px">Importers</span></a></li>-->
+							<!--<li><a href="javascript:supplierSectorSelected(12)"><span style="padding:20px">Exporters</span></a></li>-->
+							<li><a href="javascript:supplierSectorSelected(13)"><span style="padding:20px">Producers</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Petroleum Product Suppliers</a></li>
+							<li><a href="javascript:supplierSectorSelected(23)"><span style="padding:20px">Refineries</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(21)"><span style="padding:20px">Importers</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(22)"><span style="padding:20px">Exporters</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Natural Gas and Natural Gas Liquids Suppliers</a></li>
+							<!--<li><a href="javascript:supplierSectorSelected(31)"><span style="padding:20px">All</span></a></li>-->
+							<li><a href="javascript:supplierSectorSelected(32)"><span style="padding:20px">Local Distribution Companies</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(33)"><span style="padding:20px">Natural Gas Liquids Fractionators</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Industrial Gas Suppliers</a></li>
+							<li><a href="javascript:supplierSectorSelected(41)"><span style="padding:20px">Importers</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(42)"><span style="padding:20px">Exporters</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(43)"><span style="padding:20px">Producers</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Suppliers of CO<sub>2</sub></a></li>
+							<li><a href="javascript:supplierSectorSelected(51)"><span style="padding:20px">Importers</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(52)"><span style="padding:20px">Exporters</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(53)"><span style="padding:20px">CO<sub>2</sub> Capture</span></a></li>
+							<li><a href="javascript:supplierSectorSelected(54)"><span style="padding:20px">CO<sub>2</sub> Production Wells</span></a></li>
+							<li id="fghg1"><a href="javascript:supplierSectorSelected(0)" style="background: #999">Equipment Containing Fluorinated GHGs</a></li>
+							<li id="fghg_import1"><a href="javascript:supplierSectorSelected(61)"><span style="padding:20px">Importers</span></a></li>
+							<li id="fghg_export1"><a href="javascript:supplierSectorSelected(62)"><span style="padding:20px">Exporters</span></a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- Selector Selection in Suppliers Page -->
+				<ul id="injectionSelection" class="nav" style="display: none">
+					<li class="top"><a href="#" class="top_link"><span id="injectionLabel" class="down">All CO<sub>2</sub> Injectors</span></a>
+						<ul id="injectionDropdown" class="sub" title="Choose an Injector">
+							<li><a href="javascript:injectionSelected(11)" title="All CO2 Injectors"><span style="padding:20px">All CO<sub>2</sub> Injectors</span></a></li>
+							<li><a href="javascript:injectionSelected(12)" title="Injectors with an R&D Exemption"><span style="padding:20px">CO<sub>2</sub> Injectors with an R&amp;D Exemption</span></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id="selectorWidgets" style="padding: 5px 0 5px 10px; display: inline">
+				<div style="float:left; margin-right:10px; color: darkgray; height:29px; line-height:29px;">View by</div>
+				<div id="map" style="display:inline">
+					<div id="facility" class="softBtnLeft" style="border-right-style:solid; border-right-width:1px; border-right-color:#CCC;">
+						<a href="javascript:setSelector('0')" tabindex="505" title="Facility">Facility</a>
+					</div>
+					<div id="intensity" class="softBtnRight" style="margin-right:15px;">
+						<a href="javascript:setSelector('1')" tabindex="506" title="Intensity">Intensity</a>
+					</div>
+				</div>
+				<div id="vis" style="display:none">
+					<div id="sector" class="softBtnLeft" style="border-right-style:solid; border-right-width:1px; border-right-color:#CCC;">
+						<a id="geoSec" href="javascript:setSelector('0')" tabindex="507">Sector</a>
+					</div>
+					<div id="gas" class="softBtnCenter" style="border-right-style:solid; border-right-width:1px; border-right-color:#CCC;">
+						<a href="javascript:setSelector('1')" tabindex="508" title="GHG">GHG</a>
+					</div>
+					<div id="geography" class="softBtnRight" style="margin-right:15px;">
+						<a id="geoFac" href="javascript:setSelector('2')" tabindex="509">Geography</a>
+					</div>
+				</div>
+				<div id="trendSelector" style="display:inline">
+					<div id="currentYearBtn" class="softBtnLeft" style="border-right-style:solid; border-right-width:1px; border-right-color:#CCC;">
+						<a href="javascript:setTrend('current')" tabindex="510" title="Selected Year">Selected Year</a>
+					</div>
+					<div id="trendsBtn" class="softBtnRight" style="margin-right:15px;">
+						<a href="javascript:setTrend('trend')" tabindex="511" title="Changes">Changes</a>
+					</div>
+				</div>
+				<div id="stateLevelSelector" style="display:inline">
+					<div id="countyBtn" class="softBtnLeft" style="border-right-style:solid; border-right-width:1px; border-right-color:#CCC;">
+						<a href="javascript:setStateLevel(ryear, stateAbbr, 0, 0)" tabindex="512" title="County">County</a>
+					</div>
+					<div id="msaBtn" class="softBtnRight">
+						<a href="javascript:setStateLevel(ryear, stateAbbr, 1, 0)" tabindex="513" title="Metro Area">Metro Area</a>
+					</div>
+					<div id="msaWarning" style="display:inline; color: darkgray; padding-left:5px; height:29px; line-height:29px;">*Metro Area data is not available for this view</div>
+				</div>
+			</div>
+		</div>
+		<table id="mapWrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<div id="whatsTotalDiv" style="width:400px;margin-left:800px;" class="mPopover whatsThisPopover">
+						<button class="close" title="close popup">&times;</button>
+						<p id="whatsTotalText">
+							The GHGRP generally requires facilities that emit above 25,000 metric tons CO2e of GHGs to report their emissions. Therefore this data set does not reflect total U.S. emissions or total emissions from individual states. Roughly 50% of total U.S. emissions are reported by large emitting facilities subject to the GHGRP. Additional GHGs are reported by suppliers of fossil fuels and industrial gases.
+							<a class="link" target="_blank" href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=141983792">
+								<nobr>Click here</nobr>
+							</a> to learn more.
+							<br/>
+							<br/>
+							The total number of reporters shown may be less than the sum of the number of reporters in the selected source categories because some facilities fall within more than one source category.
+						</p>
+					</div>
+					<div class="beveledRule"></div>
+					<div id="rollupsDiv">
+						<table border="0" cellpadding="0" cellspacing="0" id="sectorData" summary="GHG Emissions data by sector">
+							<tr style="height: 28px;">
+								<td rowspan="2" bgcolor="#DDDDDD" style="font-size: 1.3em;"><strong>Sector</strong></td>
+								<td rowspan="2" bgcolor="#DDDDDD" valign="center" align="center">
+									<button class="widgetBtn widgetBtn2" id="sectorBtn" title="Filter Sector">Filter Sectors</button>
+									<div id="filterSectorPopover" class="mPopover">
+										<input id="sectorAll" class="btn" type="button" title="SELECT ALL" value="SELECT ALL"/>
+										<input id="sectorNone" class="btn" type="button" title="DESELECT ALL" value="DESELECT ALL"/>
+										<button class="close" title="close popup">&times;</button>
+										<div style="margin-right:250px;"><h3>Sectors</h3></div>
+										<br>
+										<table>
+											<tr>
+												<td valign="top" style="width:250px;">
+													<ul>
+														<li>
+															<label class="checkbox" style="background-color:#FFBD59; padding-left:30px;"><input type="checkbox" id="sector1checkbox" name="sector1checkbox" class="check" style="float:left;" checked="checked" title="Select Power Plants"/>Power Plants</label>
+														</li>
+														<li>
+															<label class="checkbox" style="background-color:#F7D869; padding-left:30px;"><input type="checkbox" id="sector9checkbox" name="sector9checkbox" class="check" style="float:left;" checked="checked" title="Select Petroleum and Natural Gas Systems"/>Petroleum and Natural Gas Systems</label>
+														</li>
+														<div style="margin-left:20px">
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum1"><input type="checkbox" id="petroleum1" name="petroleum1" class="check check_petro" checked="checked"/>Offshore Petroleum &amp; Natural Gas Production</label>
+															</li>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum2"><input type="checkbox" id="petroleum2" name="petroleum2" class="check check_petro" checked="checked"/>Onshore Petroleum &amp; Natural Gas Production</label>
+															</li>
+															<span id="wSub9">
+																<li class="li_petro"><label class="checkbox" for="petroleum10"><input type="checkbox" id="petroleum10" name="petroleum10" class="check check_petro" checked="checked"/>Onshore Petroleum &amp; Natural Gas Gathering &amp; Boosting</label></li>
+															</span>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum3"><input type="checkbox" id="petroleum3" name="petroleum3" class="check check_petro" checked="checked"/>Natural Gas Processing</label>
+															</li>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum4"><input type="checkbox" id="petroleum4" name="petroleum4" class="check check_petro" checked="checked"/>Natural Gas Transmission/Compression</label>
+															</li>
+															<span id="wSub10">
+																<li class="li_petro"><label class="checkbox" for="petroleum11"><input type="checkbox" id="petroleum11" name="petroleum11" class="check check_petro" checked="checked"/>Onshore Natural Gas Transmission Pipelines</label></li>
+															</span>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum5"><input type="checkbox" id="petroleum5" name="petroleum5" class="check check_petro" checked="checked"/>Natural Gas Local Distribution Companies</label>
+															</li>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum6"><input type="checkbox" id="petroleum6" name="petroleum6" class="check check_petro" checked="checked"/>Underground Natural Gas Storage</label>
+															</li>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum7"><input type="checkbox" id="petroleum7" name="petroleum7" class="check check_petro" checked="checked"/>Liquefied Natural Gas Storage</label>
+															</li>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum8"><input type="checkbox" id="petroleum8" name="petroleum8" class="check check_petro" checked="checked"/>Liquefied Natural Gas Imp/Exp Equipment</label>
+															</li>
+															<li class="li_petro">
+																<label class="checkbox" for="petroleum9"><input type="checkbox" id="petroleum9" name="petroleum9" class="check check_petro" checked="checked"/>Other Petroleum &amp; Natural Gas Systems</label>
+															</li>
+														</div>
+													</ul>
+												</td>
+												<td valign="top" style="width:250px;">
+													<ul>
+														<li>
+															<label class="checkbox" style="background-color:#FFFF7F; padding-left:30px;"><input type="checkbox" id="sector5checkbox" name="sector5checkbox" class="check" style="float:left;" checked="checked" title="Select Refineries"/>Refineries</label>
+														</li>
+														<li>
+															<label class="checkbox" style="background-color:#98d6f3; padding-left:30px;"><input type="checkbox" id="sector7checkbox" name="sector7checkbox" class="check" style="float:left;" checked="checked" title="Select Chemicals"/>Chemicals</label>
+														</li>
+														<div style="margin-left:20px">
+															<li id="lichem1">
+																<label class="checkbox" for="chem1"><input type="checkbox" id="chem1" name="chem1" class="check check_chem" checked="checked"/>Adipic Acid Production</label>
+															</li>
+															<li id="lichem2">
+																<label class="checkbox" for="chem2"><input type="checkbox" id="chem2" name="chem2" class="check check_chem" checked="checked"/>Ammonia Manufacturing</label>
+															</li>
+															<li id="lichem3">
+																<label class="checkbox" for="chem3"><input type="checkbox" id="chem3" name="chem3" class="check check_chem" checked="checked"/>Fluorinated GHG Production</label>
+															</li>
+															<li id="lichem4">
+																<label class="checkbox" for="chem4"><input type="checkbox" id="chem4" name="chem4" class="check check_chem" checked="checked"/>HCFC-22 Prod./HFC-23 Dest.</label>
+															</li>
+															<li id="lichem5">
+																<label class="checkbox" for="chem5"><input type="checkbox" id="chem5" name="chem5" class="check check_chem" checked="checked"/>Hydrogen Production</label>
+															</li>
+															<li id="lichem6">
+																<label class="checkbox" for="chem6"><input type="checkbox" id="chem6" name="chem6" class="check check_chem" checked="checked"/>Nitric Acid Production</label>
+															</li>
+															<li id="lichem7">
+																<label class="checkbox" for="chem7"><input type="checkbox" id="chem7" name="chem7" class="check check_chem" checked="checked"/>Petrochemical Production</label>
+															</li>
+															<li id="lichem8">
+																<label class="checkbox" for="chem8"><input type="checkbox" id="chem8" name="chem8" class="check check_chem" checked="checked"/>Phosphoric Acid Production</label>
+															</li>
+															<li id="lichem9">
+																<label class="checkbox" for="chem9"><input type="checkbox" id="chem9" name="chem9" class="check check_chem" checked="checked"/>Silicon Carbide Production</label>
+															</li>
+															<li id="lichem10">
+																<label class="checkbox" for="chem10"><input type="checkbox" id="chem10" name="chem10" class="check check_chem" checked="checked"/>Titanium Dioxide Production</label>
+															</li>
+															<li id="lichem11">
+																<label class="checkbox" for="chem11"><input type="checkbox" id="chem11" name="chem11" class="check check_chem" checked="checked"/>Other Chemicals</label>
+															</li>
+														</div>
+													</ul>
+												</td>
+												<td valign="top" style="width:250px;">
+													<ul>
+														<li>
+															<label class="checkbox" style="background-color:#c0e6e6; padding-left:30px;"><input type="checkbox" id="sector8checkbox" name="sector8checkbox" class="check" style="float:left;" checked="checked" title="Select Other"/>Other</label>
+														</li>
+														<div style="margin-left:20px">
+															<li id="liother1">
+																<label class="checkbox" for="other1"><input type="checkbox" id="other1" name="other1" class="check check_other" checked="checked"/>Underground Coal Mines</label>
+															</li>
+															<li id="liother2">
+																<label class="checkbox" for="other2"><input type="checkbox" id="other2" name="other2" class="check check_other" checked="checked"/>Food Processing</label>
+															</li>
+															<li id="liother3">
+																<label class="checkbox" for="other3"><input type="checkbox" id="other3" name="other3" class="check check_other" checked="checked"/>Ethanol Production</label>
+															</li>
+															<li id="liother4">
+																<label class="checkbox" for="other4"><input type="checkbox" id="other4" name="other4" class="check check_other" checked="checked"/>Universities</label>
+															</li>
+															<li id="liother5">
+																<label class="checkbox" for="other5"><input type="checkbox" id="other5" name="other5" class="check check_other" checked="checked"/>Manufacturing</label>
+															</li>
+															<li id="liother6">
+																<label class="checkbox" for="other6"><input type="checkbox" id="other6" name="other6" class="check check_other" checked="checked"/>Military</label>
+															</li>
+															<li id="liother7">
+																<label class="checkbox" for="other7"><input type="checkbox" id="other7" name="other7" class="check check_other" checked="checked"/>Use of Electical Equipment</label>
+															</li>
+															<li id="liother8">
+																<label class="checkbox" for="other8"><input type="checkbox" id="other8" name="other8" class="check check_other" checked="checked"/>Electronics Manufacturing</label>
+															</li>
+															<li id="liother9">
+																<label class="checkbox" for="other9"><input type="checkbox" id="other9" name="other9" class="check check_other" checked="checked"/>Electrical Equipment Manufacturers</label>
+															</li>
+															<li id="liother10">
+																<label class="checkbox" for="other10"><input type="checkbox" id="other10" name="other10" class="check check_other" checked="checked"/>Other</label>
+															</li>
+														</div>
+														<li>
+															<label class="checkbox" style="background-color:#DDEDF4; padding-left:30px;"><input type="checkbox" id="sector4checkbox" name="sector4checkbox" class="check" style="float:left;" checked="checked" title="Select Minerals"/>Minerals</label>
+														</li>
+														<div style="margin-left:20px">
+															<li>
+																<label class="checkbox" for="mineral1"><input type="checkbox" id="mineral1" name="mineral1" class="check check_mineral" checked="checked"/>Cement Production</label>
+															</li>
+															<li>
+																<label class="checkbox" for="mineral2"><input type="checkbox" id="mineral2" name="mineral2" class="check check_mineral" checked="checked"/>Glass Production</label>
+															</li>
+															<li>
+																<label class="checkbox" for="mineral3"><input type="checkbox" id="mineral3" name="mineral3" class="check check_mineral" checked="checked"/>Lime Manufacturing</label>
+															</li>
+															<li>
+																<label class="checkbox" for="mineral4"><input type="checkbox" id="mineral4" name="mineral4" class="check check_mineral" checked="checked"/>Soda Ash Manufacturing</label>
+															</li>
+															<li>
+																<label class="checkbox" for="mineral5"><input type="checkbox" id="mineral5" name="mineral5" class="check check_mineral" checked="checked"/>Other Minerals</label>
+															</li>
+														</div>
+													</ul>
+												</td>
+												<td valign="top" style="width:250px;">
+													<ul>
+														<li>
+															<label class="checkbox" style="background-color:#9e9ebb; padding-left:30px;"><input type="checkbox" id="sector2checkbox" name="sector2checkbox" class="check" style="float:left;" checked="checked" title="Select Waste"/>Waste</label>
+														</li>
+														<div style="margin-left:20px">
+															<li id="liwaste1">
+																<label class="checkbox" for="waste1"><input type="checkbox" id="waste1" name="waste1" class="check check_waste" checked="checked"/>Municipal Landfills</label>
+															</li>
+															<li id="liwaste2">
+																<label class="checkbox" for="waste2"><input type="checkbox" id="waste2" name="waste2" class="check check_waste" checked="checked"/>Industrial Landfills</label>
+															</li>
+															<li id="liwaste3">
+																<label class="checkbox" for="waste3"><input type="checkbox" id="waste3" name="waste3" class="check check_waste" checked="checked"/>Wastewater Treatment</label>
+															</li>
+															<li id="liwaste4">
+																<label class="checkbox" for="waste4"><input type="checkbox" id="waste4" name="waste4" class="check check_waste" checked="checked"/>Solid Waste Combustion</label>
+															</li>
+														</div>
+														<li>
+															<label class="checkbox" style="background-color:#b8b8ce; padding-left:30px;"><input type="checkbox" id="sector3checkbox" name="sector3checkbox" class="check" style="float:left;" checked="checked" title="Select Metals"/>Metals</label>
+														</li>
+														<div style="margin-left:20px">
+															<li id="limetal1">
+																<label class="checkbox" for="metal1"><input type="checkbox" id="metal1" name="metal1" class="check check_metal" checked="checked"/>Aluminum Production</label>
+															</li>
+															<li id="limetal2">
+																<label class="checkbox" for="metal2"><input type="checkbox" id="metal2" name="metal2" class="check check_metal" checked="checked"/>Ferroalloy Production</label>
+															</li>
+															<li id="limetal3">
+																<label class="checkbox" for="metal3"><input type="checkbox" id="metal3" name="metal3" class="check check_metal" checked="checked"/>Iron &amp; Steel Production</label>
+															</li>
+															<li id="limetal4">
+																<label class="checkbox" for="metal4"><input type="checkbox" id="metal4" name="metal4" class="check check_metal" checked="checked"/>Lead Production</label>
+															</li>
+															<li id="limetal5">
+																<label class="checkbox" for="metal5"><input type="checkbox" id="metal5" name="metal5" class="check check_metal" checked="checked"/>Magnesium</label>
+															</li>
+															<li id="limetal6">
+																<label class="checkbox" for="metal6"><input type="checkbox" id="metal6" name="metal6" class="check check_metal" checked="checked"/>Zinc Production</label>
+															</li>
+															<li id="limetal7">
+																<label class="checkbox" for="metal7"><input type="checkbox" id="metal7" name="metal7" class="check check_metal" checked="checked"/>Other Metals</label>
+															</li>
+														</div>
+														<li>
+															<label class="checkbox" style="background-color:#d5d5e2; padding-left:30px;"><input type="checkbox" id="sector6checkbox" name="sector6checkbox" class="check" style="float:left;" checked="checked" title="Select Pulp and Paper"/>Pulp and Paper</label>
+														</li>
+														<div style="margin-left:20px">
+															<li>
+																<label class="checkbox" for="pulp1"><input type="checkbox" id="pulp1" name="pulp1" class="check check_pulp" checked="checked"/>Pulp and Paper Manufacturers</label>
+															</li>
+															<li>
+																<label class="checkbox" for="pulp2"><input type="checkbox" id="pulp2" name="pulp2" class="check check_pulp" checked="checked"/>Other Paper Producers</label>
+															</li>
+														</div>
+													</ul>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</td>
+								<!-- Power Plants -->
+								<td id="sector1row1" class="sector1 sectorTop">
+								</td>
+								<!-- Petroleum and Natural Gas Systems -->
+								<td id="sector5row1" class="sector2 sectorTop">
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector5Options" alt="Petroleum and Natural Gas Systems, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Refineries -->
+								<td id="sector7row1" class="sector3 sectorTop">
+								</td>
+								<!-- Chemicals -->
+								<td id="sector9row1" class="sector4 sectorTop">
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector9Options" alt="Chemicals, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Other -->
+								<td id="sector2row1" class="sector5 sectorTop">
+									<label for="sector2" style="display:none;"></label>
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector2Options" alt="Other Industrial, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Minerals -->
+								<td id="sector3row1" class="sector6 sectorTop">
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector3Options" alt="Minerals, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Waste -->
+								<td id="sector4row1" class="sector7 sectorTop">
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector4Options" alt="Waste, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Metals -->
+								<td id="sector6row1" class="sector8 sectorTop">
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector6Options" alt="Metals, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Pulp and Paper -->
+								<td id="sector8row1" class="sector9 sectorTop">
+									<img class="filterSector" src="img/widgets/cog.png" width="9" height="9" id="sector8Options" alt="Pulp and Paper, Options" style="float:right; margin:3px; display:none;"/>
+								</td>
+								<!-- Total Reported Emissions -->
+								<td id="sector10row1" class="sector10 sectorTop">
+									<input hidden type="checkbox" name="sector10checkbox" id="sector10checkbox" title="Select Total Reported Emissions" class="check" style="display:none; float:left;" checked="checked" tabindex="700"/>
+								</td>
+							</tr>
+							<tr id="rowOfSectors">
+								<th id="sector1row2" bgcolor="#FFBD59" align="center">Power Plants</th>
+								<th id="sector2row2" bgcolor="#F7D869" align="center">Petroleum and<br/> Natural Gas Systems</th>
+								<th id="sector3row2" bgcolor="#FFFF7F" align="center">Refineries</th>
+								<th id="sector4row2" bgcolor="#99D8F5" align="center">Chemicals</th>
+								<th id="sector5row2" bgcolor="#C0E6E6" align="center">Other</th>
+								<th id="sector6row2" bgcolor="#DDEDF4" align="center">Minerals</th>
+								<th id="sector7row2" bgcolor="#9B9EBB" align="center">Waste</th>
+								<th id="sector8row2" bgcolor="#B9B9CF" align="center">Metals</th>
+								<th id="sector9row2" bgcolor="#D7D7E4" align="center">Pulp and Paper</th>
+								<th id="sector10row2" bgcolor="#efefef" align="center">Total Reported Emissions
+									<span id="whatsTotal" style="font-size: 0.8em; font-weight: bold;"><a href="#" title="What's this?">What's this?</a></span></th>
+							</tr>
+							<tr>
+								<th colspan="2" align="left" bgcolor="#EEEEEE" style="width:14.5%; min-width:280px"><span id="emissionYear">$!endYear</span> GHG Emissions<br/>
+									<nobr style="font-size:.85em;"><span id="rollupUnit"></span></nobr>
+								</th>
+								<td id="s1Total" bgcolor="#FFEBCE" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s2Total" bgcolor="#FDF3D2" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s3Total" bgcolor="#FFFFD9" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s4Total" bgcolor="#E1F3FC" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s5Total" bgcolor="#ECF8F8" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s6Total" bgcolor="#F7FBFD" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s7Total" bgcolor="#E1E1EB" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s8Total" bgcolor="#EBEBF1" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s9Total" bgcolor="#F3F3F7" align="center" class="bigEmissions" style="width:9%"></td>
+								<td id="s10Total" bgcolor="#EFEFEF" align="center" class="bigEmissions" style="width:9%"></td>
+							</tr>
+							<tr>
+								<th colspan="2" align="left" bgcolor="#EEEEEE"id="sectorNumberOfFacilities"></th>
+								<td id="s1Facility" bgcolor="#FFEBCE" align="center" class="facilitiesNum"></td>
+								<td id="s2Facility" bgcolor="#FDF3D2" align="center" class="facilitiesNum"></td>
+								<td id="s3Facility" bgcolor="#FFFFD9" align="center" class="facilitiesNum"></td>
+								<td id="s4Facility" bgcolor="#E1F3FC" align="center" class="facilitiesNum"></td>
+								<td id="s5Facility" bgcolor="#ECF8F8" align="center" class="facilitiesNum"></td>
+								<td id="s6Facility" bgcolor="#F7FBFD" align="center" class="facilitiesNum"></td>
+								<td id="s7Facility" bgcolor="#E1E1EB" align="center" class="facilitiesNum"></td>
+								<td id="s8Facility" bgcolor="#EBEBF1" align="center" class="facilitiesNum"></td>
+								<td id="s9Facility" bgcolor="#F3F3F7" align="center" class="facilitiesNum"></td>
+								<td id="s10Facility" bgcolor="#EFEFEF" align="center" class="facilitiesNum"></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-color:#CCC; border-style:solid; border-width:1px;">
+					<div id="container">
+						<div class="ui-layout-west" style="overflow: hidden">
+							<div id="leftPanel" style="min-width:280px; padding: 5px" class="contentcolumn">
+								<div id="leftNav" title="Facility summary list left panel">
+									<div style="text-align:center">
+										<img src="img/ajaxloader.gif" alt="ajax loader image">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ui-layout-center">
+							<div id="titleDiv" style="padding: 5px; font-weight: bold">
+								<span id="titleSpan"></span>
+							</div>
+							<div id="table-label" style="display:none"></div>
+							<div id="canvas-map" title="Map View"></div>
+							<div id="canvas-vis-wrapper" title="Data View">
+								<div id="canvas-vis" style="display:none"></div>
+								<div id="refineriesTrend" class="dPopover">
+									<button class="close" title="close popup">&times;</button>
+									<p style="font-size: 11px">
+										Carbon dioxide quantities shown in this table exclude petroleum refineries whose carbon dioxide quantities are considered confidential business information.
+										<a href="https://www.epa.gov/ghgreporting/confidential-business-information-ghg-reporting" target="_blank">Click Here</a>.
+									</p>
+								</div>
+							</div>
+							<div id="canvas-detail" style="display:none"></div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="beveledRule"></div>
+					<div id="note_state" style="margin-bottom:5px; font-size:12px;"></div>
+					<div class="yellowflag" style="margin-bottom:5px; font-size:12px; display:none">
+						<img src="img/yellowflag.jpg" height="24" width="24" align="absmiddle" alt="yellow flag image">
+						<nobr>Exported emission values are rounded to the nearest metric ton.</nobr>
+					</div>
+					<div style="margin-bottom:5px; font-size:12px;">
+						<img src="img/yellowflag.jpg" height="24" width="24" align="absmiddle" alt="yellow flag image">
+						<nobr>This data set does not reflect total U.S. GHG emissions. Learn more about related EPA GHG <a href="$dsUrl" target="_blank">data sources</a>. $dataCredit.</nobr>
+					</div>
+					<div class="blueflag" style="margin-bottom:5px; font-size:12px; display:none">
+						<img src="img/blueflag.png" height="24" width="24" align="absmiddle" alt="blue flag image">
+						<nobr><a class="link" target="_blank" href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=188776486">
+						Emissions reported are not directly comparable between 2010 and subsequent years.
+						</a>
+						</nobr>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<table style="width:100%;border:0px">
+		<tr>
+			<td class="shadow">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="footer">
+					<ul id="globalfooter" style="float:left;margin-top:10px;">
+						<li style="padding:0 9px 0 5px;"><a href="https://www.epa.gov/accessibility/epa-accessibility-statement" style="text-decoration:none;font-weight:bold;font-size:100%;color:#465F45;" onMouseOut="this.style.color='#465F45'" onMouseOver="this.style.color='#439F3E'" target="_blank" title="EPA Accessibility Statement">Accessibility Statement</a></li>
+					</ul>
+					<ul id="globalfooter" style="float:right;margin-top:10px;">
+						<li style="padding:0 9px 0 5px;">$application.getInitParameter("buildId")</li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div id="boxes">
+		<div id=welcomeWindow class="window">
+			<div id="welcomeWindowEmitters" class="welcomeWindow" style="background-image:url(img/welcomeBG2.gif);background-color:#FFF;background-position:center;background-repeat:no-repeat;border:4px solid #999;padding-left:5px;height:auto;">
+				<a class="xClose" href="javascript:runCustomStateQuery();">
+					<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" tabindex="200"/>
+				</a>
+				<h1 style="padding-left: 5px;">
+					<span style="color:#007f99; font-size:26px;">
+						<span style="color:#039">F</span>acility <span style="color:#039">L</span>evel
+						<span style="color:#039">I</span>nformation on
+						<span style="color:#039">G</span>reen<span style="color:#039">H</span>ouse gases
+						<span style="color:#039">T</span>ool <span style="color:#039">(FLIGHT)</span>
+					</span>
+				</h1>
+				<table>
+					<tr>
+						<td valign="top">
+							<div class="getstartedBox large">
+								<h2>New to FLIGHT?</h2>
+								<p>
+									FLIGHT provides information about greenhouse gas (GHG) emissions from large
+									facilities in the U.S. These facilities are required to report annual data about GHG emissions to EPA as part of the
+									<a href="https://www.epa.gov/ghgreporting"> Greenhouse Gas Reporting Program (GHGRP).</a><br/><br/>
+									<a href="https://ccdsupport.com/confluence/display/ghgp">Take a tour of what you can find in FLIGHT,</a>
+									or use one of the view options at the right to get started.
+								</p>
+							</div>
+						</td>
+						<td valign="top">
+							<div class="getstartedBox short">
+								<h2>View Facilities <br/>in Your State</h2>
+								<div class="chooseStateContainer">
+									<select id="welcomeState" name="welcomeState" title="State selection" class="EPA_GREEN state-infobox" onchange="javascript:runStateQuery();" tabindex="202">
+										<option value="" selected="selected">Choose State</option>
+										#foreach($state in $states)
+										<option value="$state.state">$state.stateName</option>
+										#end
+									</select>
+								</div>
+								<p>See all the reporting facilities in a chosen state.</p>
+							</div>
+						</td>
+						<td valign="top">
+							<div class="getstartedBox large">
+								<h2>View U.S. Facility Map</h2>
+								<span style="text-align:center;">
+									<img src="img/map_v2.png" alt="View all US facility data" width="245" height="151" style="cursor:pointer; box-shadow:5px 5px 2.5px grey;" onClick="javascript:runCustomStateQuery();" tabindex="201">
+								</span>
+								<p>
+									<a href="javascript:runCustomStateQuery();">View all U.S. facilities</a>
+									reporting direct emissions. Additional search options include greenhouse gas, sector, and other fields.
+								</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="subtitle GRAY" style="padding-left:1px; padding-right:37px">
+							<div class="getstartedBox" style="width:100%">
+								<span style="color:#039; font-weight:bold">Important Information about this Data Set</span>
+								<ul class="smalltext" style="margin:0 0 0 15px">
+									<li>This data set does not reflect total U.S. GHG emissions.</li>
+									<li>The data was reported to EPA by facilities as of $dataDate. EPA continues to quality assure data and plans
+										to release updated data periodically.
+									</li>
+									<li><a href="$dsUrl" target="_blank">Learn more about what is included</a> in this data set and
+										view related EPA GHG data sources.
+									</li>
+									<li><a class="link" href="$!helplinkurlbase" target="_blank">Visit our help section</a> to learn about the features of FLIGHT and the data collected by the GHGRP.
+									</li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div id="browserWarningWindow" style="display:none">
+					<br>
+					<strong>
+						*Note: Some features of this site will not function properly with your current web browser. We suggest that you update Internet Explorer to version 9 or higher or use a different browser such as Google Chrome or Firefox. If you are using Internet Explorer version 9 or higher, your browser&#39;s document mode is likely set to an earlier version of Internet Explorer. You will need to change this to version 9 or higher. Click
+						<a href="https://www.ccdsupport.com/confluence/pages/viewpage.action?pageId=259686519">here</a> for directions to change your document mode setting.
+					</strong>
+					<br>
+				</div>
+				<div id="ieEmitter" class="smalltext"></div>
+			</div>
+			<div id="welcomeWindowSuppliers" class="welcomeWindow" style="background-image:url(img/welcomeBG2.gif);background-color:#FFF;background-position:center;background-repeat:no-repeat;border:4px solid #999">
+				<a class="xClose" href="#"><img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();" tabindex="200"/></a>
+				<h1>Explore <span class="MED_GRAY secondary">Greenhouse Gas (GHG) Quantities from Suppliers</span></h1>
+				<table>
+					<tr>
+						<td valign="top">
+							<div class="getstartedBox short supplier" style="margin:auto">
+								<h2>Choose a Sector</h2>
+								<ul id="welcomeSectorSelection" class="nav" style="height:30px">
+									<li class="top"><a href="#" class="top_link"><span id="sectorLabel" class="down">Choose Sector</span></a>
+										<ul id="sectorDropdown" class="sub" title="Choose a Sector">
+											<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Coal-based Liquid Fuel Suppliers</a></li>
+											<!--<li><a href="javascript:supplierSectorSelected(11)"><span style="padding:20px">Importers</span></a></li>-->
+											<!--<li><a href="javascript:supplierSectorSelected(12)"><span style="padding:20px">Exporters</span></a></li>-->
+											<li><a href="javascript:supplierSectorSelected(13)"><span style="padding:20px">Producers</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Petroleum Product Suppliers</a></li>
+											<li><a href="javascript:supplierSectorSelected(23)"><span style="padding:20px">Refineries</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(21)"><span style="padding:20px">Importers</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(22)"><span style="padding:20px">Exporters</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Natural Gas and Natural Gas Liquids Suppliers</a></li>
+											<!--<li><a href="javascript:supplierSectorSelected(31)"><span style="padding:20px">All</span></a></li>-->
+											<li><a href="javascript:supplierSectorSelected(32)"><span style="padding:20px">Local Distribution Companies</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(33)"><span style="padding:20px">Natural Gas Liquids Fractionators</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Industrial Gas Suppliers</a></li>
+											<li><a href="javascript:supplierSectorSelected(41)"><span style="padding:20px">Importers</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(42)"><span style="padding:20px">Exporters</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(43)"><span style="padding:20px">Producers</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(0)" style="background: #999">Suppliers of CO<sub>2</sub></a></li>
+											<li><a href="javascript:supplierSectorSelected(51)"><span style="padding:20px">Importers</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(52)"><span style="padding:20px">Exporters</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(53)"><span style="padding:20px">CO<sub>2</sub> Capture</span></a></li>
+											<li><a href="javascript:supplierSectorSelected(54)"><span style="padding:20px">CO<sub>2</sub> Production Wells</span></a></li>
+											<li id="fghg2"><a href="javascript:supplierSectorSelected(0)" style="background: #999">Equipment Containing Fluorinated GHGs</a></li>
+											<li id="fghg_import2"><a href="javascript:supplierSectorSelected(61)"><span style="padding:20px">Importers</span></a></li>
+											<li id="fghg_export2"><a href="javascript:supplierSectorSelected(62)"><span style="padding:20px">Exporters</span></a></li>
+										</ul>
+									</li>
+								</ul>
+								<p>See all the suppliers reporting in the sector of your choice.</p>
+							</div>
+						</td>
+						<td valign="top" style="padding-left: 40px">
+							#*
+							<div class="getstartedBox short">
+								<h2>Create a <br/>Custom Search</h2>
+								<div class="findFac">
+									<input name="facOrLocWelcome" id=facOrLocWelcome type="text" value="Find a supplier or Location" class="facSearchField EPA_GREEN" onFocus="this.value=''" tabindex="205"/>
+								</div>
+								<div id="facSearch" class="findFacButton">
+									<a href="javascript:generateURL('')" onMouseDown="document.getElementById('facSearch').style.background='url(img/find_fac_lit.gif)'" onMouseUp="document.getElementById('facSearch').style.background='url(img/find_fac_off.gif)'" tabindex="206">
+										<img src="img/5x5.gif" style="margin-top:4px;" width="46" height="29" alt="Search" onClick="javascript:runCustomQuery();"/>
+									</a>
+								</div>
+								<p>Find specific data on suppliers or search by location.</p>
+							</div>
+							*#
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="subtitle GRAY" style="padding-right:80px">
+							<div class="getstartedBox" style="margin:auto; width:100%;">
+								<span style="color:#039; font-weight:bold">Important Information about this Data Set</span>
+								<ul class="smalltext" style="margin:0 0 0 15px">
+									<li style="margin-top:10px">Suppliers are facilities or entities that supply certain products (e.g., fossil fuels or certain industrial gases) into
+										the economy that, when combusted, released, or oxidized, result in GHG emissions. The emissions do not take place at the suppliers' reporting location.
+									</li>
+									<li style="margin-top:10px">The data was reported to EPA by suppliers as of $dataDate. EPA continues to quality assure data and plans
+										to release updated data periodically.
+									</li>
+									<li style="margin-top:10px"><a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+										view related EPA GHG data sources.
+									</li>
+									<li style="margin-top:10px">Visit our
+										<a class="link" href="$!helplinkurlbase" target="_blank">help section</a> to learn about the features of FLIGHT and the data collected by the GHGRP.
+									</li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div id="ieSupplier" class="smalltext"></div>
+			</div>
+			<div id="welcomeCloseEmitter" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td class="subtitle GRAY">You are About to View Greenhouse Gas (GHG) Emissions Data from Large Facilities</td>
+					</tr>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							This data set does not reflect total U.S. GHG emissions.<br/><br/>
+							The data was reported to EPA by facilities as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseEmitter">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="welcomeCloseSupplier" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td class="subtitle GRAY">You are About to View Greenhouse Gas Quantities from Suppliers</td>
+					</tr>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							Suppliers are facilities or entities that supply certains products (e.g., fossil fuels or industrial gases) into the economy that, when combusted, released, or oxidized, result in GHG emissions. The emissions do not take place at the suppliers' reporting location.<br/><br/>
+							The data was reported to EPA by suppliers as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseSupplier">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="welcomeCloseOnshore" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							Owners or operators engaged in Onshore Oil and Natural Gas Production report aggregated GHG emissions in each basin where they operate and emissions exceed the reporting threshold.<br/><br/>
+							The data was reported to EPA as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseSupplier">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="welcomeCloseLDC" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							Natural gas distribution companies that exceed the reporting threshold report aggregated emissions in the state they operation in. These emissions are from fugitive leaks. GHG data associated
+							with natural gas supplied by local distribution companies to end users is available in the suppliers portion of this tool.<br/><br/>
+							The data was reported to EPA by distribution companies as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseSupplier">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="welcomeCloseCO2Injection" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							Facilities injection CO2 underground that exceed the reporting threshold report the total quantity of CO2 received for injection. The quantity of CO2 received for injection by
+							each reporter is confidential except for facilities with an EPA-approved R&amp;D project excemption for greenhouse gas reporting of geologic sequestration of carbon dioxide.<br/><br/>
+							The data was reported to EPA by suppliers as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseSupplier">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="welcomeCloseSF6" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							Owners and operators of electric power system facilities that exceed the reporting threshold report aggregated GHG emissions across the power system.<br/><br/>
+							The data was reported to EPA by facilities as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseSupplier">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="welcomeClosePointSource" class="welcomeClose">
+				<img src="img/icon_x.gif" alt="Close welcome window" style="float:right" onclick="javascript:clickX();"/>
+				<table>
+					<tr>
+						<td valign="top" class="smalltext GRAY">
+							<span style="font-size:12px; font-weight:bold">Important Information about this Data Set</span><br/><br/>
+							The facilities displayed in this view are a subset of all direct emitters that report, those reporting emissions from a traditional facility or "point source".
+							Other emitters not shown report emissions over broader spatial areas.<br/><br/>
+							The data was reported to EPA by facilities as of $dataDate.
+							EPA continues to quality assure data and plans to release updated data periodically.<br/><br/>
+							<a href="$dsUrl" target="_blank">Learn more</a> about what is included in this data set and
+							view related EPA GHG data sources.
+							<div id="ieCloseSupplier">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="dialog" class="window">
+			Simple Modal Window | <a href="#" class="close">Close it</a>
+		</div>
+		<div id="dialogDownload" class="window"></div>
+		<div id="dialogShare" class="window"></div>
+		<input type="hidden" id="reportingStatus" name="reportingStatus" value="ALL"/>
+	</div>
+</div>
+</body>

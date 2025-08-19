@@ -1,0 +1,16 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.1">
+    <deployment>
+        <exclusions>
+            <module name="org.apache.log4j"/>
+        </exclusions>        
+        <dependencies>
+            <system export="true">
+                <paths>
+                    <path name="com/sun/management"/>
+                    <path name="com/sun/org/apache/xml/internal/serialize"/>
+                </paths>
+            </system>
+            <module name="oracle.jdbc"/>
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

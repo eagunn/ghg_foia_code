@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools>
+	<toolbox scope="request" xhtml="true">
+		<tool class="org.apache.velocity.tools.generic.LinkTool"/>
+		<tool class="org.apache.velocity.tools.generic.LoopTool"/>
+		<tool class="org.apache.velocity.tools.generic.RenderTool"/>
+		<!-- custom class -->		
+	</toolbox>
+	<toolbox scope="application">
+		<tool class="org.apache.velocity.tools.generic.ComparisonDateTool"/>
+		<tool class="org.apache.velocity.tools.generic.EscapeTool"/>
+		<tool class="org.apache.velocity.tools.generic.MathTool"/>
+		<tool class="org.apache.velocity.tools.generic.NumberTool"/>
+		<!-- include deprecated tools, which will only be instanciated on demand -->
+		<tool class="org.apache.velocity.tools.generic.AlternatorTool"/>
+		<tool class="org.apache.velocity.tools.generic.ConversionTool"/>
+		<tool class="org.apache.velocity.tools.generic.SortTool"/>
+		<!-- custom class -->
+		<tool key="string" class="org.apache.commons.lang3.StringUtils"/>
+	</toolbox>
+	<data type="boolean" key="GENERIC_TOOLS_AVAILABLE" value="true"/>
+	<data key="tableHeader0">Facility ID</data>
+	<data key="tableHeader1">Facility Name</data>
+	<data key="tableHeader2">Facility Type</data>
+</tools>

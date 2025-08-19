@@ -1,0 +1,59 @@
+
+.ui-body-g, .ui-overlay-g {    
+	background: linear-gradient(#F7FEDE, #E9FEA6) repeat scroll 0 0 white;
+  border: 1px solid #57E977;
+  text-shadow: 0 1px 0 #F7FEDE;
+}
+
+
+
+.ui-bar-g {
+	background: linear-gradient(#95F23C, #499500) repeat scroll 0 0 black;
+	border: 1px solid black;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 #000000;
+}
+
+.ui-bar-h {
+  background: linear-gradient(#38E05D, #24913C) repeat scroll 0 0 #B7F200;
+  border: 1px solid #007D1C;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #007D1C;
+  border: 1px solid #456F9A;
+	background: #5E87B0;
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #3E6790;
+	background-image: -webkit-gradient(linear,left top,left bottom,from( #38E05D ),to( #24913C ));
+	background-image: -webkit-linear-gradient( #38E05D,#24913C );
+	background-image: -moz-linear-gradient( #38E05D,#24913C );
+	background-image: -ms-linear-gradient( #38E05D,#24913C );
+	background-image: -o-linear-gradient( #38E05D,#24913C );
+	background-image: linear-gradient( #38E05D,#24913C );
+}
+
+.ui-btn-up-g {
+	background: linear-gradient(#AEF26D, #95F23C) repeat scroll 0 0 #95F23C;
+	border: 1px solid #95F23C;
+	color: #222222;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.ui-btn-hover-g {
+  background: linear-gradient(#AEF26D, #AEF26D) repeat scroll 0 0 #AEF26D;
+  border: 1px solid #AEF26D;
+  color: #222222;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #FFFFFF;	
+}
+
+.ui-btn-down-g {
+  background: linear-gradient(#95F23C, #AEF26D) repeat scroll 0 0 #AEF26D;
+  border: 1px solid #AEF26D;
+  color: #222222;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #FFFFFF;	
+}

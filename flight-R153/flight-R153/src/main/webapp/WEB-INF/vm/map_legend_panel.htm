@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #006dcc;
+  color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: #d7dee5;
+}
+  
+.sqbox {
+  height: 20px;
+  width: 20px;
+  border:1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+}
+  
+.indent13 {
+  text-indent: 13%;
+}
+
+.ej11 {
+  background-color: #BD0029;
+}
+
+.ej10 {
+  background-color: #FC8D3D;
+}
+
+.ej9 {
+  background-color: #FCD777;
+}
+
+.ej678 {
+  background-color: #FFF6BD;
+}
+
+.ej5 {
+  background-color: #FFFFFF;
+}
+
+.ej0 {
+  background-color: transparent;
+}
+
+.blm {
+  background-color: #FCE479;
+}
+
+.bor {
+  background-color: #FFFFB4;
+}
+
+.dod {
+  background-color: #F9B4CE;
+}
+
+.fws {
+  background-color: #81CCA8;
+}
+
+.fs {
+  background-color: #CDEBC5;
+}
+
+.nps {
+  background-color: #C9BDDB;
+}
+</style>
+</head>
+<body>
+
+<div id="map_legend_panel" class="contentcolumn">
+	<div style="height:500px; overflow-x: auto">
+	
+		<div class="tab">
+			<button class="tablinks" onclick="openTab(event, 'Legend')" id="defaultOpen">Legend</button>
+		  	<button class="tablinks" onclick="openTab(event, 'Layer Options')">Layer Options</button>
+		</div>
+		
+		<div id="Legend" class="tabcontent">
+			<h4 class="dataType">$!facilityTypeFullName</h4>
+		  	##if($ds ne 'L')
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/factory_black.png"> 	All Direct Emitters and Point Sources</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/derrick_black.png"> 	Onshore Petroleum Natural Gas Production and Gathering & Boosting</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/pipeline_black.png"> 	Local Distribution Companies and Onshore Gas Transmission Pipelines</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/electricity_black.png">	SF6 from Electrical Transmission and Distribution Equipment Use</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/fuel_black.png"> 		Suppliers</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/co2_black.png"> 		CO2 Injection (UU)</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/icon_marker/sequestration_black.png"> Geologic Sequestration of CO2 (RR)</p>
+		  	<p style="font-size:xx-small;"><img align="middle" src="img/m1.png" style="width:28px"> Multiple Facilities</p>
+		  	##end
+		  	##if($ds eq 'L' || $ds eq 'O')
+		  	<p align="center">Demographic Index <button type="button" id="ejArrowBtn" style="border-style:none; background-color: #d7dee5;">&#x25BE;</button></p>
+		  	<div id="legendEj" style="display: none; font-size:13px">
+		  		<br/>
+		  		<div class='indent13'><div class='sqbox ej11'></div> 95-100 percentile</div><br/>
+				<div class='indent13'><div class='sqbox ej10'></div> 90-95 percentile</div><br/>
+				<div class='indent13'><div class='sqbox ej9'></div> 80-90 percentile</div><br/>
+				<div class='indent13'><div class='sqbox ej678'></div> 50-80 percentile</div><br/>
+				<div class='indent13'><div class='sqbox ej5'></div> Less than 50 percentile</div><br/>
+				<div class='indent13'><div class='sqbox ej0'></div> No data</div><br/>
+		  	</div>
+		  	<p align="center">National Map Federal Lands <button type="button" id="fedArrowBtn" style="border-style:none; background-color: #d7dee5;">&#x25BE;</button></p>
+		  	<div id="legendFed" style="display: none; font-size:13px">
+		  		<br/>
+		  		<div class='indent13'><div class='sqbox blm'></div> Bureau of Land Management</div><br/>
+				<div class='indent13'><div class='sqbox bor'></div> Bureau of Reclamation</div><br/>
+				<div class='indent13'><div class='sqbox dod'></div> Department of Defense</div><br/>
+				<div class='indent13'><div class='sqbox fws'></div> Fish and Wildlife Service</div><br/>
+				<div class='indent13'><div class='sqbox fs'></div> Forest Service</div><br/>
+				<div class='indent13'><div class='sqbox nps'></div> National Park Service</div><br/>
+		  	</div>
+		  	##end
+		</div>
+		
+		<div id="Layer Options" class="tabcontent">
+			<table style="width:100%; background-color: #ffffff; padding: 15px;">
+				<tr>
+					<td>Note: Layer Options may take time to load, hampering performance. Layer Options are limited to specific ZOOM levels. Changing ZOOM level will reload the layer(s).</td>
+				</tr>
+			</table>
+			<br/>
+		  	<p align="center"><!-- <input type="checkbox" id="chkDemoIndex"/> --> Demographic Index <button type="button" id="infoBtn" style="border-style:none; background-color: #d7dee5;"><span style="color:#006dcc">&#x1F6C8;</span></button></p>
+			<p>The Demographic Index consists of detailed Census block groups that can only be viewed at higher zoom levels. Click on the "Demographic Index" check box in the upper left corner of the map to view the Demographic Index layer. The check box will become active once you have zoomed in far enough.</p>
+			<br/>
+		  	<p align="center">National Map Federal Lands</p>
+			<p>Federal Lands are any land other than tribal lands that are controlled or owned by the United States, including lands selected by, but not yet conveyed to, Alaska Native Corporations and groups organized pursuant to the Alaska Native Claims Settlement Act of 1971. This layer is downloaded from the U.S. Geological Survey (USGS).</p>
+		</div>
+		
+		<div id="demographicIndex" style="background-image:url(img/welcomeBG2.gif);background-color:#FFF;background-position:center;background-repeat:no-repeat;padding-left:5px;height:auto;">
+			<h1 style="text-align:center">
+				<span style="font-size:24px;">DEMOGRAPHIC INDEX</span>
+			</h1>
+			<table>
+				<tr>
+					<td valign="top" class="smalltext GRAY">
+						<span style="font-size:12px;">
+							<span style="font-weight:bold">The Demographic Index is an average of these two indicators:</span>
+							<ul style="margin:0 0 0 15px">
+								<li><span style="font-weight:bold">Percent Low-Income:</span> The percent of a Census blocks group's population in households where the household income is less than or equal to twice the federal "poverty level".</li>
+								<li><span style="font-weight:bold">Percent People of Color:</span> The percent of individuals in a Census block group who list their racial status as a race other than white alone and/or list their ethnicity as Hispanic or Latino. That is, all people other than non-Hispanic white-alone individuals. The word "alone" in this case indicates that the person is of a single race, not multiracial.</li>
+							</ul>
+							<br/>
+							<p>A Census block group is an area defined by the Census Bureau that usually has in the range of 600-3,000 people living in it. The US is divided into more than 200,000 block groups.</p>
+							<br/>
+							<p>If you click on a Census block group on the map, you will see "X% (Y%ile)". This means that for the selected Census block group, the average of the percent low-income and percent people of color indicators corresponds to X% of the population in that Census block group. Additionally, compared to all other Census block groups in the U.S., Y% of Census block groups have an equal or lower demographic index value.</p>
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+	 
+	</div>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+$(document).ready(function(){
+	$('#ejArrowBtn').on("click",function(e){
+   		$('#legendEj').toggle('slow');
+	});	
+	$('#fedArrowBtn').on("click",function(e){
+   		$('#legendFed').toggle('slow');
+	});	
+	$('#chkDemoIndex').click(function() {
+	    if ($(this).is(':checked')) {
+	      //return confirm("Are you sure?");
+	    }
+	});
+	$('#infoBtn').on("click",function(e){
+		$('#demographicIndex').dialog('open');
+	});	
+	$('#demographicIndex').dialog({
+		autoOpen: false,
+	   	width: "50%"
+    });
+});
+</script>
+   
+</body>
+</html>

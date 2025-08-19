@@ -1,0 +1,53 @@
+
+h4 { font-size: 120%; letter-spacing: -1px; margin-bottom: 20px; font-weight:bold;}
+
+
+dd {
+  margin:0 0 4px 0;
+  background-color: #eeeeee;
+  padding:10px;
+}
+
+/********************************* LiveValidation *************************************/
+
+.LV_valid {
+    color:#00CC00;
+}
+	
+.LV_invalid {
+	color:#CC0000;
+}
+	
+.LV_validation_message{
+    font-weight:bold;
+    margin:0 0 0 5px;
+}
+    
+.LV_valid_field,
+input.LV_valid_field:hover, 
+input.LV_valid_field:active,
+textarea.LV_valid_field:hover, 
+textarea.LV_valid_field:active,
+.fieldWithErrors input.LV_valid_field,
+.fieldWithErrors textarea.LV_valid_field {
+    border: 1px solid #00CC00;
+}
+    
+.LV_invalid_field, 
+input.LV_invalid_field:hover, 
+input.LV_invalid_field:active,
+textarea.LV_invalid_field:hover, 
+textarea.LV_invalid_field:active,
+.fieldWithErrors input.LV_invalid_field,
+.fieldWithErrors textarea.LV_invalid_field {
+	padding: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #CC0000;
+	border-right-color: #CC0000;
+	border-bottom-color: #CC0000;
+	border-left-color: #CC0000;
+	background-color: #FFC;
+}

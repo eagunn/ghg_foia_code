@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>$title</title>
+        <link rel="StyleSheet" href="$base/css/jquery.ui.css" type="text/css" media="screen" />
+        <link rel="StyleSheet" href="$base/css/combo.css" type="text/css" media="screen" />
+        <link rel="StyleSheet" href="$base/css/forms.css" type="text/css" media="screen" />
+        <link rel="StyleSheet" href="$base/css/consolidated_common.css" type="text/css" media="screen" />
+        <script type="text/javascript" language="JavaScript" src="$base/js/basics.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/jquery.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/jquery.ui.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/egret.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/showhide.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/livevalidation_standalone.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/jquery.autotab.js"></script>
+        <script language="JavaScript" type="text/javascript">
+            <!--
+            jQuery.noConflict();
+            -->
+        </script>
+        $head
+    </head>
+    <body>
+    #parse("/includes/rootdecorator2.htm")
+        <div id="content">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+					<td width="177" class="sidenav" valign="top" style="background-image:url($base/img/help_desk_bg.gif); padding-top:20px;">
+                        <div class="help">
+                            <a href="http://www.ccdsupport.com/confluence/display/ghgp/Home" target="_blank">
+                                <img alt="" src="$base/img/help_icon.gif" width="22" height="23" align="absmiddle" style="margin-right:4px;"/>
+                                e-GGRT Help
+                            </a>
+                        </div>
+                            <div class="related">
+                                <ul>
+                                #set($helpLink = $session.getAttribute("helpLink"))
+                                #foreach($helpLink in $helpLinks)
+                                    <li><a target="_blank" href="$helpLink.linkHref">$helpLink.linkText</a></li>
+                                #end
+                                </ul>
+                            </div>
+                    </td>
+                    <td width="2" class="divider"></td>
+                    <td bgcolor="#FFFFFF" align="left" valign="top" style="padding-bottom:10px;">
+                        <!-- BEGIN BODY -->
+                        $body
+                        <!-- END BODY -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    #parse("/includes/rootdecorator3.htm")
+    </body>
+</html>

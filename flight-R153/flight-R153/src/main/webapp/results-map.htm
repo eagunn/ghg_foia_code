@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>  
+  <meta charset="UTF-8">    
+  <title>GHG Data | List Of Facilities</title>      
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-41373665-1', 'epa.gov');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+	<noscript>
+		<iframe src="//www.googletagmanager.com/ns.html?id=GTM-L8ZB" height="0" width="0" style="display:none;visibility:hidden">
+		</iframe>
+	</noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-L8ZB');
+	</script>
+  <!-- New Map Page -->
+  <div data-role="page" data-dom-cache="true" id="ResultsMap" data-theme="j">
+  
+    <!-- header -->
+    <div data-role="header" data-id="navHeader" data-position="fixed" data-tap-toggle="false" data-theme="j">
+      <a data-rel="back" href="results-list.htm" data-icon="back" data-theme="d">Back</a>
+      <h1 class="homeLogo" style="min-height: 46px; margin-top: 0px; margin-bottom: 0px;"></h1>
+      <a class="shareBtn j-mobileShare ui-btn-right"><img src="mobile/img/icons/lime_share.png"/></a>
+    </div>
+    <div class="mobileShare mobile-share-container" style="display: none;">
+      <div class="share-overlay"></div>
+      <ul class="mobile-share-list">
+        <li>
+          <a class="fb-share ui-link" title="Facebook" href="#" onclick="postToFacebook();" rel="external" data-inline="true">Facebook</a>
+        </li>
+        <li>
+          <a class="tw-share ui-link" title="Twitter" href="#" onclick="postToTwitter();" rel="external" data-inline="true">Twitter</a>
+        </li>
+        <li>
+          <a class="google-plus-share ui-link" title="Google Plus" href="#" onclick="postToGooglePlus()" rel="external" data-inline="true">Google Plus</a>
+        </li>
+        <li class="reddit-share">
+          <a class="reddit-share ui-link" title="Reddit" href="#" onclick="postToReddit();" rel="external" data-inline="true">Reddit</a>  
+        </li>
+          <a class="closeShare close ui-link" title="Close" rel="external" data-inline="true"></a>
+      </ul>
+    </div>
+  
+    <!-- Content (Map) -->
+    <div data-role="content" class="page-map" id="map_content" data-theme="j">
+      <div id="map_canvas"></div>
+    </div>
+  
+    <!-- footer -->
+    <div data-role="footer" data-id="navFooter" data-position="fixed" id="navFooter" data-tap-toggle="false" data-theme="j">    <!-- remove id -->
+      <div data-role="navbar" class="custom-nav">
+        <ul>
+          <li><a href="filter.htm" class="filterBtn" data-icon="custom">Filter</a></li>
+<!--           <li><a href="#" data-icon="check">Sort</a></li> -->
+          <li><a href="results-list.htm" class="listBtn" data-icon="custom">List</a></li>
+        </ul>
+      </div><!-- /navbar -->
+    </div><!-- /footer -->
+    
+  </div>
+  
+</body>
+</HTML>

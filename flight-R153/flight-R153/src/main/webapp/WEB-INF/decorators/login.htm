@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>$title</title>
+        <link rel="stylesheet" href="$base/css/classic/tables.css" type="text/css"/>
+        <link rel="StyleSheet" href="$base/css/combo.css" type="text/css" media="screen" />
+        <link rel="StyleSheet" href="$base/css/forms.css" type="text/css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="$base/css/consolidated_common.css" />
+        <script type="text/javascript" language="JavaScript" src="$base/js/basics.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/egret.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/jquery.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/showhide.js"></script>
+        <script type="text/javascript" language="JavaScript" src="$base/js/autocomplete.js"></script>
+        $head
+    </head>
+    <body>
+    #parse("/includes/rootdecorator2.htm")
+	<div id="content">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="sidenav" valign="top">
+					<div id="faclist">
+					</div>
+				</td>
+				<td width="2" class="divider"></td>
+				<td bgcolor="#FFFFFF" align="left" valign="top" style="padding-bottom:10px;">
+					<!-- BEGIN BODY -->
+					$body
+                    <!-- END BODY -->
+				</td>
+			</tr>
+		</table>
+	</div>
+    #parse("/includes/rootdecorator3.htm")
+    </body>
+</html>

@@ -1,0 +1,7 @@
+[
+  { "id": "g1",   "name": "Carbon Dioxide" },
+  { "id": "g2",   "name": "Nitrous Oxide"  },
+  { "id": "g3",   "name": "PFC-14"         },
+  { "id": "g4",   "name": "Methane"        },
+  { "id": "g5",   "name": "PFC-116"        }
+]

@@ -1,0 +1,54 @@
+.overlayToggleWrapper
+  margin: 10px
+  z-index: 0
+  position: absolute
+  cursor: pointer
+  left: 0px
+  top: 0px
+
+.overlayToggleElement
+  float: left
+  direction: ltr
+  overflow: hidden
+  text-align : center
+  position: relative
+  color: rgb(86,86,86)
+  font-family: Roboto, Arial, sans-serif
+  -webkit-user-select: none
+  font-size: 11px
+  padding: 8px
+  border-bottom-right-radius: 2px
+  border-top-right-radius: 2px
+  box-shadow: rgba(0,0,0,0.298039) 0px 1px 4px -1px
+  border-left-width: 0px
+  min-width: 37px
+  background-color: rgb(255,255,255)
+  background-clip: padding-box
+
+.overlayToggleElementSelected
+  @extend .overlayToggleElement
+  color: rgb(0,0,0)
+  min-width: 21px
+  font-weight: 500
+
+#bubbleSliderWrapper
+  margin-top: 40px
+  min-width: 200px
+  width: 210px
+  p
+    float: left
+    color: #439f3e
+    &#lowEText
+      margin-left: -25px
+    &#highEText
+      margin-left: 10px
+    &#bubbleSliderTitle
+      text-align: center
+      font-weight: bold
+      float: none
+  #bubbleSlider
+    float: left
+    width: 100px
+#bubbleSliderSubWrapper
+  margin-left: 18px
+
